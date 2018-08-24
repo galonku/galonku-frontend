@@ -1,2 +1,3 @@
 # galonku-frontend
-Galonku Frontend
+
+Frontend section for Galonku Web application
