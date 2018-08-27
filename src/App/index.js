@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Home from '../Pages/Home'
 import MerchantsLogin from '../Pages/Login/Merchants'
+import UsersLogin from '../Pages/Login/Users'
 
 import './index.css'
 
@@ -17,6 +18,7 @@ class App extends Component {
             {/* <Route path="/merchants/register" component={Signup} />
             <Route path="/users/register" component={Signin} /> */}
             <Route path="/merchants/login" component={MerchantsLogin} />
+            <Route path="/users/login" component={UsersLogin} />
           </Switch>
         </div>
       </Router>
