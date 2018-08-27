@@ -1,0 +1,9 @@
+.navigation {
+    background-color:#8cb8ff;
+    width: 100%;
+}
+
+.logo{
+    size: 20px;
+    display: flex;
+}
