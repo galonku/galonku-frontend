@@ -1,0 +1,13 @@
+.navigation {
+    background-color:#8cb8ff;
+    width: 100%;
+}
+
+img.ui.image.logo{
+    width: 70px;
+    height: 70px;
+}
+
+.wrapper-logo{
+    size: 20px;
+}
