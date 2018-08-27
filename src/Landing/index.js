@@ -8,16 +8,12 @@ const Landing = () => (
   <div className='landing'>
     <p>Pesan dan jual galon dengan lebih mudah</p>
     <div className='button-landing'>
-      <Button>
-        <Link to="/merchants/login" className="nav-link">
-          Mulai jual
-        </Link>
-      </Button>
-      <Button>
-        <Link to="/users/login" className="nav-link">
-          Mulai pesan
-        </Link>
-      </Button>
+      <Link to="/merchants/login" className="nav-link">
+        <Button>Mulai jual</Button>
+      </Link>
+      <Link to="/users/login" className="nav-link">
+        <Button>Mulai pesan</Button>
+      </Link>
     </div>
   </div>
 )
