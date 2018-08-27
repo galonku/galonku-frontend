@@ -1,13 +1,20 @@
 import React, { Component } from 'react'
 import { Button, Header, Menu, Segment, Sidebar } from 'semantic-ui-react'
 
-import MyNavigation from '../Navigationbar'
-import Body from '../Body'
+import LoginForm from '../index'
+import MyNavigation from '../../../Navigationbar'
 
-import './index.css'
+// import './index.css'
 
-export default class Content extends Component {
-  state = { visible: false }
+export default class Home extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      visible: false,
+      text: ''
+    }
+  }
 
   handleButtonClick = () => this.setState({ visible: !this.state.visible })
 
@@ -44,9 +51,12 @@ export default class Content extends Component {
             </Menu.Item>
           </Sidebar>
 
-          <Sidebar.Pusher dimmed={visible}>
+          <Sidebar.Pusher>
             <Segment basic>
-              <Header as='h3'><Body /></Header>
+              <Header as='h3'>
+                <p>{this.state.text}</p>
+                <LoginForm />
+              </Header>
             </Segment>
           </Sidebar.Pusher>
         </Sidebar.Pushable>
