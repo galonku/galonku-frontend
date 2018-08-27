@@ -4,7 +4,7 @@ import Default from '../Default'
 
 // import './index.css'
 
-export default class Home extends Component {
+export default class LoginUsers extends Component {
   render() {
     return (
       <Default />

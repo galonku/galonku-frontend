@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Home from '../Pages/Home'
-import MerchantsLogin from '../Pages/Login/Merchants'
-import UsersLogin from '../Pages/Login/Users'
+import LoginMerchants from '../Pages/Login/Merchants'
+import LoginUsers from '../Pages/Login/Users'
+import RegisterMerchants from '../Pages/Register/Merchants'
+import RegisterUsers from '../Pages/Register/Users'
 
 import './index.css'
 
@@ -15,10 +17,10 @@ class App extends Component {
 
           <Switch>
             <Route exact path="/" component={Home} />
-            {/* <Route path="/merchants/register" component={Signup} />
-            <Route path="/users/register" component={Signin} /> */}
-            <Route path="/merchants/login" component={MerchantsLogin} />
-            <Route path="/users/login" component={UsersLogin} />
+            <Route path="/merchants/register" component={RegisterMerchants} />
+            <Route path="/users/register" component={RegisterUsers} />
+            <Route path="/merchants/login" component={LoginMerchants} />
+            <Route path="/users/login" component={LoginUsers} />
           </Switch>
         </div>
       </Router>
