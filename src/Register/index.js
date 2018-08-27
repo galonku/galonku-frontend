@@ -3,16 +3,12 @@ import { Container, Button, Form, Checkbox } from 'semantic-ui-react';
 
 const UserRegister = () => (
     <div className=''>
-    <label className='daftar-merchant'>Daftar Merchant</label>
+    <label className='daftar-merchant'>Daftar Pengguna</label>
     <Container>
     <Form>
     <Form.Field>
       <label>Username</label>
       <Form.Input width={8} placeholder='Username' />
-    </Form.Field>
-    <Form.Field>
-      <label>Nama Toko</label>
-      <Form.Input width={8} placeholder='Nama Toko' />
     </Form.Field>
     <Form.Field>
       <label>Email</label>
@@ -21,14 +17,6 @@ const UserRegister = () => (
     <Form.Field>
       <label>Kata Sandi</label>
       <Form.Input width={8} type='password' placeholder='Kata Sandi' />
-    </Form.Field>
-    <Form.Field>
-      <label>Nama Toko</label>
-      <Form.Input width={8} placeholder='Nomor Telepon' />
-    </Form.Field>
-    <Form.Field>
-      <label>No. KTP</label>
-      <Form.Input width={8} placeholder='No. KTP' />
     </Form.Field>
     <Form.TextArea label='Alamat' placeholder='Alamat' />
     <Form.Field>
