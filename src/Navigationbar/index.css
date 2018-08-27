@@ -11,6 +11,7 @@ img.ui.image.logo{
 
 .wrapper-logo{
     size: 20px;
+<<<<<<< HEAD
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -23,4 +24,7 @@ img.ui.image.logo{
     justify-content: flex-start;
     margin-left: 5%;
     margin-top: 2%;
+=======
+    margin-left: 120px;
+>>>>>>> register-merchant
 }

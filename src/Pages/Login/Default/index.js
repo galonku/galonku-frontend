@@ -49,6 +49,9 @@ export default class Home extends Component {
             <Menu.Item as='a'>
               Contact us
             </Menu.Item>
+            <Menu.Item as='a' onClick={this.handleButtonClick}>
+              Daftar Merchant
+            </Menu.Item>
           </Sidebar>
 
           <Sidebar.Pusher>
