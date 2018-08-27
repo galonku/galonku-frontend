@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Header, Icon, Menu, Segment, Sidebar } from 'semantic-ui-react'
+import { Button, Header, Menu, Segment, Sidebar } from 'semantic-ui-react'
 
 import MyNavigation from '../Navigationbar'
 import Body from '../Body'
@@ -34,16 +34,13 @@ export default class Content extends Component {
             width='thin'
           >
             <Menu.Item as='a'>
-              <Icon name='home' />
               Home
             </Menu.Item>
             <Menu.Item as='a'>
-              <Icon name='gamepad' />
-              Games
+              About us
             </Menu.Item>
             <Menu.Item as='a'>
-              <Icon name='camera' />
-              Channels
+              Contact us
             </Menu.Item>
           </Sidebar>
 

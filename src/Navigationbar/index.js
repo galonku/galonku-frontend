@@ -12,7 +12,9 @@ const MyNavigation = ({ children }) => (
         {children}
       </Grid.Column>
       <Grid.Column>
-        <Image src={logo} size='small' className="logo" />
+        <div className='wrapper-logo'>
+          <Image src={logo} size='small' className="logo" />
+        </div>
       </Grid.Column>
     </Grid>
   </Container>
