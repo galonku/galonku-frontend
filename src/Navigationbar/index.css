@@ -4,10 +4,23 @@
 }
 
 img.ui.image.logo{
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
+    margin: 0px;
 }
 
 .wrapper-logo{
     size: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: auto;
+}
+
+.wrapper-menu{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-left: 5%;
+    margin-top: 2%;
 }

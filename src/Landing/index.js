@@ -1,23 +1,24 @@
 import React from 'react'
-import { Grid, Button } from 'semantic-ui-react'
+// import { Link } from 'react-router-dom'
+import { Button } from 'semantic-ui-react'
 
 import './index.css'
 
 const Landing = () => (
   <div className='landing'>
-    <Grid columns={3}>
-      <Grid.Row>
-        <Grid.Column>
-        </Grid.Column>
-        <Grid.Column>
-          <p>Pesan dan jual galon dengan lebih mudah</p>
-          <div className='button-landing'>
-            <Button>Mulai jual</Button>
-            <Button>Mulai pesan</Button>
-          </div>
-        </Grid.Column>
-      </Grid.Row>
-    </Grid>
+    <p>Pesan dan jual galon dengan lebih mudah</p>
+    <div className='button-landing'>
+      <Button>
+        {/* <Link to="/merchants/register" className="nav-link"> */}
+        Mulai jual
+        {/* </Link> */}
+      </Button>
+      <Button>
+        {/* <Link to="/users/register" className="nav-link"> */}
+        Mulai pesan
+        {/* </Link> */}
+      </Button>
+    </div>
   </div>
 )
 

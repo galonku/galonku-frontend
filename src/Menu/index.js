@@ -6,7 +6,7 @@ import Body from '../Body'
 
 import './index.css'
 
-export default class Content extends Component {
+export default class MyMenu extends Component {
   state = { visible: false }
 
   handleButtonClick = () => this.setState({ visible: !this.state.visible })
@@ -44,7 +44,7 @@ export default class Content extends Component {
             </Menu.Item>
           </Sidebar>
 
-          <Sidebar.Pusher dimmed={visible}>
+          <Sidebar.Pusher>
             <Segment basic>
               <Header as='h3'><Body /></Header>
             </Segment>

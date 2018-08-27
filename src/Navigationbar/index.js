@@ -9,7 +9,9 @@ const MyNavigation = ({ children }) => (
   <Container fluid className="navigation">
     <Grid columns={3}>
       <Grid.Column>
-        {children}
+        <div className='wrapper-menu'>
+          {children}
+        </div>
       </Grid.Column>
       <Grid.Column>
         <div className='wrapper-logo'>
