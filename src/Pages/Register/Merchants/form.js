@@ -20,7 +20,7 @@ export class RegisterMerchants extends React.Component {
     }
   }
 
-  handleClick = (event) => {
+  handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value })
   }
 
@@ -48,29 +48,29 @@ export class RegisterMerchants extends React.Component {
           <Form className='form-register-merchants' onSubmit={this.handleSubmit}>
             <Form.Field>
               <label>Username</label>
-              <Form.Input name='username' placeholder='Username' onChange={this.handleClick} />
+              <Form.Input name='username' placeholder='Username' onChange={this.handleChange} />
             </Form.Field>
             <Form.Field>
               <label>Nama Toko</label>
-              <Form.Input name='store_name' placeholder='Nama Toko' onChange={this.handleClick} />
+              <Form.Input name='store_name' placeholder='Nama Toko' onChange={this.handleChange} />
             </Form.Field>
             <Form.Field>
               <label>Email</label>
-              <Form.Input name='email' placeholder='Email' onChange={this.handleClick} />
+              <Form.Input name='email' placeholder='Email' onChange={this.handleChange} />
             </Form.Field>
             <Form.Field>
               <label>Kata Sandi</label>
-              <Form.Input name='password' type='password' placeholder='Kata Sandi' onChange={this.handleClick} />
+              <Form.Input name='password' type='password' placeholder='Kata Sandi' onChange={this.handleChange} />
             </Form.Field>
             <Form.Field>
               <label>Nomor telepon</label>
-              <Form.Input name='phone_number' placeholder='Nomor Telepon' onChange={this.handleClick} />
+              <Form.Input name='phone_number' placeholder='Nomor Telepon' onChange={this.handleChange} />
             </Form.Field>
             <Form.Field>
               <label>No. KTP</label>
-              <Form.Input name='identity_number' placeholder='No. KTP' onChange={this.handleClick} />
+              <Form.Input name='identity_number' placeholder='No. KTP' onChange={this.handleChange} />
             </Form.Field>
-            <Form.TextArea label='Alamat' name='address' placeholder='Alamat' onChange={this.handleClick} />
+            <Form.TextArea label='Alamat' name='address' placeholder='Alamat' onChange={this.handleChange} />
             <Form.Field>
               <Checkbox label='Saya setuju dengan persyaratan dan ketentuan galonku.com' />
             </Form.Field>
