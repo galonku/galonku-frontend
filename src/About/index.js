@@ -3,11 +3,11 @@ import { Grid } from 'semantic-ui-react'
 
 const About = () => (
   <div>
-    <p>About us</p>
+    <p>Tentang kami</p>
 
     <Grid columns={1} padded='vertically'>
       <Grid.Column>
-        <p>We are </p>
+        <p>Kami adalah </p>
       </Grid.Column>
     </Grid>
   </div>

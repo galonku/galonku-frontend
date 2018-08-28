@@ -38,27 +38,27 @@ export default class Home extends Component {
           >
             <Link to='/'>
               <Menu.Item>
-                Home
+                Beranda
               </Menu.Item>
             </Link>
             <Link to='/about'>
               <Menu.Item>
-                About us
+                Tentang kami
               </Menu.Item>
             </Link>
             <Link to='/contact'>
               <Menu.Item>
-                Contact us
+                Hubungi kami
               </Menu.Item>
             </Link>
             <Link to='/merchants/register'>
               <Menu.Item>
-                Register merchant
+                Registrasi penjual
               </Menu.Item>
             </Link>
             <Link to='users/register'>
               <Menu.Item>
-                Register user
+                Registrasi pembeli
               </Menu.Item>
             </Link>
           </Sidebar>
