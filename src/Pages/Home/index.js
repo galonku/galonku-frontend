@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import MyNavigation from '../../Navigationbar'
 import Landing from '../../Landing'
-import About from '../../About'
+import About from '../About'
 import Review from '../../Review'
 
 // import './index.css'
