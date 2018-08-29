@@ -5,7 +5,6 @@ export default class Review extends React.Component {
   render() {
     return (
       <Carousel>
-
       </Carousel>
     )
   }

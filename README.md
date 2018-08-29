@@ -3,4 +3,4 @@
 ![Content Web-Application](https://img.shields.io/badge/content-web--application-ff69b4.svg)
 ![Section Front-End](https://img.shields.io/badge/section-frontend-lightgrey.svg)
 
-Frontend section for Galonku Web application
+This branch is for evaulation purpose only

@@ -1,6 +1,6 @@
 import React from 'react'
-import { Grid, Container, Image } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import { Grid, Container, Image } from 'semantic-ui-react'
 
 import logo from '../images/logo.png'
 

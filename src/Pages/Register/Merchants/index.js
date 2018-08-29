@@ -1,75 +1,87 @@
-import React, { Component } from 'react'
-import { Button, Header, Menu, Segment, Sidebar } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import React from 'react'
+import { Container, Button, Form, Checkbox } from 'semantic-ui-react'
 
-import MyNavigation from '../../../Navigationbar'
-import RegisterMerchants from './form'
+import Register from '../../../function/Register'
 
-// import './index.css'
+import './index.css'
+import MyMenu from '../../../Menu'
 
-export default class Home extends Component {
-  state = { visible: false }
+class RegisterMerchants extends React.Component {
+  constructor(props) {
+    super(props)
 
-  handleButtonClick = () => this.setState({ visible: !this.state.visible })
+    this.state = {
+      username: '',
+      store_name: '',
+      email: '',
+      password: '',
+      phone_number: '',
+      identity_number: '',
+      address: ''
+    }
+  }
 
-  handleSidebarHide = () => this.setState({ visible: false })
+  handleChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value })
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+
+    const URL = 'merchants/register'
+    const data = {
+      username: this.state.username,
+      store_name: this.state.store_name,
+      email: this.state.email,
+      password: this.state.password,
+      phone_number: this.state.phone_number,
+      identity_number: this.state.identity_number,
+      address: this.state.address
+    }
+
+    Register(URL, data)
+  }
 
   render() {
-    const { visible } = this.state
-
     return (
-      <div>
-        <MyNavigation>
-          <Button icon='bars' onClick={this.handleButtonClick} className='button-menu' />
-        </MyNavigation>
-
-        <Sidebar.Pushable as={Segment}>
-          <Sidebar
-            as={Menu}
-            animation='overlay'
-            icon='labeled'
-            inverted
-            onHide={this.handleSidebarHide}
-            vertical
-            visible={visible}
-            width='thin'
-          >
-            <Link to='/'>
-              <Menu.Item>
-                Beranda
-              </Menu.Item>
-            </Link>
-            <Link to='/about'>
-              <Menu.Item>
-                Tentang kami
-              </Menu.Item>
-            </Link>
-            <Link to='/contact'>
-              <Menu.Item>
-                Hubungi kami
-              </Menu.Item>
-            </Link>
-            <Link to='/merchants/register'>
-              <Menu.Item>
-                Registrasi penjual
-              </Menu.Item>
-            </Link>
-            <Link to='/users/register'>
-              <Menu.Item>
-                Registrasi pembeli
-              </Menu.Item>
-            </Link>
-          </Sidebar>
-
-          <Sidebar.Pusher>
-            <Segment basic>
-              <Header as='h3'>
-                <RegisterMerchants />
-              </Header>
-            </Segment>
-          </Sidebar.Pusher>
-        </Sidebar.Pushable>
-      </div >
+      <MyMenu>
+        <Container>
+          <label>Registrasi Penjual</label>
+          <Form className='form-register-merchants' onSubmit={this.handleSubmit}>
+            <Form.Field>
+              <label>Username</label>
+              <Form.Input name='username' placeholder='Username' onChange={this.handleChange} />
+            </Form.Field>
+            <Form.Field>
+              <label>Nama Toko</label>
+              <Form.Input name='store_name' placeholder='Nama Toko' onChange={this.handleChange} />
+            </Form.Field>
+            <Form.Field>
+              <label>Email</label>
+              <Form.Input name='email' placeholder='Email' onChange={this.handleChange} />
+            </Form.Field>
+            <Form.Field>
+              <label>Kata Sandi</label>
+              <Form.Input name='password' type='password' placeholder='Kata Sandi' onChange={this.handleChange} />
+            </Form.Field>
+            <Form.Field>
+              <label>Nomor telepon</label>
+              <Form.Input name='phone_number' placeholder='Nomor Telepon' onChange={this.handleChange} />
+            </Form.Field>
+            <Form.Field>
+              <label>No. KTP</label>
+              <Form.Input name='identity_number' placeholder='No. KTP' onChange={this.handleChange} />
+            </Form.Field>
+            <Form.TextArea label='Alamat' name='address' placeholder='Alamat' onChange={this.handleChange} />
+            <Form.Field>
+              <Checkbox label='Saya setuju dengan persyaratan dan ketentuan galonku.com' />
+            </Form.Field>
+            <Button type='submit'>Registrasi</Button>
+          </Form>
+        </Container>
+      </MyMenu>
     )
   }
 }
+
+export default RegisterMerchants 
