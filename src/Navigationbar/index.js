@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Grid, Container, Image } from 'semantic-ui-react'
 
 import logo from '../images/logo.png'
@@ -15,7 +16,9 @@ const MyNavigation = ({ children }) => (
       </Grid.Column>
       <Grid.Column>
         <div className='wrapper-logo'>
-          <Image src={logo} size='small' className="logo" />
+          <Link to='/'>
+            <Image src={logo} size='small' className="logo" />
+          </Link>
         </div>
       </Grid.Column>
     </Grid>

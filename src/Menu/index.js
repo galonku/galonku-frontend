@@ -1,16 +1,19 @@
 import React, { Component } from 'react'
-import { Button, Header, Menu, Segment, Sidebar, Form } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import { Button, Menu, Segment, Sidebar } from 'semantic-ui-react'
 
-import MyNavigation from '../../../../Navigationbar'
+import MyNavigation from '../Navigationbar'
 
-// import './index.css'
+export default class MyMenu extends Component {
+  constructor(props) {
+    super(props)
 
-export default class InitialUser extends Component {
-  state = { visible: false }
+    this.state = {
+      visible: false
+    }
+  }
 
   handleButtonClick = () => this.setState({ visible: !this.state.visible })
-
   handleSidebarHide = () => this.setState({ visible: false })
 
   render() {
@@ -35,52 +38,38 @@ export default class InitialUser extends Component {
           >
             <Link to='/'>
               <Menu.Item>
-                Home
+                Beranda
               </Menu.Item>
             </Link>
             <Link to='/about'>
               <Menu.Item>
-                About us
+                Tentang kami
               </Menu.Item>
             </Link>
             <Link to='/contact'>
               <Menu.Item>
-                Contact us
+                Hubungi kami
               </Menu.Item>
             </Link>
-            <Link to=''>
+            <Link to='/merchants/register'>
               <Menu.Item>
-                Log Out
+                Registrasi penjual
+              </Menu.Item>
+            </Link>
+            <Link to='/users/register'>
+              <Menu.Item>
+                Registrasi pembeli
               </Menu.Item>
             </Link>
           </Sidebar>
 
           <Sidebar.Pusher>
             <Segment basic>
-              <Header as='h3'>
-                <Form>
-                  <Form.Field>
-                    <label>Pilih Penjual</label>
-                    <input placeholder='Pilih Penjual' />
-                  </Form.Field>
-                  <Form.Field>
-                    <label>Pilih Lokasi Antar</label>
-                    <input placeholder='Pilih Lokasi Antar' />
-                  </Form.Field>
-                  <Form.Field>
-                    <label>Jumlah Air Galon</label>
-                    <input placeholder='Jumlah Air Galon' />
-                  </Form.Field>
-                  <Link to='/users/transaction/process'>
-                    <Button type='submit'>Order</Button>
-                  </Link>
-                </Form>
-              </Header>
+              {this.props.children}
             </Segment>
           </Sidebar.Pusher>
         </Sidebar.Pushable>
-        <label className='price-tag'>Harga Total: </label>
-      </div >
+      </div>
     )
   }
 }

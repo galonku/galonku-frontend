@@ -8,7 +8,7 @@ const Register = (URL, data) => {
   request
     .post(URL, data)
     .then(response => console.log(response.data.message))
-    .catch(response => console.log(response.data.message)) //data.message in catch tends to fail, please make sure it works
+    .catch(error => console.log(error.response.data.message))
 }
 
 export default Register

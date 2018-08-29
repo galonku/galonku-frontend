@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
-import { Button, Header, Menu, Segment, Sidebar, Form, Divider, Icon, Rating } from 'semantic-ui-react'
+import { Button, Header, Menu, Segment, Sidebar, Form, Divider, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 import MyNavigation from '../../../../Navigationbar'
-import About from '../../../../About'
-import Review from '../../../../Review'
-
 // import './index.css'
 
 export default class SuccessOrder extends Component {
@@ -60,28 +57,29 @@ export default class SuccessOrder extends Component {
 
             <Segment basic>
               <Header as='h3'>
-              <Header as='h3' icon textAlign='center'>
+                <Header as='h3' icon textAlign='center'>
 
-      <Icon name='users' circular center/>
-      
-      <Header.Content>Terimakasih sudah memesan dari :  </Header.Content>
-    </Header>
-    <Form>
+                  <Icon name='users' circular center />
 
-              Berikan penilaian kepada penjual
-              <div>
-              <Rating icon='star' defaultRating={1} maxRating={5} />              
-              </div>
-              </Form>
-              <Divider />
-              <Link to='/users'>
-              <Button color='green' type='submit'>Klik Disini untuk membuat Pesanan baru</Button>
-              </Link>
+                  <Header.Content>Terimakasih sudah memesan dari :  </Header.Content>
+                </Header>
+                <Form>
 
-  
+                  Berikan penilaian kepada penjual
+                  <div>
+                    <Icon name='star' />
+                    <Icon name='star' />
+                    <Icon name='star' />
+                    <Icon name='star' />
+                    <Icon name='star' />
+                  </div>
+                </Form>
+                <Divider />
+                <Link to='/users'>
+                  <Button color='green' type='submit'>Klik Disini untuk membuat Pesanan baru</Button>
+                </Link>
               </Header>
             </Segment>
-            
           </Sidebar.Pusher>
         </Sidebar.Pushable>
       </div >
