@@ -1,13 +1,17 @@
 import React from 'react'
-import { Grid } from 'semantic-ui-react'
+import { Grid, Divider, Header } from 'semantic-ui-react'
 
 const About = () => (
   <div>
-    <p>About us</p>
-
-    <Grid columns={1} padded='vertically'>
+    <Header as='h1'>About us</Header>
+    <Divider />
+    <Grid columns={1}>
       <Grid.Column>
-        <p>We are </p>
+        <Header as='h4'>
+        Galonku.Com adalah sebuah platform yang menghubungkan antara pembeli dan penjual galon. Dengan aplikasi ini, diharapkan setiap 
+        orang yang membutuhkan galon tidak perlu repot untuk membeli galon dengan membawa ke depot galon setempat, juga penjual galon
+        dapat meningkatkan keuntungan dalam penjualan galon.
+        </Header>
       </Grid.Column>
     </Grid>
   </div>

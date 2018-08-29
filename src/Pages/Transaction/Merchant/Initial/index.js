@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Header, Menu, Segment, Sidebar, Form, Divider, Icon } from 'semantic-ui-react'
+import { Button, Header, Menu, Segment, Sidebar, Form, Divider, Icon, Loader } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import './merchant.css'
 
@@ -68,7 +68,9 @@ export default class InitialMerchant extends Component {
       </Header>
       <Link to='/merchant/open'>
       <Button color='red' animated='vertical' className='open-close-order'>
+      
       <Button.Content hidden>Klik Untuk Buka Toko</Button.Content>
+      
       <Button.Content visible>
         Status Toko: Tutup
       </Button.Content>
