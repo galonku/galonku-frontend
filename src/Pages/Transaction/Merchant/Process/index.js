@@ -60,7 +60,7 @@ export default class ProcessedOrder extends Component {
           <Sidebar.Pusher>
             <Segment basic>
               <Header as='h3'>
-              <Link to='/transaction/users/Success'>
+              <Link to='/users/transaction/Success'>
       <Header as='h3' icon textAlign='center'>
         <Icon name='users' circular />
         <Header.Content>Diproses Oleh : </Header.Content>

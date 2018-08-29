@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Header, Menu, Segment, Sidebar, Form, Divider, Icon } from 'semantic-ui-react'
+import { Button, Header, Menu, Segment, Sidebar, Form, Divider, Icon, Rating } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 import MyNavigation from '../../../../Navigationbar'
@@ -70,11 +70,7 @@ export default class SuccessOrder extends Component {
 
               Berikan penilaian kepada penjual
               <div>
-                <Icon name='star' />
-                <Icon name='star' />
-                <Icon name='star' />
-                <Icon name='star' />
-                <Icon name='star' />
+              <Rating icon='star' defaultRating={1} maxRating={5} />              
               </div>
               </Form>
               <Divider />
