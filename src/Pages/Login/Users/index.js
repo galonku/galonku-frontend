@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import { Button, Form } from 'semantic-ui-react'
 
 import Login from '../../../function/Login'
@@ -7,6 +8,11 @@ import MyMenu from '../../../Menu'
 import './index.css'
 
 export default class LoginUsers extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = { loggedIn: false }
+  }
 
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value })
@@ -22,9 +28,16 @@ export default class LoginUsers extends Component {
     }
 
     await Login(URL, data)
+    this.setState({ loggedIn: true })
   }
 
   render() {
+    const { loggedIn } = this.state
+
+    if (loggedIn) {
+      return <Redirect to='/users/transaction' />
+    }
+
     return (
       <MyMenu>
         <p>Masuk sebagai pembeli</p>
@@ -39,7 +52,7 @@ export default class LoginUsers extends Component {
           </Form.Field>
           <Button type='submit'>Login</Button>
         </Form>
-      </MyMenu>
+      </MyMenu >
     )
   }
 }
