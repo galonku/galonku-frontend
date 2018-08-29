@@ -9,7 +9,7 @@ import RegisterUsers from '../Pages/Register/Users'
 import TransactionUser from '../Pages/Transaction/Users/index.js'
 import ProcessTransactionUsers from '../Pages/Transaction/Users/Process'
 import SuccessTransactionUsers from '../Pages/Transaction/Users/Success'
-import TransactionMerchant from '../Pages/Transaction/Merchant/index.js'
+import TransactionMerchant from '../Pages/Transaction/Merchant/Close'
 import OpenOrderMerchant from '../Pages/Transaction/Merchant/Open'
 
 import './index.css'
@@ -24,8 +24,8 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route path="/merchants/register" component={RegisterMerchants} />
             <Route path="/merchants/login" component={LoginMerchants} />
-            <Route path="/merchants" component={TransactionMerchant} />
             <Route path="/merchants/open" component={OpenOrderMerchant} />
+            <Route path="/merchants/close" component={TransactionMerchant} />
 
             <Route path="/users/register" component={RegisterUsers} />
             <Route path="/users/login" component={LoginUsers} />
