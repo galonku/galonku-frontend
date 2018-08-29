@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
-import { Button, Header, Menu, Segment, Sidebar } from 'semantic-ui-react'
+import { Button, Header, Menu, Segment, Sidebar, Form, Divider } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
-import MyNavigation from '../../Navigationbar'
-import Landing from '../../Landing'
-import About from '../../About'
-import Review from '../../Review'
+import MyNavigation from '../../../../Navigationbar'
+import About from '../../../../About'
+import Review from '../../../../Review'
 
 // import './index.css'
 
-export default class Home extends Component {
+export default class InitialUser extends Component {
   state = { visible: false }
 
   handleButtonClick = () => this.setState({ visible: !this.state.visible })
@@ -51,14 +50,9 @@ export default class Home extends Component {
                 Contact us
               </Menu.Item>
             </Link>
-            <Link to='/merchants/register'>
+            <Link to=''>
               <Menu.Item>
-                Register merchant
-              </Menu.Item>
-            </Link>
-            <Link to='users/register'>
-              <Menu.Item>
-                Register user
+                Log Out
               </Menu.Item>
             </Link>
           </Sidebar>
@@ -66,13 +60,34 @@ export default class Home extends Component {
           <Sidebar.Pusher>
             <Segment basic>
               <Header as='h3'>
-                <Landing />
-                <Review />
-                <About />
+              <Form>
+    <Form.Field>
+      <label>Pilih Penjual</label>
+      <input placeholder='Pilih Penjual' />
+    </Form.Field>
+    <Form.Field>
+      <label>Pilih Lokasi Antar</label>
+      <input placeholder='Pilih Lokasi Antar' />
+    </Form.Field>
+    <Form.Field>
+      <label>Jumlah Air Galon</label>
+      <input placeholder='Jumlah Air Galon' />
+    </Form.Field>
+    <Link to='/transaction/users/process'>
+    <Button type='submit'>Order</Button>
+    </Link>
+  </Form>
+  
+  
+
+
+
               </Header>
             </Segment>
+            
           </Sidebar.Pusher>
         </Sidebar.Pushable>
+        <label className='price-tag'>Harga Total: </label>  
       </div >
     )
   }
