@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Header, Menu, Segment, Sidebar, Form, Divider } from 'semantic-ui-react'
+import { Button, Header, Menu, Segment, Sidebar, Form, Divider, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 import MyNavigation from '../../../../Navigationbar'
@@ -8,7 +8,7 @@ import Review from '../../../../Review'
 
 // import './index.css'
 
-export default class InitialUser extends Component {
+export default class ProcessedOrder extends Component {
   state = { visible: false }
 
   handleButtonClick = () => this.setState({ visible: !this.state.visible })
@@ -60,23 +60,20 @@ export default class InitialUser extends Component {
           <Sidebar.Pusher>
             <Segment basic>
               <Header as='h3'>
-              <Form>
-    <Form.Field>
-      <label>Pilih Penjual</label>
-      <input placeholder='Pilih Penjual' />
-    </Form.Field>
-    <Form.Field>
-      <label>Pilih Lokasi Antar</label>
-      <input placeholder='Pilih Lokasi Antar' />
-    </Form.Field>
-    <Form.Field>
-      <label>Jumlah Air Galon</label>
-      <input placeholder='Jumlah Air Galon' />
-    </Form.Field>
-    <Link to='/users/transaction/process'>
-    <Button type='submit'>Order</Button>
+              <Link to='/transaction/users/Success'>
+      <Header as='h3' icon textAlign='center'>
+        <Icon name='users' circular />
+        <Header.Content>Diproses Oleh : </Header.Content>
+      </Header>
+
     </Link>
-  </Form>
+    <Form>
+
+      <Button color='red' type='submit'>Batal Pesanan</Button>
+    </Form>
+    <Divider />
+    <label>Sedang Diproses Oleh Penjual </label>
+
   
   
 
@@ -87,7 +84,6 @@ export default class InitialUser extends Component {
             
           </Sidebar.Pusher>
         </Sidebar.Pushable>
-        <label className='price-tag'>Harga Total: </label>  
       </div >
     )
   }

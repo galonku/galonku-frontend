@@ -11,6 +11,10 @@ import TransactionUser from '../Pages/Transaction/Users/index.js'
 import ProcessTransactionUsers from '../Pages/Transaction/Users/Process'
 import SuccessTransactionUsers from '../Pages/Transaction/Users/Success'
 
+import TransactionMerchant from '../Pages/Transaction/Merchant/index.js'
+import ProcessTransactionMerchant from '../Pages/Transaction/Merchant/Process'
+import SuccessTransactionMerchant from '../Pages/Transaction/Merchant/Success'
+
 
 import './index.css'
 
@@ -27,9 +31,16 @@ class App extends Component {
             <Route path="/merchants/login" component={LoginMerchants} />
             <Route path="/users/login" component={LoginUsers} />
 
-            <Route path="/transaction/users/process" component={ProcessTransactionUsers} />
-            <Route path="/transaction/users/success" component={SuccessTransactionUsers} />
+            
+            <Route path="/users/transaction/process" component={ProcessTransactionUsers} />
+            <Route path="/users/transaction/success" component={SuccessTransactionUsers} />
             <Route path="/users" component={TransactionUser} />
+
+            
+            <Route path="/merchant/transaction/process" component={ProcessTransactionMerchant} />
+            <Route path="/merchant/transaction/success" component={SuccessTransactionMerchant} />
+            <Route path="/merchant" component={TransactionMerchant} />
+            
 
             
           </Switch>

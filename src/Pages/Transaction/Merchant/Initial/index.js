@@ -73,7 +73,7 @@ export default class InitialUser extends Component {
       <label>Jumlah Air Galon</label>
       <input placeholder='Jumlah Air Galon' />
     </Form.Field>
-    <Link to='/users/transaction/process'>
+    <Link to='/transaction/users/process'>
     <Button type='submit'>Order</Button>
     </Link>
   </Form>
