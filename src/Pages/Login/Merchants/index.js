@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Button, Header, Menu, Segment, Sidebar, Form } from 'semantic-ui-react'
 
 // import LoginForm from '../index'
 import MyNavigation from '../../../Navigationbar'
-import Login from '../../../function/login'
+import Login from '../../../function/Login'
 
 // import './index.css'
 
@@ -89,13 +89,13 @@ export default class LoginMerchants extends Component {
                 <Form className='form-login' onSubmit={this.handleSubmit}>
                   <Form.Field className='form-field'>
                     <label>Username</label>
-                    <input name='username' placeholder='Username' onChange={this.handleChange} />
+                    <input type='text' name='username' placeholder='Username' onChange={this.handleChange} />
                   </Form.Field>
                   <Form.Field className='form-field'>
-                    <label>Password</label>
-                    <input name='password' placeholder='Password' onChange={this.handleChange} />
+                    <label>Kata Sandi</label>
+                    <input type='password' name='password' placeholder='Password' onChange={this.handleChange} />
                   </Form.Field>
-                  <Button type='submit'>Login</Button>
+                  <Button type='submit'>Masuk</Button>
                 </Form>
               </Header>
             </Segment>

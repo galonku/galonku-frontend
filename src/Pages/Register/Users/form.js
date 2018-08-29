@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Button, Form, Checkbox } from 'semantic-ui-react'
 
-import Register from '../../../function/register'
+import Register from '../../../function/Register'
 
 import './index.css'
 
