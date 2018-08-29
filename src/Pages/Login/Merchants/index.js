@@ -35,7 +35,7 @@ export default class LoginMerchants extends Component {
     const { loggedIn } = this.state
 
     if (loggedIn) {
-      return <Redirect to='/users/transaction' />
+      return <Redirect to='/merchants/close' />
     }
 
     return (
