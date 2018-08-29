@@ -1,0 +1,13 @@
+.open-close-order {
+    width: 180px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.order-status {
+    font-style: italic;
+}
+
+.close-alert {
+    color: red;
+}

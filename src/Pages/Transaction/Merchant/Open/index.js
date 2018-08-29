@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 import { Button, Header, Menu, Segment, Sidebar, Form, Divider, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import './merchant.css'
 
 import MyNavigation from '../../../../Navigationbar'
 import About from '../../../../About'
 import Review from '../../../../Review'
 
-// import './index.css'
+// import './index.css
 
-export default class ProcessedOrder extends Component {
+export default class MerchantOpen extends Component {
   state = { visible: false }
 
   handleButtonClick = () => this.setState({ visible: !this.state.visible })
@@ -60,21 +61,27 @@ export default class ProcessedOrder extends Component {
           <Sidebar.Pusher>
             <Segment basic>
               <Header as='h3'>
-              <Link to='/users/transaction/Success'>
+              
       <Header as='h3' icon textAlign='center'>
         <Icon name='users' circular />
-        <Header.Content>Diproses Oleh : </Header.Content>
+        <Header.Content> " Nama Penjual " </Header.Content>
       </Header>
+      <Link to='/merchant'>
+      <Button color='green'   animated='vertical' className='open-close-order'>
+      <Button.Content hidden>Toko Tutup? Klik Disini</Button.Content>
+      <Button.Content visible>
+        Status Toko: Buka
+      </Button.Content>
+      </Button>
+      </Link>
+      <Divider />
+    <Header as='h2' className='order-status'>Status Pesanan</Header>
 
-    </Link>
-    <Form>
 
-      <Button color='red' type='submit'>Batal Pesanan</Button>
-    </Form>
-    <Divider />
-    <label>Sedang Diproses Oleh Penjual </label>
 
-  
+    <Header className="close-alert" color='grey'>
+    Menunggu Pesanan...
+    </Header>
   
 
 

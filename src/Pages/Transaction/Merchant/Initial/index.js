@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Button, Header, Menu, Segment, Sidebar, Form, Divider } from 'semantic-ui-react'
+import { Button, Header, Menu, Segment, Sidebar, Form, Divider, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import './merchant.css'
 
 import MyNavigation from '../../../../Navigationbar'
 import About from '../../../../About'
@@ -8,7 +9,7 @@ import Review from '../../../../Review'
 
 // import './index.css'
 
-export default class InitialUser extends Component {
+export default class InitialMerchant extends Component {
   state = { visible: false }
 
   handleButtonClick = () => this.setState({ visible: !this.state.visible })
@@ -60,24 +61,27 @@ export default class InitialUser extends Component {
           <Sidebar.Pusher>
             <Segment basic>
               <Header as='h3'>
-              <Form>
-    <Form.Field>
-      <label>Pilih Penjual</label>
-      <input placeholder='Pilih Penjual' />
-    </Form.Field>
-    <Form.Field>
-      <label>Pilih Lokasi Antar</label>
-      <input placeholder='Pilih Lokasi Antar' />
-    </Form.Field>
-    <Form.Field>
-      <label>Jumlah Air Galon</label>
-      <input placeholder='Jumlah Air Galon' />
-    </Form.Field>
-    <Link to='/users/transaction/process'>
-    <Button type='submit'>Order</Button>
-    </Link>
-  </Form>
-  
+              
+      <Header as='h3' icon textAlign='center'>
+        <Icon name='users' circular />
+        <Header.Content> " Nama Penjual " </Header.Content>
+      </Header>
+      <Link to='/merchant/open'>
+      <Button color='red' animated='vertical' className='open-close-order'>
+      <Button.Content hidden>Klik Untuk Buka Toko</Button.Content>
+      <Button.Content visible>
+        Status Toko: Tutup
+      </Button.Content>
+      </Button>
+      </Link>
+      <Divider />
+    <Header as='h2' className='order-status'>Status Pesanan</Header>
+
+
+
+    <Header className="close-alert" color='red'>
+    Anda belum mengaktifkan/membuka Toko anda.
+    </Header>
   
 
 
@@ -87,7 +91,6 @@ export default class InitialUser extends Component {
             
           </Sidebar.Pusher>
         </Sidebar.Pushable>
-        <label className='price-tag'>Harga Total: </label>  
       </div >
     )
   }
