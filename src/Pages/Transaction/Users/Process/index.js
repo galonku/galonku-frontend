@@ -3,10 +3,6 @@ import { Button, Header, Menu, Segment, Sidebar, Form, Divider, Icon } from 'sem
 import { Link } from 'react-router-dom'
 
 import MyNavigation from '../../../../Navigationbar'
-import About from '../../../../About'
-import Review from '../../../../Review'
-
-// import './index.css'
 
 export default class ProcessedOrder extends Component {
   state = { visible: false }
@@ -60,28 +56,21 @@ export default class ProcessedOrder extends Component {
           <Sidebar.Pusher>
             <Segment basic>
               <Header as='h3'>
-              <Link to='/transaction/users/Success'>
-      <Header as='h3' icon textAlign='center'>
-        <Icon name='users' circular />
-        <Header.Content>Diproses Oleh : </Header.Content>
-      </Header>
+                <Link to='/users/transaction/success'>
+                  <Header as='h3' icon textAlign='center'>
+                    <Icon name='users' circular />
+                    <Header.Content>Diproses Oleh : </Header.Content>
+                  </Header>
 
-    </Link>
-    <Form>
+                </Link>
+                <Form>
 
-      <Button color='red' type='submit'>Batal Pesanan</Button>
-    </Form>
-    <Divider />
-    <label>Sedang Diproses Oleh Penjual </label>
-
-  
-  
-
-
-
+                  <Button color='red' type='submit'>Batal Pesanan</Button>
+                </Form>
+                <Divider />
+                <label>Sedang Diproses Oleh Penjual </label>
               </Header>
             </Segment>
-            
           </Sidebar.Pusher>
         </Sidebar.Pushable>
       </div >
