@@ -27,11 +27,11 @@ class App extends Component {
             <Route path="/merchants/open" component={OpenOrderMerchant} />
             <Route path="/merchants/close" component={TransactionMerchant} />
 
+            <Route path="/users/transaction/process" component={ProcessTransactionUsers} />
+            <Route path="/users/transaction/success" component={SuccessTransactionUsers} />
             <Route path="/users/register" component={RegisterUsers} />
             <Route path="/users/login" component={LoginUsers} />
             <Route path="/users/transaction" component={TransactionUser} />
-            <Route path="/users/transaction/process" component={ProcessTransactionUsers} />
-            <Route path="/users/transaction/success" component={SuccessTransactionUsers} />
           </Switch>
         </div>
       </Router>

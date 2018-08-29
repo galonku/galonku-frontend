@@ -7,7 +7,7 @@ import MyMenu from '../../../Menu'
 
 import './index.css'
 
-export default class LoginUsers extends Component {
+export default class LoginUser extends Component {
   constructor(props) {
     super(props)
 
