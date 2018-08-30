@@ -6,13 +6,13 @@ import './index.css'
 
 const Landing = () => (
   <div className='landing'>
-    <Header className='tagline' as='h1'>Pesan dan jual galon dengan lebih mudah</Header>
+    <div className='tagline'>Pesan dan Jual Galon Lebih Mudah</div>
     <div className='button-landing'>
       <Link to="/merchants/login" className="nav-link">
-        <Button>Mulai jual</Button>
+        <div className='the-button'><Button>Mulai Jual</Button></div>
       </Link>
       <Link to="/users/login" className="nav-link">
-        <Button>Mulai pesan</Button>
+      <div className='the-button'><Button>Mulai Pesan</Button></div>
       </Link>
     </div>
   </div>

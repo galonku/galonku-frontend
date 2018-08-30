@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Menu, Segment, Sidebar } from 'semantic-ui-react'
+import './index.css'
 
 import MyNavigation from '../Navigationbar'
 
@@ -64,9 +65,9 @@ export default class MyMenu extends Component {
           </Sidebar>
 
           <Sidebar.Pusher>
-            <Segment basic>
+           
               {this.props.children}
-            </Segment>
+           
           </Sidebar.Pusher>
         </Sidebar.Pushable>
       </div>

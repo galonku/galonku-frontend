@@ -1,11 +1,22 @@
 .landing{
-    padding: 20px;
-    margin-top: 30px;
-    margin-bottom: 50px;
-
+    background-image: url(/static/media/landingpic.a43c3050.png);
+    background-repeat: no-repeat;
+    background-size: auto;
+    padding-top: 140px;
+    padding-bottom: 70px;
 }
 
 .button-landing{
     margin: 50px;
 }
 
+.the-button {
+    margin: 5px;
+}
+
+.tagline {
+    color: white;
+    font-size: 39px;
+    padding-top: 59px;
+    font-family: sans-serif;
+}
