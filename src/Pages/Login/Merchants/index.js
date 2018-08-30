@@ -4,6 +4,7 @@ import { Button, Form, Header } from 'semantic-ui-react'
 
 import Login from '../../../function/Login'
 import MyMenu from '../../../Menu'
+import Footer from '../../../Footer'
 
 import './index.css'
 
@@ -40,8 +41,8 @@ export default class LoginMerchant extends Component {
 
     return (
       <MyMenu>
-        <Header as ='h2'>Masuk sebagai Penjual (Merchant)</Header>
         <Form className='form-login' onSubmit={this.handleSubmit}>
+        <Header as ='h2'>Masuk sebagai Penjual (Merchant)</Header>
           <Form.Field className='form-field'>
             <label>Username</label>
             <input type='text' name='username' placeholder='Username' onChange={this.handleChange} />
@@ -52,6 +53,7 @@ export default class LoginMerchant extends Component {
           </Form.Field>
           <Button type='submit'>Login</Button>
         </Form>
+        <Footer />
       </MyMenu>
     )
   }
