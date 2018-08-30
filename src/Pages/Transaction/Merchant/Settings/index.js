@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Header, Divider, Icon, Form } from 'semantic-ui-react'
+import { Button, Header, Divider, Icon, Form, Modal } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 import MenuLogin from '../../../../MenuLogin'
@@ -92,10 +92,24 @@ export default class MerchantOpen extends Component {
               <b>Ganti Kata Sandi</b>
               <Form.Input name='password' type='password' value={this.state.password} onChange={this.handleChange} />
             </Form.Field>
-            <Button
-              basic
-              content='Perbaharui'
-            />
+
+          {/* coba-coba aja bro karena ga bisa tidur, kalau ga work/bermasalah hapus aja ya bro */}
+            <Modal trigger={<Button>Perbaharui</Button>} basic size='small'>
+              <Header icon='exclamation' content='Perhatian' />
+              <Modal.Content>
+                <p>
+                  Apakah anda yakin ingin mengganti Pengaturan Toko anda?
+              </p>
+              </Modal.Content>
+              <Modal.Actions>
+                <Button basic color='red' inverted>
+                  <Icon name='remove' /> Batal
+              </Button>
+                <Button type='submit' onClick={this.props.history.goBack} color='green' inverted>
+                    <Icon name='checkmark' /> Ya
+                </Button>
+              </Modal.Actions>
+            </Modal>
           </Form>
         </div>
         <Footer />
