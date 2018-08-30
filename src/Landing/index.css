@@ -4,9 +4,9 @@
 }
 
 .landing{
-    background-image: url(/static/media/landingpic.a43c3050.png);
+    background-image: url('../images/landingpic.png');
     background-repeat: no-repeat;
-    background-size: 234%;
+    background-size: 125%;
 }
 
 .button-landing{
@@ -24,6 +24,13 @@
     font-family: 'BebasNeue';
 }
 
+
+.blue-background {
+    background: linear-gradient(68deg, rgba(34,193,195,0.6) 0%, rgba(138,254,255,0.6) 100%);
+    padding-top: 160px;
+    padding-bottom: 241px;
+}
+
 @media screen and (max-width: 992px) {
     .tagline {
         color: white;
@@ -31,13 +38,15 @@
         padding-top: 59px;
         font-family: 'BebasNeue';
     }
+    .landing{
+        background-image: url('../images/landingpic.png');
+        background-repeat: no-repeat;
+        background-size: 304%;
+    }
+    .blue-background {
+        background: linear-gradient(68deg, rgba(34,193,195,0.6) 0%, rgba(138,254,255,0.6) 100%);
+        padding-top: 130px;
+        padding-bottom: 271px;
+    }
   }
 
-
-.blue-background {
-    background: rgba(34,193,195,0.6);
-    background: linear-gradient(68deg, rgba(34,193,195,0.6) 0%, rgba(138,254,255,0.6) 100%);
-    padding-top: 140px;
-    padding-bottom: 80px;
-
-}

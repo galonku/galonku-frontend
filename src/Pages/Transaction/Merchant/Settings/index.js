@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Header, Divider, Icon, Form, Modal } from 'semantic-ui-react'
-import { Link, withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import MenuLogin from '../../../../MenuLogin'
 
