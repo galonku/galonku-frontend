@@ -15,7 +15,9 @@ export default class InitialUser extends Component {
       CheckboxAddress: false,
       CheckboxPhoneNumber: false,
       address: '',
-      phone_number: ''
+      phone_number: '',
+      quantities: '',
+      total_price: ''
     }
   }
 
@@ -58,7 +60,12 @@ export default class InitialUser extends Component {
   }
 
   handleChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value })
+    const price = 5000
+
+    this.setState({
+      [event.target.name]: event.target.value,
+      total_price: price * this.state.quantities
+    })
   }
 
   render() {
@@ -71,17 +78,21 @@ export default class InitialUser extends Component {
           </Form.Field>
           <Form.Field>
             <label>Pilih lokasi antar</label>
-            <input name="address" placeholder='Pilih lokasi antar' value={this.state.address} onChange={this.handleChange} />
+            <input type='text' name='address' placeholder='Pilih lokasi antar' value={this.state.address} onChange={this.handleChange} />
             <Checkbox label='Antar ke alamat saya' onChange={this.handleChangeAddress} />
           </Form.Field>
           <Form.Field>
             <label>Masukkan nomor telepon</label>
-            <input name="phone_number" placeholder='Masukkan nomor telepon' value={this.state.phone_number} onChange={this.handleChange} />
+            <input type='text' name='phone_number' placeholder='Masukkan nomor telepon' value={this.state.phone_number} onChange={this.handleChange} />
             <Checkbox label='Gunakan nomor telepon saya' onChange={this.handleChangePhoneNumber} />
           </Form.Field>
           <Form.Field>
             <label>Jumlah air galon</label>
-            <input placeholder='Jumlah air galon' />
+            <input type='number' min='1' name='quantities' placeholder='Jumlah air galon' onChange={this.handleChange} />
+          </Form.Field>
+          <Form.Field>
+            <label>Total harga:</label>
+            <label>Rp. {this.state.total_price}</label>
           </Form.Field>
           <Link to='/users/transaction/process'>
             <Button type='submit'>Order</Button>
