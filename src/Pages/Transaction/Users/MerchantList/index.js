@@ -10,7 +10,11 @@ class SelectMerchant extends React.Component {
   }
 
   render() {
-    return (<Dropdown placeholder='Pilih penjual' fluid search selection options={this.state.merchants} />)
+    return (<Dropdown placeholder='Pilih penjual' fluid search selection options={this.state.merchants} onChange={this.handleChange} />)
+  }
+
+  handleChange = (event, { value }) => {
+    this.props.merchantSelected(value)
   }
 
   componentDidMount() {

@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { Button, Form, Checkbox } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 import MenuLogin from '../../../../MenuLogin'
-import SelectMerchant from '../SelectMerchant'
+import MerchantList from '../MerchantList'
 import { getLocalstorage } from '../../../../function/Localstorage'
 import getUser from '../../../../function/GetUsers'
+import searchMerchants from '../../../../function/SearchMerchant'
+import createOrder from '../../../../function/CreateOrders'
 
 export default class InitialUser extends Component {
   constructor(props) {
@@ -14,10 +16,15 @@ export default class InitialUser extends Component {
     this.state = {
       CheckboxAddress: false,
       CheckboxPhoneNumber: false,
+      doneOrder: false,
+      idmerchants: '',
+      store_name: '',
       address: '',
       phone_number: '',
+      price: '',
       quantities: '',
-      total_price: ''
+      notes: '',
+      status: 'pending'
     }
   }
 
@@ -60,45 +67,83 @@ export default class InitialUser extends Component {
   }
 
   handleChange = (event) => {
-    const price = 5000
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  handleSubmit = async (event) => {
+    event.preventDefault()
+
+    const data = getLocalstorage()
+    const token = data.token
+
+    const order = {
+      iduser: data.id,
+      idmerchants: this.state.idmerchants,
+      merchant: this.state.store_name,
+      quantity: this.state.quantities,
+      phone_number: this.state.phone_number,
+      user_address: this.state.address,
+      user_notes: this.state.notes,
+      status: this.state.status
+    }
+    await createOrder(order, token)
+    this.setState({
+      doneOrder: true
+    })
+  }
+
+  merchantSelected = async (value) => {
+    const merchants = await searchMerchants(`/search?q=${value}`)
 
     this.setState({
-      [event.target.name]: event.target.value,
-      total_price: price * this.state.quantities
+      store_name: value,
+      price: merchants.data.merchant[0].price,
+      idmerchants: merchants.data.merchant[0].id
     })
   }
 
   render() {
-    return (
-      <MenuLogin>
-        <Form>
-          <Form.Field>
-            <label>Pilih penjual</label>
-            <SelectMerchant />
-          </Form.Field>
-          <Form.Field>
-            <label>Pilih lokasi antar</label>
-            <input type='text' name='address' placeholder='Pilih lokasi antar' value={this.state.address} onChange={this.handleChange} />
-            <Checkbox label='Antar ke alamat saya' onChange={this.handleChangeAddress} />
-          </Form.Field>
-          <Form.Field>
-            <label>Masukkan nomor telepon</label>
-            <input type='text' name='phone_number' placeholder='Masukkan nomor telepon' value={this.state.phone_number} onChange={this.handleChange} />
-            <Checkbox label='Gunakan nomor telepon saya' onChange={this.handleChangePhoneNumber} />
-          </Form.Field>
-          <Form.Field>
-            <label>Jumlah air galon</label>
-            <input type='number' min='1' name='quantities' placeholder='Jumlah air galon' onChange={this.handleChange} />
-          </Form.Field>
-          <Form.Field>
-            <label>Total harga:</label>
-            <label>Rp. {this.state.total_price}</label>
-          </Form.Field>
-          <Link to='/users/transaction/process'>
+    let view = (<Redirect to="/users/transaction/process" />)
+
+    if (!this.state.doneOrder) {
+      const total_price = this.state.price * this.state.quantities
+
+      view = (
+        <MenuLogin>
+          <Form onSubmit={this.handleSubmit}>
+            <Form.Field>
+              <label>Pilih penjual</label>
+              <MerchantList merchantSelected={this.merchantSelected} />
+            </Form.Field>
+            <Form.Field>
+              <label>Pilih lokasi antar</label>
+              <input type='text' name='address' placeholder='Pilih lokasi antar' value={this.state.address} onChange={this.handleChange} />
+              <Checkbox label='Antar ke alamat saya' onChange={this.handleChangeAddress} />
+            </Form.Field>
+            <Form.Field>
+              <label>Masukkan nomor telepon</label>
+              <input type='text' name='phone_number' placeholder='Masukkan nomor telepon' value={this.state.phone_number} onChange={this.handleChange} />
+              <Checkbox label='Gunakan nomor telepon saya' onChange={this.handleChangePhoneNumber} />
+            </Form.Field>
+            <Form.Field>
+              <label>Jumlah air galon</label>
+              <input type='number' min='1' name='quantities' placeholder='Jumlah air galon' value={this.state.quantities} onChange={this.handleChange} />
+            </Form.Field>
+            <Form.Field>
+              <label>Catatan</label>
+              <input type='text' name='notes' placeholder='catatan' value={this.state.notes} onChange={this.handleChange} />
+            </Form.Field>
+            <Form.Field>
+              <label>Total harga:</label>
+              <label>Rp. {total_price}</label>
+            </Form.Field>
             <Button type='submit'>Order</Button>
-          </Link>
-        </Form>
-      </MenuLogin>
-    )
+          </Form>
+        </MenuLogin>
+      )
+    }
+    return view
   }
 }
