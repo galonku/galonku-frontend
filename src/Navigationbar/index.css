@@ -1,6 +1,6 @@
 .navigation {
     background: rgb(34,193,195);
-    background: linear-gradient(68deg, rgba(34,193,195,1) 0%, rgba(138,254,255,1) 100%);
+    background: linear-gradient(68deg, rgb(35, 204, 206) 0%, rgba(83, 207, 208, 0.67) 100%);
 }
 
 img.ui.image.logo{
@@ -22,5 +22,11 @@ img.ui.image.logo{
     flex-direction: row;
     justify-content: flex-start;
     margin-left: 5%;
-    margin-top: 2%;
+    margin-top: 3%;
+}
+@media screen and (max-width: 992px) {
+.wrapper-menu {
+margin-left: 7%;
+margin-top: 14%;
+}
 }
