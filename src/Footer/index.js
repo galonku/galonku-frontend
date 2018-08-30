@@ -6,9 +6,9 @@ const Footer = () => (
   <div>
 
 
-<Segment inverted vertical style={{ padding: '5em 0em' }}>
+    <Segment inverted vertical style={{ padding: '5em 0em' }}>
       <Container>
-        <Grid divided inverted stackable>
+        <Grid divided inverted stackable  verticalAlign='left' >
           <Grid.Row>
             <Grid.Column width={3}>
               <Header inverted as='h3' content='Hubungi Kami' />
@@ -32,6 +32,10 @@ const Footer = () => (
                 <Button type='submit'>Kirim</Button>
             </Form>
             </Grid.Column>
+          </Grid.Row>
+          <Divider />
+          <Grid.Row>
+          Copyright@AndromedaOrg 2018
           </Grid.Row>
         </Grid>
       </Container>
