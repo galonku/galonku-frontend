@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Header, Divider, Icon, Form } from 'semantic-ui-react'
+import { Button, Header, Divider, Icon, Form, Modal } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 import MenuLogin from '../../../../MenuLogin'
@@ -7,6 +7,13 @@ import MenuLogin from '../../../../MenuLogin'
 import './index.css'
 
 export default class MerchantOpen extends Component {
+  state = { modalOpen: false }
+
+  handleOpen = () => this.setState({ modalOpen: true })
+
+  handleClose = () => this.setState({ modalOpen: false })
+
+
   render() {
     return (
       <MenuLogin>
@@ -42,16 +49,29 @@ export default class MerchantOpen extends Component {
               <b>Ganti Kata Sandi</b>
               <Form.Input name='password' type='password' value='seller' onChange={this.handleChange} />
             </Form.Field>
-        <Link to='/merchants/open'>
-        <div className='submit-button'>
-          <Button
-            color='green'
-            content='Submit'
-            
-          />
-        </div>
-        </Link>
-
+      
+        
+  <Modal trigger={<div className='submit-button'><Button onClick={this.handleOpen} color='green'>Perbaharui</Button></div>} 
+  open={this.state.modalOpen}
+  onClose={this.handleClose}
+  basic size='small'>
+    <Header icon='exclamation' content='Apakah anda yakin?' />
+    <Modal.Content>
+      <p>
+        Apakah anda yakin untuk Mengganti pengaturan Toko Anda?
+      </p>
+    </Modal.Content>
+    <Modal.Actions>
+      <Button basic color='red' onClick={this.handleClose} inverted>
+        <Icon name='remove' /> Batal
+      </Button>
+      <Link to='/merchants/open'>
+        <Button color='green' inverted>          
+          <Icon name='checkmark' /> Ya          
+        </Button>
+      </Link>
+    </Modal.Actions>
+  </Modal>
 
 
       </MenuLogin>
