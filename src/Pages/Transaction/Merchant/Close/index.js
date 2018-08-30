@@ -10,6 +10,14 @@ export default class MerchantClose extends Component {
   render() {
     return (
       <MenuLogin>
+          <Link to='/merchants/settings'>
+          <Button
+            basic
+            color='grey'
+            content='Pengaturan Toko'
+            icon='settings'
+          />
+        </Link>
         <Header as='h3' icon textAlign='center'>
           <Icon name='users' circular />
           <Header.Content>Nama Penjual</Header.Content>
