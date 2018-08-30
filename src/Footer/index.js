@@ -1,31 +1,29 @@
 import React from 'react'
-import { Grid, Divider, Header, Segment, Image, Button } from 'semantic-ui-react'
+import { Grid, Divider, Header, Segment, Image, Button, Container, List } from 'semantic-ui-react'
 import logo from '../images/logo.png';
 
 const Footer = () => (
   <div>
 
-          <Segment style={{ padding: '8em 0em' }} vertical>
-      <Grid container stackable verticalAlign='middle'>
-        <Grid.Row>
-          <Grid.Column width={8}>
-            <Header as='h3' style={{ fontSize: '2em' }}>
-              Tentang Galonku
-            </Header>
-            <p style={{ fontSize: '1.33em' }}>
-            Galonku adalah sebuah platform yang menghubungkan antara pembeli dan penjual galon. Dengan aplikasi ini, diharapkan setiap 
-            orang yang membutuhkan galon tidak perlu repot untuk membeli galon dengan membawa ke depot galon setempat, juga penjual galon
-            dapat meningkatkan keuntungan dalam penjualan galon.
 
-            </p>
-          </Grid.Column>
-          <Grid.Column floated='left' width={6}>
-            <Image size='large' src={logo} />
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+<Segment inverted vertical style={{ padding: '5em 0em' }}>
+      <Container>
+        <Grid divided inverted stackable>
+          <Grid.Row>
+            <Grid.Column width={3}>
+              <Header inverted as='h3' content='Hubungi Kami' />
+              <p>Email: andromeda.org1@gmail.com</p>
+            </Grid.Column>
+            <Grid.Column width={7}>
+              <Header as='h3' inverted>
+                Saran dan Masukan
+              </Header>
+
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Container>
     </Segment>
-
 
   </div>
 )
