@@ -36,6 +36,7 @@ export default class MyMenu extends Component {
             vertical
             visible={visible}
             width='thin'
+
           >
             <Link to='/'>
               <Menu.Item>
