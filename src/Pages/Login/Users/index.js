@@ -15,12 +15,17 @@ export default class LoginUser extends Component {
     this.state = { loggedIn: false }
   }
 
+  handleClick = () => {
+    this.setState({ active: !this.state.active })
+  }
+
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value })
   }
 
   handleSubmit = async (event) => {
     event.preventDefault()
+
 
     const URL = 'users/login'
     const data = {
@@ -34,10 +39,12 @@ export default class LoginUser extends Component {
 
   render() {
     const { loggedIn } = this.state
+    const { active } = this.state
 
     if (loggedIn) {
       return <Redirect to='/users/transaction' />
     }
+
 
     return (
       
@@ -52,7 +59,7 @@ export default class LoginUser extends Component {
             <label>Password</label>
             <input type='password' name='password' placeholder='Password' onChange={this.handleChange} />
           </Form.Field>
-          <Button type='submit'>Login</Button>
+          <Button type='submit' toggle loading={active} onClick={this.handleClick}>Masuk</Button>
         </Form>
         <Footer/>
       </MyMenu >
