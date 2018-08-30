@@ -24,6 +24,7 @@ export default class MerchantOpen extends Component {
 
   state = { modalOpen: false }
 
+
   handleOpen = () => this.setState({ modalOpen: true })
   handleClose = () => this.setState({ modalOpen: false })
 
@@ -50,14 +51,13 @@ export default class MerchantOpen extends Component {
     return (
       <MenuLogin>
         <div className='button-settings'>
-          <Link to='/merchants/open'>
-            <Button
-              basic
-              color='grey'
-              content='Kembali ke awal'
-              icon='backward'
-            />
-          </Link>
+          <Button
+            onClick={this.props.history.goBack}
+            basic
+            color='grey'
+            content='Kembali Ke awal'
+            icon='backward'
+          />
         </div>
         <Header as='h3' icon textAlign='center'>
           <Icon name='users' circular />
