@@ -9,6 +9,7 @@ const Login = (URL, data) => {
         console.log(response.data.message)
 
         const data = {
+          id: response.data.id,
           username: response.data.username,
           token: response.data.token
         }
