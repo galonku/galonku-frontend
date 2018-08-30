@@ -9,4 +9,8 @@ const getLocalstorage = () => {
   return data
 }
 
-export { storeLocalstorage, getLocalstorage }
+const removeLocalstorage = () => {
+  localStorage.removeItem('Account')
+}
+
+export { storeLocalstorage, getLocalstorage, removeLocalstorage }

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Button, Menu, Segment, Sidebar } from 'semantic-ui-react'
 
 import MyNavigation from '../Navigationbar'
+import logout from '../function/Logout'
 
 export default class MenuLogin extends Component {
   constructor(props) {
@@ -15,6 +16,10 @@ export default class MenuLogin extends Component {
 
   handleButtonClick = () => this.setState({ visible: !this.state.visible })
   handleSidebarHide = () => this.setState({ visible: false })
+
+  handleClick = () => {
+    logout()
+  }
 
   render() {
     const { visible } = this.state
@@ -52,7 +57,7 @@ export default class MenuLogin extends Component {
               </Menu.Item>
             </Link>
             <Link to='/'>
-              <Menu.Item>
+              <Menu.Item onClick={this.handleClick}>
                 Keluar
               </Menu.Item>
             </Link>
