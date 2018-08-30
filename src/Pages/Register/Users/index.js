@@ -20,6 +20,10 @@ export default class RegisterUser extends React.Component {
     }
   }
 
+  handleClick = () => {
+    this.setState({ active: !this.state.active })
+  }
+
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value })
   }
@@ -41,6 +45,7 @@ export default class RegisterUser extends React.Component {
   }
 
   render() {
+    const { active } = this.state
     return (
       <MyMenu>
         <Container>
@@ -70,7 +75,7 @@ export default class RegisterUser extends React.Component {
             <Form.Field>
               <Checkbox label='Saya setuju dengan persyaratan dan ketentuan galonku.com' />
             </Form.Field>
-            <Button type='submit' onClick={this.handleClick}>Registrasi</Button>
+            <Button type='submit' toggle loading={active} onClick={this.handleClick}>Daftar Sekarang!</Button>
           </Form>
         </Container>
         <Footer />
