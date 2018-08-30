@@ -2,7 +2,7 @@ import React from 'react'
 import { Grid, Divider, Header, Segment, Image, Button } from 'semantic-ui-react'
 import logo from '../images/logo.png';
 
-const About = () => (
+const Footer = () => (
   <div>
 
           <Segment style={{ padding: '8em 0em' }} vertical>
@@ -30,4 +30,4 @@ const About = () => (
   </div>
 )
 
-export default About
+export default Footer
