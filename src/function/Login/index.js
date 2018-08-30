@@ -1,5 +1,5 @@
 import request from '../../helpers/axios'
-import { storeToken } from '../Token'
+import { storeLocalstorage } from '../Localstorage'
 
 const Login = (URL, data) => {
   return new Promise((resolve, reject) => {
@@ -7,7 +7,13 @@ const Login = (URL, data) => {
       .post(URL, data)
       .then(response => {
         console.log(response.data.message)
-        storeToken(response.data.token)
+
+        const data = {
+          username: response.data.username,
+          token: response.data.token
+        }
+
+        storeLocalstorage(data)
         resolve()
       })
       .catch(error => {
