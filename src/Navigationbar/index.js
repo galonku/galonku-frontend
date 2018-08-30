@@ -7,7 +7,7 @@ import logo from '../images/logo.png'
 import './index.css'
 
 const MyNavigation = ({ children }) => (
-  <Container fluid className="navigation">
+  <div className="navigation">
     <Grid columns={3}>
       <Grid.Column>
         <div className='wrapper-menu'>
@@ -22,7 +22,7 @@ const MyNavigation = ({ children }) => (
         </div>
       </Grid.Column>
     </Grid>
-  </Container>
+  </div>
 )
 
 export default MyNavigation

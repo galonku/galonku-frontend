@@ -11,6 +11,7 @@ import ProcessTransactionUsers from '../Pages/Transaction/Users/Process'
 import SuccessTransactionUsers from '../Pages/Transaction/Users/Success'
 import TransactionMerchant from '../Pages/Transaction/Merchant/Close'
 import OpenOrderMerchant from '../Pages/Transaction/Merchant/Open'
+import SettingsMerchant from '../Pages/Transaction/Merchant/Settings'
 
 import './index.css'
 
@@ -25,6 +26,7 @@ class App extends Component {
             <Route path="/merchants/login" component={LoginMerchants} />
             <Route path="/merchants/open" component={OpenOrderMerchant} />
             <Route path="/merchants/close" component={TransactionMerchant} />
+            <Route path="/merchants/settings" component={SettingsMerchant} />
 
             <Route path="/users/transaction/process" component={ProcessTransactionUsers} />
             <Route path="/users/transaction/success" component={SuccessTransactionUsers} />

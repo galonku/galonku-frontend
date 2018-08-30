@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
-import { Button, Form } from 'semantic-ui-react'
+import { Button, Form, Header } from 'semantic-ui-react'
 
 import Login from '../../../function/Login'
 import MyMenu from '../../../Menu'
@@ -40,7 +40,7 @@ export default class LoginMerchant extends Component {
 
     return (
       <MyMenu>
-        <p>Masuk sebagai penjual</p>
+        <Header as ='h2'>Masuk sebagai Penjual (Merchant)</Header>
         <Form className='form-login' onSubmit={this.handleSubmit}>
           <Form.Field className='form-field'>
             <label>Username</label>

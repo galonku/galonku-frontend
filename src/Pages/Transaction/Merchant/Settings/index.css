@@ -9,5 +9,9 @@
 }
 
 .button-settings {
-    
+    margin-bottom: -20px;   
+}
+
+.submit-button {
+    margin-top: 10px;
 }
