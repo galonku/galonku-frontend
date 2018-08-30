@@ -1,10 +1,11 @@
 import React from 'react'
-import { Container, Button, Form, Checkbox } from 'semantic-ui-react'
+import { Container, Button, Form, Checkbox, Header } from 'semantic-ui-react'
 
 import Register from '../../../function/Register'
 
 import './index.css'
 import MyMenu from '../../../Menu'
+import Footer from '../../../Footer'
 
 export default class RegisterMerchant extends React.Component {
   constructor(props) {
@@ -46,7 +47,7 @@ export default class RegisterMerchant extends React.Component {
     return (
       <MyMenu>
         <Container>
-          <label>Registrasi Penjual</label>
+          <Header as='h2'>Registrasi Penjual</Header>
           <Form className='form-register-merchants' onSubmit={this.handleSubmit}>
             <Form.Field>
               <label>Username</label>
@@ -79,6 +80,7 @@ export default class RegisterMerchant extends React.Component {
             <Button type='submit'>Registrasi</Button>
           </Form>
         </Container>
+        <Footer />
       </MyMenu>
     )
   }

@@ -1,8 +1,9 @@
 import React from 'react'
-import { Container, Button, Form, Checkbox } from 'semantic-ui-react'
+import { Container, Button, Form, Checkbox, Header } from 'semantic-ui-react'
 
 import Register from '../../../function/Register'
 import MyMenu from '../../../Menu'
+import Footer from '../../../Footer'
 
 import './index.css'
 
@@ -43,7 +44,7 @@ export default class RegisterUser extends React.Component {
     return (
       <MyMenu>
         <Container>
-          <label className='daftar-users'>Registrasi Pembeli</label>
+          <Header as='h2'>Registrasi Pembeli</Header>
           <Form className='form-register-users' onSubmit={this.handleSubmit}>
             <Form.Field>
               <label>Username</label>
@@ -72,6 +73,7 @@ export default class RegisterUser extends React.Component {
             <Button type='submit' onClick={this.handleClick}>Registrasi</Button>
           </Form>
         </Container>
+        <Footer />
       </MyMenu>
     )
   }

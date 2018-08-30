@@ -94,7 +94,10 @@ export default class MerchantOpen extends Component {
             </Form.Field>
 
           {/* coba-coba aja bro karena ga bisa tidur, kalau ga work/bermasalah hapus aja ya bro */}
-            <Modal trigger={<Button>Perbaharui</Button>} basic size='small'>
+            <Modal 
+            trigger={<Button>Perbaharui</Button>} 
+            
+            basic size='small'>
               <Header icon='exclamation' content='Perhatian' />
               <Modal.Content>
                 <p>
@@ -102,15 +105,31 @@ export default class MerchantOpen extends Component {
               </p>
               </Modal.Content>
               <Modal.Actions>
-                <Button basic color='red' inverted>
+                <Button basic color='red' onClick={this.close} inverted>
                   <Icon name='remove' /> Batal
               </Button>
-                <Button type='submit' onClick={this.props.history.goBack} color='green' inverted>
+
+                <Modal trigger={
+                    <Button type='submit' color='green' inverted>
                     <Icon name='checkmark' /> Ya
-                </Button>
+                    </Button>}>
+                      <Modal.Description>
+                      <Header>Berhasil</Header>
+                        Setting Telah Berhasil diubah! 
+                        <Button 
+                        onClick={this.props.history.goBack}
+                        content='Kembali ke Halaman Dashboard'
+                        />
+                      </Modal.Description>  
+
+
+                </Modal>
+
+
               </Modal.Actions>
             </Modal>
           </Form>
+
         </div>
         <Footer />
       </MenuLogin>
