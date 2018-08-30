@@ -20,7 +20,7 @@ export default class MerchantOpen extends Component {
       <MenuLogin>
         <div className='button-settings'>
           <Button
-          onClick={this.props.history.goBack}
+            onClick={this.props.history.goBack}
             basic
             color='grey'
             content='Kembali Ke awal'
