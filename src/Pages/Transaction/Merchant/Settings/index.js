@@ -1,31 +1,63 @@
 import React, { Component } from 'react'
-import { Button, Header, Divider, Icon, Form, Modal } from 'semantic-ui-react'
+import { Button, Header, Divider, Icon, Form } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 import MenuLogin from '../../../../MenuLogin'
+import { getLocalstorage } from '../../../../function/Localstorage'
+import updateMerchants from '../../../../function/UpdateMerchants'
 
 import './index.css'
 
 export default class MerchantOpen extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      price: '',
+      store_name: '',
+      address: '',
+      email: '',
+      phone_number: '',
+      password: ''
+    }
+  }
+
   state = { modalOpen: false }
 
   handleOpen = () => this.setState({ modalOpen: true })
-
   handleClose = () => this.setState({ modalOpen: false })
 
+  handleChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value })
+  }
+
+  handleSubmit = async (event) => {
+    event.preventDefault()
+
+    const data = getLocalstorage()
+    const merchantData = {
+      price: this.state.price,
+      store_name: this.state.store_name,
+      address: this.state.address,
+      email: this.state.email,
+      phone_number: this.state.phone_number,
+      password: this.state.password
+    }
+    await updateMerchants(`/${data.id}`, merchantData, data.token)
+  }
 
   render() {
     return (
       <MenuLogin>
         <div className='button-settings'>
-        <Link to='/merchants/open'>
-          <Button
-            basic
-            color='grey'
-            content='Kembali Ke awal'
-            icon='backward'
-          />
-        </Link>
+          <Link to='/merchants/open'>
+            <Button
+              basic
+              color='grey'
+              content='Kembali ke awal'
+              icon='backward'
+            />
+          </Link>
         </div>
         <Header as='h3' icon textAlign='center'>
           <Icon name='users' circular />
@@ -33,46 +65,36 @@ export default class MerchantOpen extends Component {
         </Header>
         <Divider />
         <Header as='h2' className='order-status'>Pengaturan</Header>
-            <Form.Field>
-              <b>Harga Galon (Dalam Rp)</b>
-              <Form.Input name='price' value='5000' onChange={this.handleChange} />
-            </Form.Field>
-            <Form.Field>
-              <b>Ganti Email</b>
-              <Form.Input name='email' value='raja.galon@galonku.com' onChange={this.handleChange} />
-            </Form.Field>
-            <Form.Field>
-              <b>Ganti Nomor telepon</b>
-              <Form.Input name='phone_number' value='0888888888' onChange={this.handleChange} />
-            </Form.Field>
-            <Form.Field>
-              <b>Ganti Kata Sandi</b>
-              <Form.Input name='password' type='password' value='seller' onChange={this.handleChange} />
-            </Form.Field>
-      
-        
-  <Modal trigger={<div className='submit-button'><Button onClick={this.handleOpen} color='green'>Perbaharui</Button></div>} 
-  open={this.state.modalOpen}
-  onClose={this.handleClose}
-  basic size='small'>
-    <Header icon='exclamation' content='Apakah anda yakin?' />
-    <Modal.Content>
-      <p>
-        Apakah anda yakin untuk Mengganti pengaturan Toko Anda?
-      </p>
-    </Modal.Content>
-    <Modal.Actions>
-      <Button basic color='red' onClick={this.handleClose} inverted>
-        <Icon name='remove' /> Batal
-      </Button>
-      <Link to='/merchants/open'>
-        <Button color='green' inverted>          
-          <Icon name='checkmark' /> Ya          
-        </Button>
-      </Link>
-    </Modal.Actions>
-  </Modal>
-
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Field>
+            <b>Harga per Galon (Rp)</b>
+            <Form.Input name='price' value={this.state.price} onChange={this.handleChange} />
+          </Form.Field>
+          <Form.Field>
+            <b>Ganti Nama Toko</b>
+            <Form.Input name='store_name' type='text' value={this.state.store_name} onChange={this.handleChange} />
+          </Form.Field>
+          <Form.Field>
+            <b>Ganti Alamat Toko</b>
+            <Form.Input name='address' type='text' value={this.state.address} onChange={this.handleChange} />
+          </Form.Field>
+          <Form.Field>
+            <b>Ganti Email</b>
+            <Form.Input name='email' value={this.state.email} onChange={this.handleChange} />
+          </Form.Field>
+          <Form.Field>
+            <b>Ganti Nomor telepon</b>
+            <Form.Input name='phone_number' value={this.state.phone_number} onChange={this.handleChange} />
+          </Form.Field>
+          <Form.Field>
+            <b>Ganti Kata Sandi</b>
+            <Form.Input name='password' type='password' value={this.state.password} onChange={this.handleChange} />
+          </Form.Field>
+          <Button
+            basic
+            content='Perbaharui'
+          />
+        </Form>
 
       </MenuLogin>
     )

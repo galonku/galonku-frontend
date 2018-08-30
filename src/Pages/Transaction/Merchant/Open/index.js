@@ -1,13 +1,17 @@
 import React, { Component } from 'react'
-import { Button, Header, Divider, Icon } from 'semantic-ui-react'
+import { Button, Header, Divider, Icon, List } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 import MenuLogin from '../../../../MenuLogin'
+import getLocalstorage from '../../../../function/Localstorage'
+import getOrders from '../../../../function/getOrders'
 
 import './index.css'
 
 export default class MerchantOpen extends Component {
   render() {
+    const data = getLocalstorage()
+
     return (
       <MenuLogin>
         <Link to='/merchants/settings'>
@@ -34,6 +38,9 @@ export default class MerchantOpen extends Component {
         <Header as='h2' className='order-status'>Status Pesanan</Header> <Header className="close-alert" color='grey'>
           Menunggu Pesanan...
         </Header>
+        < List divided relaxed>
+          {getOrders(data.token)}
+        </List >
       </MenuLogin>
     )
   }
