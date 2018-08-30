@@ -1,11 +1,52 @@
-.landing{
-    padding: 20px;
-    margin-top: 30px;
-    margin-bottom: 50px;
+@font-face {
+    font-family: 'BebasNeue';
+    src: url('./BebasNeue.otf');
+}
 
+.landing{
+    background-image: url('../images/landingpic.png');
+    background-repeat: no-repeat;
+    background-size: 125%;
 }
 
 .button-landing{
     margin: 50px;
 }
+
+.the-button {
+    margin: 5px;
+}
+
+.tagline {
+    color: white;
+    font-size: 80px;
+    padding-top: 59px;
+    font-family: 'BebasNeue';
+}
+
+
+.blue-background {
+    background: linear-gradient(68deg, rgba(34,193,195,0.6) 0%, rgba(138,254,255,0.6) 100%);
+    padding-top: 160px;
+    padding-bottom: 241px;
+}
+
+@media screen and (max-width: 992px) {
+    .tagline {
+        color: white;
+        font-size: 39px;
+        padding-top: 59px;
+        font-family: 'BebasNeue';
+    }
+    .landing{
+        background-image: url('../images/landingpic.png');
+        background-repeat: no-repeat;
+        background-size: 304%;
+    }
+    .blue-background {
+        background: linear-gradient(68deg, rgba(34,193,195,0.6) 0%, rgba(138,254,255,0.6) 100%);
+        padding-top: 130px;
+        padding-bottom: 271px;
+    }
+  }
 

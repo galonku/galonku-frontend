@@ -6,7 +6,7 @@ import MyMenu from '../../../Menu'
 
 import './index.css'
 
-class RegisterUsers extends React.Component {
+export default class RegisterUser extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -76,5 +76,3 @@ class RegisterUsers extends React.Component {
     )
   }
 }
-
-export default RegisterUsers

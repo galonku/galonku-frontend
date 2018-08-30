@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Menu, Segment, Sidebar } from 'semantic-ui-react'
-import './index.css'
 
 import MyNavigation from '../Navigationbar'
+import logout from '../function/Logout'
 
-export default class MyMenu extends Component {
+export default class MenuLogin extends Component {
   constructor(props) {
     super(props)
 
@@ -16,6 +16,10 @@ export default class MyMenu extends Component {
 
   handleButtonClick = () => this.setState({ visible: !this.state.visible })
   handleSidebarHide = () => this.setState({ visible: false })
+
+  handleClick = () => {
+    logout()
+  }
 
   render() {
     const { visible } = this.state
@@ -52,22 +56,17 @@ export default class MyMenu extends Component {
                 Hubungi kami
               </Menu.Item>
             </Link>
-            <Link to='/merchants/register'>
-              <Menu.Item>
-                Registrasi penjual
-              </Menu.Item>
-            </Link>
-            <Link to='/users/register'>
-              <Menu.Item>
-                Registrasi pembeli
+            <Link to='/'>
+              <Menu.Item onClick={this.handleClick}>
+                Keluar
               </Menu.Item>
             </Link>
           </Sidebar>
 
           <Sidebar.Pusher>
-           
+            <Segment basic>
               {this.props.children}
-           
+            </Segment>
           </Sidebar.Pusher>
         </Sidebar.Pushable>
       </div>

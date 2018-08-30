@@ -6,7 +6,7 @@ import Register from '../../../function/Register'
 import './index.css'
 import MyMenu from '../../../Menu'
 
-class RegisterMerchants extends React.Component {
+export default class RegisterMerchant extends React.Component {
   constructor(props) {
     super(props)
 
@@ -83,5 +83,3 @@ class RegisterMerchants extends React.Component {
     )
   }
 }
-
-export default RegisterMerchants 
