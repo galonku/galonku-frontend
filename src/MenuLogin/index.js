@@ -64,9 +64,8 @@ export default class MenuLogin extends Component {
           </Sidebar>
 
           <Sidebar.Pusher>
-            <Segment basic>
               {this.props.children}
-            </Segment>
+
           </Sidebar.Pusher>
         </Sidebar.Pushable>
       </div>
