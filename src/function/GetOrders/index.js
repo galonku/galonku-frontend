@@ -5,7 +5,7 @@ import notificationTemplate from './Template'
 const getOrders = (token) => {
   return new Promise((resolve, reject) => {
     request
-      .put('/orders', {
+      .get('/orders', {
         headers: {
           Authorization: 'Bearer ' + token
         }
@@ -13,8 +13,8 @@ const getOrders = (token) => {
       .then(response => {
         const orders = response.data
 
-        const orderList = orders.forEach((order) => {
-          const list = notificationTemplate(order.username, order.quantities)
+        const orderList = orders.map((order) => {
+          const list = notificationTemplate(order.fullname, order.quantity)
           return list
         })
         resolve(orderList)

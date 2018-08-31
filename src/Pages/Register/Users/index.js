@@ -3,7 +3,7 @@ import { Container, Button, Form, Checkbox, Header } from 'semantic-ui-react'
 
 import Register from '../../../function/Register'
 import MyMenu from '../../../Menu'
-import Footer from '../../../Footer'
+import Footer from '../../Footer'
 
 import './index.css'
 

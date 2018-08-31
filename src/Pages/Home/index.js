@@ -3,11 +3,9 @@ import React, { Component } from 'react'
 import MyMenu from '../../Menu'
 import MenuLogin from '../../MenuLogin'
 import Landing from '../../Landing'
-import About from '../../About'
+import About from '../About'
 import Review from '../../Review'
-import Footer from '../../Footer'
-
-
+import Footer from '../Footer'
 
 import { getLocalstorage } from '../../function/Localstorage'
 

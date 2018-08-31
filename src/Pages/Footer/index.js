@@ -1,14 +1,11 @@
 import React from 'react'
-import { Grid, Divider, Header, Segment, Image, Button, Container, List, Form } from 'semantic-ui-react'
-import logo from '../images/logo.png';
+import { Grid, Divider, Header, Segment, Button, Container, Form } from 'semantic-ui-react'
 
 const Footer = () => (
   <div>
-
-
     <Segment inverted vertical style={{ padding: '5em 0em' }}>
       <Container>
-        <Grid divided inverted stackable  verticalAlign='left' >
+        <Grid divided inverted stackable verticalAlign='top' >
           <Grid.Row>
             <Grid.Column width={3}>
               <Header inverted as='h3' content='Hubungi Kami' />
@@ -30,17 +27,16 @@ const Footer = () => (
                 </Form.Field>
                 <Form.TextArea placeholder='Komentar' />
                 <Button type='submit'>Kirim</Button>
-            </Form>
+              </Form>
             </Grid.Column>
           </Grid.Row>
           <Divider />
           <Grid.Row>
-          Copyright@AndromedaOrg 2018
+            Copyright@AndromedaOrg 2018
           </Grid.Row>
         </Grid>
       </Container>
     </Segment>
-
   </div>
 )
 

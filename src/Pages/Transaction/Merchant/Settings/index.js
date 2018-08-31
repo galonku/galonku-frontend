@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { Button, Header, Divider, Icon, Form, Modal } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
 
 import MenuLogin from '../../../../MenuLogin'
-import Footer from '../../../../Footer'
+import Footer from '../../../Footer'
 import { getLocalstorage } from '../../../../function/Localstorage'
 import updateMerchants from '../../../../function/UpdateMerchants'
 
@@ -93,39 +92,35 @@ export default class MerchantOpen extends Component {
               <Form.Input name='password' type='password' value={this.state.password} onChange={this.handleChange} />
             </Form.Field>
 
-          {/* coba-coba aja bro karena ga bisa tidur, kalau ga work/bermasalah hapus aja ya bro */}
-            <Modal 
-            trigger={<Button>Perbaharui</Button>} 
-            
-            basic size='small'>
+            {/* coba-coba aja bro karena ga bisa tidur, kalau ga work/bermasalah hapus aja ya bro */}
+            <Modal
+              trigger={<Button>Perbaharui</Button>}
+
+              basic size='small'>
               <Header icon='exclamation' content='Perhatian' />
               <Modal.Content>
                 <p>
                   Apakah anda yakin ingin mengganti Pengaturan Toko anda?
-              </p>
+                </p>
               </Modal.Content>
               <Modal.Actions>
                 <Button basic color='red' onClick={this.close} inverted>
                   <Icon name='remove' /> Batal
-              </Button>
+                </Button>
 
                 <Modal trigger={
-                    <Button type='submit' color='green' inverted>
+                  <Button type='submit' color='green' inverted>
                     <Icon name='checkmark' /> Ya
-                    </Button>}>
-                      <Modal.Description>
-                      <Header>Berhasil</Header>
-                        Setting Telah Berhasil diubah! 
-                        <Button 
-                        onClick={this.props.history.goBack}
-                        content='Kembali ke Halaman Dashboard'
-                        />
-                      </Modal.Description>  
-
-
+                  </Button>}>
+                  <Modal.Description>
+                    <Header>Berhasil</Header>
+                    Setting Telah Berhasil diubah!
+                    <Button
+                      onClick={this.props.history.goBack}
+                      content='Kembali ke Halaman Dashboard'
+                    />
+                  </Modal.Description>
                 </Modal>
-
-
               </Modal.Actions>
             </Modal>
           </Form>

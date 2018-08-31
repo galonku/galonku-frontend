@@ -3,7 +3,7 @@ import { Button, Form, Checkbox } from 'semantic-ui-react'
 import { Redirect } from 'react-router-dom'
 
 import MenuLogin from '../../../../MenuLogin'
-import Footer from '../../../../Footer'
+import Footer from '../../../Footer'
 import MerchantList from '../MerchantList'
 import { getLocalstorage } from '../../../../function/Localstorage'
 import getUser from '../../../../function/GetUsers'

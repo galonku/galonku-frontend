@@ -4,7 +4,7 @@ import { Button, Form, Header } from 'semantic-ui-react'
 
 import Login from '../../../function/Login'
 import MyMenu from '../../../Menu'
-import Footer from '../../../Footer'
+import Footer from '../../Footer'
 
 import './index.css'
 
@@ -45,12 +45,10 @@ export default class LoginUser extends Component {
       return <Redirect to='/users/transaction' />
     }
 
-
     return (
-      
       <MyMenu>
         <Form className='form-login' onSubmit={this.handleSubmit}>
-        <Header as ='h2'>Masuk sebagai pembeli</Header>
+          <Header as='h2'>Masuk sebagai pembeli</Header>
           <Form.Field className='form-field'>
             <label>Username</label>
             <input type='text' name='username' placeholder='Username' onChange={this.handleChange} />
@@ -61,11 +59,8 @@ export default class LoginUser extends Component {
           </Form.Field>
           <Button type='submit' toggle loading={active} onClick={this.handleClick}>Masuk</Button>
         </Form>
-        <Footer/>
+        <Footer />
       </MyMenu >
-      
-
-
     )
   }
 }

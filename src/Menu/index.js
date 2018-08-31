@@ -66,9 +66,7 @@ export default class MyMenu extends Component {
           </Sidebar>
 
           <Sidebar.Pusher>
-           
-              {this.props.children}
-           
+            {this.props.children}
           </Sidebar.Pusher>
         </Sidebar.Pushable>
       </div>

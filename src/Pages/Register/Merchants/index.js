@@ -5,7 +5,7 @@ import Register from '../../../function/Register'
 
 import './index.css'
 import MyMenu from '../../../Menu'
-import Footer from '../../../Footer'
+import Footer from '../../Footer'
 
 export default class RegisterMerchant extends React.Component {
   constructor(props) {
