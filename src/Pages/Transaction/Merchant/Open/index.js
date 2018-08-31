@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { Button, Header, Divider, Icon, List } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 import MenuLogin from '../../../../MenuLogin'
 import Footer from '../../../Footer'
 import getOrders from '../../../../function/GetOrders'
-import { getLocalstorage } from '../../../../function/Localstorage'
+import { getLocalstorage, storeLocalstorage } from '../../../../function/Localstorage'
 
 import './index.css'
 
@@ -13,20 +13,43 @@ export default class MerchantOpen extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { notification: [] }
+    this.state = {
+      orders: [],
+      showDetails: false
+    }
   }
 
-  componentDidMount() {
+  fetchOrders = () => {
     const orderList = async () => {
-      const data = getLocalstorage()
-      const notification = await getOrders(data.token)
+      const data = getLocalstorage('Account')
+      const orders = await getOrders(data.token)
+      console.log(orders)
 
-      this.setState({ notification })
+      this.setState({ orders })
     }
+
     orderList()
+    storeLocalstorage('Orders')
+  }
+
+  // stopFetch = () => {
+  //   clearInterval(fetch)
+  // }
+
+  handleClick = (index) => {
+    this.setState({ showDetails: true })
   }
 
   render() {
+    // const fetch = setInterval(this.fetchOrders, 5000)
+    // fetch
+
+    const { showDetails } = this.state
+
+    if (showDetails) {
+      return <Redirect to='/merchants/order-details' />
+    }
+
     return (
       <MenuLogin>
         <div className="content-container">
@@ -47,6 +70,7 @@ export default class MerchantOpen extends Component {
               color="green"
               animated="vertical"
               className="open-close-order"
+            // onClick={this.stopFetch}
             >
               <Button.Content hidden>Toko Tutup? Klik Disini</Button.Content>
               <Button.Content visible>Status Toko: Buka</Button.Content>
@@ -61,8 +85,18 @@ export default class MerchantOpen extends Component {
           </Header>
         </div>
         <List divided relaxed>
-          {this.state.notification.map((item, index) => {
-            return <h1 key={index}>{item.fullname}</h1>
+          {this.state.orders.map((order, index) => {
+            return (
+              <List.Item key={index}>
+                <span onClick={() => this.handleClick(index)}>
+                  <List.Icon name='tint' size='large' verticalAlign='middle' />
+                  <List.Content>
+                    <List.Header as='a'>{order.fullname} memesan sebanyak {order.quantity} galon</List.Header>
+                    <List.Description as='a'>Pesanan masuk .. menit yang lalu</List.Description>
+                  </List.Content>
+                </span>
+              </List.Item>
+            )
           })}
         </List>
         <Footer />

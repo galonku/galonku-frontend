@@ -1,16 +1,16 @@
-const storeLocalstorage = (data) => {
+const storeLocalstorage = (name, data) => {
   const dataString = JSON.stringify(data)
-  localStorage.setItem('Account', dataString)
+  localStorage.setItem(name, dataString)
 }
 
-const getLocalstorage = () => {
-  const dataString = localStorage.getItem('Account')
+const getLocalstorage = (name) => {
+  const dataString = localStorage.getItem(name)
   const data = JSON.parse(dataString)
   return data
 }
 
-const removeLocalstorage = () => {
-  localStorage.removeItem('Account')
+const removeLocalstorage = (name) => {
+  localStorage.removeItem(name)
 }
 
 export { storeLocalstorage, getLocalstorage, removeLocalstorage }
