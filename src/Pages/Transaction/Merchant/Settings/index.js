@@ -5,6 +5,7 @@ import MenuLogin from '../../../../MenuLogin'
 import Footer from '../../../Footer'
 import { getLocalstorage } from '../../../../function/Localstorage'
 import updateMerchants from '../../../../function/UpdateMerchants'
+import getMerchants from '../../../../function/GetMerchants'
 
 import './index.css'
 
@@ -24,6 +25,20 @@ export default class MerchantOpen extends Component {
 
   state = { modalOpen: false }
 
+  componentDidMount = () => {
+    const callMerchants = async () => {
+      const data = getLocalstorage('Account')
+      const merchant = getMerchants(`/search?q=${data.store_name}`)
+
+      this.setState({
+        price: merchant.price,
+        store_name: merchant.store_name,
+        address: merchant.address,
+        email: merchant.email,
+        phone_number: merchant.phone_number,
+      })
+    }
+  }
 
   handleOpen = () => this.setState({ modalOpen: true })
   handleClose = () => this.setState({ modalOpen: false })
@@ -35,7 +50,7 @@ export default class MerchantOpen extends Component {
   handleSubmit = async (event) => {
     event.preventDefault()
 
-    const data = getLocalstorage()
+    const data = getLocalstorage('Account')
     const merchantData = {
       price: this.state.price,
       store_name: this.state.store_name,
