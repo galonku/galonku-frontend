@@ -2,7 +2,7 @@ import request from '../../helpers/axios'
 
 import notificationTemplate from './Template'
 
-const getOrders = (token) => {
+const getOrders = token => {
   return new Promise((resolve, reject) => {
     request
       .get('/orders', {
@@ -13,14 +13,14 @@ const getOrders = (token) => {
       .then(response => {
         const orders = response.data
 
-        const orderList = orders.map((order) => {
+        const orderList = orders.map(order => {
           const list = notificationTemplate(order.fullname, order.quantity)
           return list
         })
         resolve(orderList)
       })
+
       .catch(error => {
-        console.log('failed')
         reject(error)
       })
   })
