@@ -1,7 +1,5 @@
 import request from '../../helpers/axios'
 
-import notificationTemplate from './Template'
-
 const getOrders = token => {
   return new Promise((resolve, reject) => {
     request
@@ -14,8 +12,17 @@ const getOrders = token => {
         const orders = response.data
 
         const orderList = orders.map(order => {
-          const list = notificationTemplate(order.fullname, order.quantity)
-          return list
+          return {
+            total_price: order.Total,
+            address: order.address,
+            fullname: order.fullname,
+            notes: order.notes,
+            phone_number: order.phone_number,
+            price: order.price,
+            quantity: order.quantity,
+            status: order.status,
+            store_name: order.store_name
+          }
         })
         resolve(orderList)
       })
