@@ -11,10 +11,10 @@ const Landing = () => (
     
       <div className='button-landing'>
         <Link to="/merchants/login" className="nav-link">
-          <div className='the-button'><Button>Mulai Jual</Button></div>
+          <div className='the-button'><Button inverted size='big'>Mulai Jual</Button></div>
         </Link>
         <Link to="/users/login" className="nav-link">
-          <div className='the-button'><Button>Mulai Pesan</Button></div>
+          <div className='the-button'><Button inverted size='big'>Mulai Pesan</Button></div>
         </Link>
       </div>
     </div>

@@ -3,8 +3,10 @@ import React, { Component } from 'react'
 import MyMenu from '../../Menu'
 import MenuLogin from '../../MenuLogin'
 import Landing from '../../Landing'
-import About from '../../About'
+import About from '../About'
 import Review from '../../Review'
+import Footer from '../Footer'
+
 import { getLocalstorage } from '../../function/Localstorage'
 
 export default class Home extends Component {
@@ -16,6 +18,7 @@ export default class Home extends Component {
         <Landing />
         <Review />
         <About />
+        <Footer />
       </MyMenu >
     )
 
@@ -25,6 +28,7 @@ export default class Home extends Component {
           <Landing />
           <Review />
           <About />
+          <Footer />
         </MenuLogin>
       )
     }

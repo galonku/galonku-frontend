@@ -1,8 +1,9 @@
 import React from 'react'
-import { Container, Button, Form, Checkbox } from 'semantic-ui-react'
+import { Container, Button, Form, Checkbox, Header } from 'semantic-ui-react'
 
 import Register from '../../../function/Register'
 import MyMenu from '../../../Menu'
+import Footer from '../../Footer'
 
 import './index.css'
 
@@ -17,6 +18,10 @@ export default class RegisterUser extends React.Component {
       phone_number: '',
       address: ''
     }
+  }
+
+  handleClick = () => {
+    this.setState({ active: !this.state.active })
   }
 
   handleChange = (event) => {
@@ -40,10 +45,11 @@ export default class RegisterUser extends React.Component {
   }
 
   render() {
+    const { active } = this.state
     return (
       <MyMenu>
         <Container>
-          <label className='daftar-users'>Registrasi Pembeli</label>
+          <Header as='h2'>Registrasi Pembeli</Header>
           <Form className='form-register-users' onSubmit={this.handleSubmit}>
             <Form.Field>
               <label>Username</label>
@@ -69,9 +75,10 @@ export default class RegisterUser extends React.Component {
             <Form.Field>
               <Checkbox label='Saya setuju dengan persyaratan dan ketentuan galonku.com' />
             </Form.Field>
-            <Button type='submit' onClick={this.handleClick}>Registrasi</Button>
+            <Button type='submit' toggle loading={active} onClick={this.handleClick}>Daftar Sekarang!</Button>
           </Form>
         </Container>
+        <Footer />
       </MyMenu>
     )
   }

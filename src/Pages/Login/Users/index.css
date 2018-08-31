@@ -1,5 +1,6 @@
 .form-login {
-    margin: auto;
+    margin-top: 24px;
+    margin-bottom: 113px;
     width: auto;
     display: flex;
     flex-direction: column;
@@ -9,4 +10,5 @@
 .form-field {
     width: auto;
     align-items: center;
+    
 }

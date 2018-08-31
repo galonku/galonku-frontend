@@ -17,57 +17,46 @@ export default class MenuLogin extends Component {
   handleButtonClick = () => this.setState({ visible: !this.state.visible })
   handleSidebarHide = () => this.setState({ visible: false })
 
-  handleClick = () => {
-    logout()
-  }
-
   render() {
     const { visible } = this.state
 
     return (
       <div>
         <MyNavigation>
-          <Button icon='bars' onClick={this.handleButtonClick} className='button-menu' />
+          <Button
+            icon="bars"
+            onClick={this.handleButtonClick}
+            className="button-menu"
+          />
         </MyNavigation>
 
         <Sidebar.Pushable as={Segment}>
           <Sidebar
             as={Menu}
-            animation='overlay'
-            icon='labeled'
+            animation="overlay"
+            icon="labeled"
             inverted
             onHide={this.handleSidebarHide}
             vertical
             visible={visible}
-            width='thin'
+            width="thin"
           >
-            <Link to='/'>
-              <Menu.Item>
-                Beranda
-              </Menu.Item>
+            <Link to="/">
+              <Menu.Item>Beranda</Menu.Item>
             </Link>
-            <Link to='/about'>
-              <Menu.Item>
-                Tentang kami
-              </Menu.Item>
+            <Link to="/about">
+              <Menu.Item>Tentang kami</Menu.Item>
             </Link>
-            <Link to='/contact'>
-              <Menu.Item>
-                Hubungi kami
-              </Menu.Item>
+            <Link to="/contact">
+              <Menu.Item>Hubungi kami</Menu.Item>
             </Link>
-            <Link to='/'>
-              <Menu.Item onClick={this.handleClick}>
-                Keluar
+            <Link to="/">
+              <Menu.Item>
+                <span onClick={logout}>Keluar</span>
               </Menu.Item>
             </Link>
           </Sidebar>
-
-          <Sidebar.Pusher>
-            <Segment basic>
-              {this.props.children}
-            </Segment>
-          </Sidebar.Pusher>
+          <Sidebar.Pusher>{this.props.children}</Sidebar.Pusher>
         </Sidebar.Pushable>
       </div>
     )

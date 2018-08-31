@@ -1,10 +1,11 @@
 import React from 'react'
-import { Container, Button, Form, Checkbox } from 'semantic-ui-react'
+import { Container, Button, Form, Checkbox, Header } from 'semantic-ui-react'
 
 import Register from '../../../function/Register'
 
 import './index.css'
 import MyMenu from '../../../Menu'
+import Footer from '../../Footer'
 
 export default class RegisterMerchant extends React.Component {
   constructor(props) {
@@ -19,6 +20,10 @@ export default class RegisterMerchant extends React.Component {
       identity_number: '',
       address: ''
     }
+  }
+
+  handleClick = () => {
+    this.setState({ active: !this.state.active })
   }
 
   handleChange = (event) => {
@@ -43,10 +48,11 @@ export default class RegisterMerchant extends React.Component {
   }
 
   render() {
+    const { active } = this.state
     return (
       <MyMenu>
         <Container>
-          <label>Registrasi Penjual</label>
+          <Header as='h2'>Registrasi Penjual</Header>
           <Form className='form-register-merchants' onSubmit={this.handleSubmit}>
             <Form.Field>
               <label>Username</label>
@@ -76,9 +82,10 @@ export default class RegisterMerchant extends React.Component {
             <Form.Field>
               <Checkbox label='Saya setuju dengan persyaratan dan ketentuan galonku.com' />
             </Form.Field>
-            <Button type='submit'>Registrasi</Button>
+            <Button type='submit' toggle loading={active} onClick={this.handleClick}>Daftar Sekarang!</Button>
           </Form>
         </Container>
+        <Footer />
       </MyMenu>
     )
   }
