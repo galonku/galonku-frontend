@@ -3,10 +3,12 @@ import { Button, Card, Grid } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 import MenuLogin from '../../../../MenuLogin'
+import { getLocalstorage, removeLocalstorage } from '../../../../function/Localstorage'
+import getOrders from '../../../../function/GetOrders'
+// import updateOrderStatus from '../../../../function/UpdateOrderStatus'
+import orderButton from './Button'
 
 import './index.css'
-import { getLocalstorage } from '../../../../function/Localstorage'
-import getOrders from '../../../../function/GetOrders'
 
 export default class OrderDetail extends Component {
   constructor(props) {
@@ -25,9 +27,9 @@ export default class OrderDetail extends Component {
 
   componentDidMount = async () => {
     const data = await getLocalstorage('Account')
-    const orderId = await getLocalstorage('Order')
+    const storage = await getLocalstorage('Order')
 
-    const response = await getOrders(`/orders/order/${orderId}`, data.token)
+    const response = await getOrders(`/orders/order/${storage.id}`, data.token)
     const order = response.data
 
     this.setState({
@@ -41,16 +43,34 @@ export default class OrderDetail extends Component {
     })
   }
 
-  handleClickDecline = () => {
-
+  componentWillUnmount = () => {
+    removeLocalstorage('Order')
   }
 
-  handleClickAccept = () => {
+  // handleClickReject = async () => {
+  //   const data = await getLocalstorage('Account')
+  //   const orderId = await getLocalstorage('Order')
 
-  }
+  //   const updatedStatus = {
+  //     status: 'rejected'
+  //   }
+
+  //   updateOrderStatus(orderId, updatedStatus, data.token)
+
+  // }
+
+  // handleClickAccept = async () => {
+  //   const data = await getLocalstorage('Account')
+  //   const orderId = await getLocalstorage('Order')
+
+  //   const updatedStatus = {
+  //     status: 'progress'
+  //   }
+
+  //   updateOrderStatus(orderId, updatedStatus, data.token)
+  // }
 
   render() {
-
     return (
       <MenuLogin>
         <div className='container'>
@@ -87,7 +107,7 @@ export default class OrderDetail extends Component {
                   </Grid.Row>
 
                   <Grid.Row>
-                    <Grid.Column width={16}>
+                    <Grid.Column width={16} className='status'>
                       Status: {this.state.status}
                     </Grid.Column>
                   </Grid.Row>
@@ -103,14 +123,7 @@ export default class OrderDetail extends Component {
                     <Button>Kembali</Button>
                   </Link>
                 </Grid.Column>
-                <Grid.Column floated='right' width={10} className='button-order'>
-                  <Button onClick={this.handleClickDecline}>
-                    Tolak pesanan
-                  </Button>
-                  <Button onClick={this.handleClickAccept}>
-                    Terima pesanan
-                  </Button>
-                </Grid.Column>
+                {orderButton()}
               </Grid>
 
             </Card.Content>
