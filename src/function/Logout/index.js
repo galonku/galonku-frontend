@@ -1,7 +1,7 @@
 import { removeLocalstorage } from '../Localstorage'
 
 const logout = () => {
-  removeLocalstorage()
+  removeLocalstorage('Account')
 }
 
 export default logout

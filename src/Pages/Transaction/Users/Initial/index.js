@@ -29,15 +29,25 @@ export default class InitialUser extends Component {
     }
   }
 
-  handleChangeAddress = async () => {
-    const data = getLocalstorage()
+  componentDidMount = async () => {
+    const data = getLocalstorage('Account')
     const user = await getUser(`/search?q=${data.username}`, data.token)
 
-    this.setState(prevState => ({
-      CheckboxAddress: !prevState.CheckboxAddress
-    }))
+    this.setState({
+      address: user[0].address,
+      phone_number: user[0].phone_number
+    })
+  }
 
-    if (this.state.CheckboxAddress) {
+  handleChangeAddress = async () => {
+    this.setState({
+      CheckboxAddress: !this.state.CheckboxAddress
+    })
+
+    if (this.state.CheckboxAddress === true) {
+      const data = getLocalstorage('Account')
+      const user = await getUser(`/search?q=${data.username}`, data.token)
+
       this.setState({
         address: user[0].address
       })
@@ -49,14 +59,14 @@ export default class InitialUser extends Component {
   }
 
   handleChangePhoneNumber = async () => {
-    const data = getLocalstorage()
-    const user = await getUser(`/search?q=${data.username}`, data.token)
+    this.setState({
+      CheckboxPhoneNumber: !this.state.CheckboxPhoneNumber
+    })
 
-    this.setState(prevState => ({
-      CheckboxPhoneNumber: !prevState.CheckboxPhoneNumber
-    }))
+    if (this.state.CheckboxPhoneNumber === true) {
+      const data = getLocalstorage('Account')
+      const user = await getUser(`/search?q=${data.username}`, data.token)
 
-    if (this.state.CheckboxPhoneNumber) {
       this.setState({
         phone_number: user[0].phone_number
       })
@@ -76,14 +86,14 @@ export default class InitialUser extends Component {
   handleSubmit = async (event) => {
     event.preventDefault()
 
-    const data = getLocalstorage()
+    const data = getLocalstorage('Account')
     const token = data.token
 
     const order = {
       iduser: data.id,
       idmerchants: this.state.idmerchants,
       merchant: this.state.store_name,
-      quantity: this.state.quantities,
+      quantities: this.state.quantities,
       phone_number: this.state.phone_number,
       user_address: this.state.address,
       user_notes: this.state.notes,
@@ -121,12 +131,12 @@ export default class InitialUser extends Component {
             <Form.Field>
               <label>Pilih lokasi antar</label>
               <input type='text' name='address' placeholder='Pilih lokasi antar' value={this.state.address} onChange={this.handleChange} />
-              <Checkbox label='Antar ke alamat saya' onChange={this.handleChangeAddress} />
+              <Checkbox label='Gunakan alamat lain' onChange={this.handleChangeAddress} />
             </Form.Field>
             <Form.Field>
               <label>Masukkan nomor telepon</label>
               <input type='text' name='phone_number' placeholder='Masukkan nomor telepon' value={this.state.phone_number} onChange={this.handleChange} />
-              <Checkbox label='Gunakan nomor telepon saya' onChange={this.handleChangePhoneNumber} />
+              <Checkbox label='Gunakan nomor telepon lain' onChange={this.handleChangePhoneNumber} />
             </Form.Field>
             <Form.Field>
               <label>Jumlah air galon</label>

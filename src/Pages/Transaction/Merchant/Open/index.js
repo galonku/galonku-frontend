@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { Button, Header, Divider, Icon, List } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 import MenuLogin from '../../../../MenuLogin'
 import Footer from '../../../Footer'
 import getOrders from '../../../../function/GetOrders'
-import { getLocalstorage } from '../../../../function/Localstorage'
+import { getLocalstorage, storeLocalstorage } from '../../../../function/Localstorage'
 
 import './index.css'
 
@@ -13,20 +13,54 @@ export default class MerchantOpen extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { notification: [] }
+    this.state = {
+      orderList: [],
+      showDetails: false,
+      interval: ''
+    }
   }
 
-  componentDidMount() {
+  fetchOrders = () => {
     const orderList = async () => {
-      const data = getLocalstorage()
-      const notification = await getOrders(data.token)
+      const data = getLocalstorage('Account')
+      const orders = await getOrders('/orders', data.token)
 
-      this.setState({ notification })
+      const orderList = orders.data.map(order => {
+        return {
+          id: order.idorder,
+          fullname: order.fullname,
+          quantities: order.quantities
+        }
+      })
+
+      this.setState({ orderList })
     }
+
     orderList()
   }
 
+  componentDidMount = () => {
+    this.fetchOrders()
+    const fetch = setInterval(this.fetchOrders, 30000)
+    this.setState({ interval: fetch })
+  }
+
+  componentWillUnmount = () => {
+    clearInterval(this.state.interval)
+  }
+
+  handleClick = (id) => {
+    this.setState({ showDetails: true })
+    storeLocalstorage('Order', id)
+  }
+
   render() {
+    const { showDetails } = this.state
+
+    if (showDetails) {
+      return <Redirect to='/merchants/order-details' />
+    }
+
     return (
       <MenuLogin>
         <div className="content-container">
@@ -61,12 +95,22 @@ export default class MerchantOpen extends Component {
           </Header>
         </div>
         <List divided relaxed>
-          {this.state.notification.map((item, index) => {
-            return <h1 key={index}>{item.fullname}</h1>
+          {this.state.orderList.map((order, index) => {
+            return (
+              <List.Item key={index}>
+                <span onClick={() => this.handleClick(order.id)}>
+                  <List.Icon name='tint' size='large' verticalAlign='middle' />
+                  <List.Content>
+                    <List.Header as='a'>{order.fullname} memesan sebanyak {order.quantities} galon</List.Header>
+                    <List.Description as='a'>Pesanan masuk .. menit yang lalu</List.Description>
+                  </List.Content>
+                </span>
+              </List.Item>
+            )
           })}
         </List>
         <Footer />
-      </MenuLogin>
+      </MenuLogin >
     )
   }
 }

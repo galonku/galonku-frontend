@@ -5,6 +5,7 @@ import { Button, Form, Header } from 'semantic-ui-react'
 import Login from '../../../function/Login'
 import MyMenu from '../../../Menu'
 import Footer from '../../Footer'
+import { storeLocalstorage } from '../../../function/Localstorage'
 
 import './index.css'
 
@@ -33,7 +34,16 @@ export default class LoginUser extends Component {
       password: this.state.password
     }
 
-    await Login(URL, data)
+    const response = await Login(URL, data)
+    console.log(response.data.message)
+
+    const userData = {
+      id: response.data.id,
+      username: response.data.username,
+      token: response.data.token
+    }
+
+    storeLocalstorage('Account', userData)
     this.setState({ loggedIn: true })
   }
 

@@ -5,15 +5,7 @@ const getMerchants = (params) => {
     request
       .get(`/merchants${params}`)
       .then(response => {
-        const merchantsName = response.data.map((merchant) => {
-          return {
-            key: merchant.id,
-            value: merchant.store_name,
-            text: merchant.store_name
-          }
-        })
-        resolve(merchantsName)
-
+        resolve(response)
       })
       .catch(error => {
         console.log('failed')

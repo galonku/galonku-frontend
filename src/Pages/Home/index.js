@@ -11,7 +11,7 @@ import { getLocalstorage } from '../../function/Localstorage'
 
 export default class Home extends Component {
   render() {
-    const data = getLocalstorage()
+    const data = getLocalstorage('Account')
 
     let menu = (
       <MyMenu >
