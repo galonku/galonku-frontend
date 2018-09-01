@@ -7,8 +7,8 @@ import './index.css'
 const Landing = () => (
   <div className='landing'>
     <div className='blue-background'>
-    <Header as='h1'><div className='tagline'>Pesan dan Jual Galon Lebih Mudah</div></Header>
-    
+      <Header as='h1'><div className='tagline'>Pesan dan Jual Galon Lebih Mudah</div></Header>
+
       <div className='button-landing'>
         <Link to="/merchants/login" className="nav-link">
           <div className='the-button'><Button inverted size='big'>Mulai Jual</Button></div>

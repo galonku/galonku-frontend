@@ -39,9 +39,8 @@ export default class LoginMerchant extends Component {
 
     const merchantData = {
       id: response.data.id,
-      username: response.data.username,
       token: response.data.token,
-      store_name: response.data.store_name
+      store_name: response.data.mstore_name
     }
 
     storeLocalstorage('Account', merchantData)

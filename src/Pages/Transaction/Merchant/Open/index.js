@@ -14,36 +14,47 @@ export default class MerchantOpen extends Component {
     super(props)
 
     this.state = {
-      orders: [],
-      showDetails: false
+      orderList: [],
+      showDetails: false,
+      interval: ''
     }
   }
 
   fetchOrders = () => {
     const orderList = async () => {
       const data = getLocalstorage('Account')
-      const orders = await getOrders(data.token)
-      console.log(orders)
+      const orders = await getOrders('/orders', data.token)
 
-      this.setState({ orders })
+      const orderList = orders.data.map(order => {
+        return {
+          id: order.idorder,
+          fullname: order.fullname,
+          quantities: order.quantities
+        }
+      })
+
+      this.setState({ orderList })
     }
 
     orderList()
-    storeLocalstorage('Orders')
   }
 
-  // stopFetch = () => {
-  //   clearInterval(fetch)
-  // }
+  componentDidMount = () => {
+    this.fetchOrders()
+    const fetch = setInterval(this.fetchOrders, 30000)
+    this.setState({ interval: fetch })
+  }
 
-  handleClick = (index) => {
+  componentWillUnmount = () => {
+    clearInterval(this.state.interval)
+  }
+
+  handleClick = (id) => {
     this.setState({ showDetails: true })
+    storeLocalstorage('Order', id)
   }
 
   render() {
-    // const fetch = setInterval(this.fetchOrders, 5000)
-    // fetch
-
     const { showDetails } = this.state
 
     if (showDetails) {
@@ -70,7 +81,6 @@ export default class MerchantOpen extends Component {
               color="green"
               animated="vertical"
               className="open-close-order"
-            // onClick={this.stopFetch}
             >
               <Button.Content hidden>Toko Tutup? Klik Disini</Button.Content>
               <Button.Content visible>Status Toko: Buka</Button.Content>
@@ -85,13 +95,13 @@ export default class MerchantOpen extends Component {
           </Header>
         </div>
         <List divided relaxed>
-          {this.state.orders.map((order, index) => {
+          {this.state.orderList.map((order, index) => {
             return (
               <List.Item key={index}>
-                <span onClick={() => this.handleClick(index)}>
+                <span onClick={() => this.handleClick(order.id)}>
                   <List.Icon name='tint' size='large' verticalAlign='middle' />
                   <List.Content>
-                    <List.Header as='a'>{order.fullname} memesan sebanyak {order.quantity} galon</List.Header>
+                    <List.Header as='a'>{order.fullname} memesan sebanyak {order.quantities} galon</List.Header>
                     <List.Description as='a'>Pesanan masuk .. menit yang lalu</List.Description>
                   </List.Content>
                 </span>
@@ -100,7 +110,7 @@ export default class MerchantOpen extends Component {
           })}
         </List>
         <Footer />
-      </MenuLogin>
+      </MenuLogin >
     )
   }
 }

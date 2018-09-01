@@ -27,17 +27,18 @@ export default class MerchantOpen extends Component {
 
   componentDidMount = () => {
     const callMerchants = async () => {
-      const data = getLocalstorage('Account')
-      const merchant = getMerchants(`/search?q=${data.store_name}`)
+      const data = await getLocalstorage('Account')
+      const response = await getMerchants(`/search?q=${data.store_name}`)
 
       this.setState({
-        price: merchant.price,
-        store_name: merchant.store_name,
-        address: merchant.address,
-        email: merchant.email,
-        phone_number: merchant.phone_number,
+        price: response.data.merchant[0].price,
+        store_name: response.data.merchant[0].store_name,
+        address: response.data.merchant[0].address,
+        email: response.data.merchant[0].email,
+        phone_number: response.data.merchant[0].phone_number,
       })
     }
+    callMerchants()
   }
 
   handleOpen = () => this.setState({ modalOpen: true })
