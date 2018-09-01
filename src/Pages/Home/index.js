@@ -4,7 +4,8 @@ import MyMenu from '../../Menu'
 import MenuLogin from '../../MenuLogin'
 import Landing from '../../Landing'
 import About from '../About'
-import Review from '../../Review'
+import Review from '../Review'
+import Contact from '../Contact'
 import Footer from '../Footer'
 
 import { getLocalstorage } from '../../function/Localstorage'
@@ -28,6 +29,7 @@ export default class Home extends Component {
           <Landing />
           <Review />
           <About />
+          <Contact />
           <Footer />
         </MenuLogin>
       )
