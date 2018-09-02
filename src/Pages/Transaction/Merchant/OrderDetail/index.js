@@ -5,8 +5,7 @@ import { Link } from 'react-router-dom'
 import MenuLogin from '../../../../MenuLogin'
 import { getLocalstorage, removeLocalstorage } from '../../../../function/Localstorage'
 import getOrders from '../../../../function/GetOrders'
-// import updateOrderStatus from '../../../../function/UpdateOrderStatus'
-import orderButton from './Button'
+import merchantButton from './Button'
 
 import './index.css'
 
@@ -46,29 +45,6 @@ export default class OrderDetail extends Component {
   componentWillUnmount = () => {
     removeLocalstorage('Order')
   }
-
-  // handleClickReject = async () => {
-  //   const data = await getLocalstorage('Account')
-  //   const orderId = await getLocalstorage('Order')
-
-  //   const updatedStatus = {
-  //     status: 'rejected'
-  //   }
-
-  //   updateOrderStatus(orderId, updatedStatus, data.token)
-
-  // }
-
-  // handleClickAccept = async () => {
-  //   const data = await getLocalstorage('Account')
-  //   const orderId = await getLocalstorage('Order')
-
-  //   const updatedStatus = {
-  //     status: 'progress'
-  //   }
-
-  //   updateOrderStatus(orderId, updatedStatus, data.token)
-  // }
 
   render() {
     return (
@@ -123,7 +99,7 @@ export default class OrderDetail extends Component {
                     <Button>Kembali</Button>
                   </Link>
                 </Grid.Column>
-                {orderButton()}
+                {merchantButton()}
               </Grid>
 
             </Card.Content>

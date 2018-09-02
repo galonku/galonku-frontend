@@ -2,48 +2,48 @@ import updateOrderStatus from '../../../../../function/UpdateOrderStatus'
 import { getLocalstorage } from '../../../../../function/Localstorage'
 
 const handleClickReject = async () => {
-  const data = await getLocalstorage('Account')
-  const storage = await getLocalstorage('Order')
+  const account = await getLocalstorage('Account')
+  const order = await getLocalstorage('Order')
 
   const updatedStatus = {
     status: 'rejected'
   }
 
-  updateOrderStatus(storage.id, updatedStatus, data.token)
+  updateOrderStatus(order.id, updatedStatus, account.token)
 
 }
 
 const handleClickAccept = async () => {
-  const data = await getLocalstorage('Account')
-  const storage = await getLocalstorage('Order')
+  const account = await getLocalstorage('Account')
+  const order = await getLocalstorage('Order')
 
   const updatedStatus = {
-    status: 'progress'
+    status: 'processing'
   }
 
-  updateOrderStatus(storage.id, updatedStatus, data.token)
+  updateOrderStatus(order.id, updatedStatus, account.token)
 }
 
 const handleClickDeliver = async () => {
-  const data = await getLocalstorage('Account')
-  const storage = await getLocalstorage('Order')
+  const account = await getLocalstorage('Account')
+  const order = await getLocalstorage('Order')
 
   const updatedStatus = {
     status: 'delivering'
   }
 
-  updateOrderStatus(storage.id, updatedStatus, data.token)
+  updateOrderStatus(order.id, updatedStatus, account.token)
 }
 
 const handleClickDone = async () => {
-  const data = await getLocalstorage('Account')
-  const storage = await getLocalstorage('Order')
+  const account = await getLocalstorage('Account')
+  const order = await getLocalstorage('Order')
 
   const updatedStatus = {
     status: 'done'
   }
 
-  updateOrderStatus(storage.id, updatedStatus, data.token)
+  updateOrderStatus(order.id, updatedStatus, account.token)
 }
 
 const handleClickReview = async () => {
