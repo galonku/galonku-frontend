@@ -38,6 +38,7 @@ export default class LoginMerchant extends Component {
     console.log(response.data.message)
 
     const merchantData = {
+      role: 'merchants',
       id: response.data.id,
       token: response.data.token,
       store_name: response.data.mstore_name
