@@ -1,16 +1,16 @@
 import request from '../../helpers/axios'
 
-const createOrder = (order, token) => {
+const createReview = (review, token) => {
   return new Promise((resolve, reject) => {
     request
-      .post('/orders/order', order, {
+      .post('/merchants/add-reviews', review, {
         headers: {
           Authorization: 'Bearer ' + token
         }
       })
       .then(response => {
         console.log(response.data.message)
-        resolve()
+        resolve(response)
       })
       .catch(error => {
         console.log(error.response)
@@ -19,4 +19,4 @@ const createOrder = (order, token) => {
   })
 }
 
-export default createOrder
+export default createReview 
