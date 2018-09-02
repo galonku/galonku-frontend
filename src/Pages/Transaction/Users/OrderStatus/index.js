@@ -11,10 +11,11 @@ export default class OrderStatus extends Component {
   constructor(props) {
     super(props)
 
+    const order = getLocalstorage('Order')
     this.state = {
       quantities: '',
-      store_name: '',
-      status: '',
+      store_name: order.store_name,
+      status: order.status,
       interval: ''
     }
   }
@@ -31,16 +32,18 @@ export default class OrderStatus extends Component {
         status: response.data.status
       })
     }
+    await orderStatus()
 
-    const order = await getLocalstorage('Order')
-    const updatedData = {
-      id: order.id,
-      status: this.state.status,
-      store_name: this.state.store_name
+    const buttonStatus = async () => {
+      const order = await getLocalstorage('Order')
+      const updatedData = {
+        id: order.id,
+        status: this.state.status,
+        store_name: this.state.store_name
+      }
+      await storeLocalstorage('Order', updatedData)
     }
-
-    storeLocalstorage('Order', updatedData)
-    orderStatus()
+    buttonStatus()
   }
 
   componentDidMount = async () => {

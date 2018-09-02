@@ -33,8 +33,6 @@ const userButton = () => {
     const account = await getLocalstorage('Account')
     const order = await getLocalstorage('Order')
 
-
-
     updateOrderStatus(order.id, account.token)
   }
 
@@ -53,13 +51,13 @@ const userButton = () => {
       </Grid.Column>)
   } else if (order.status === 'delivering') {
     return (
-      <Grid.Column floated='right' width={10} className='button-order'>
-        Pesanan sedang diantar.
-        Apabila sudah diterima mohon konfirmasi pesanan dengan klik tombol di bawah ini
+      <div>
+        <p>Pesanan sedang diantar.</p>
+        <p>Apabila sudah diterima mohon konfirmasi pesanan dengan klik tombol di bawah ini.</p>
         <Button color='green' onClick={handleConfirmOrder}>
           Pesanan diterima
         </Button>
-      </Grid.Column>)
+      </div>)
   } else if (order.status === 'done') {
     return (
       <div>
