@@ -11,39 +11,41 @@ import Footer from '../Footer'
 import { getLocalstorage } from '../../function/Localstorage'
 import verifyToken from '../../function/VerifyToken'
 
-export default class Home extends Component {
-  render() {
+
+class Home extends Component {
+  state = {
+    result: ''
+  }
+
+  async componentDidMount() {
     const account = getLocalstorage('Account')
+    const result = account ? await verifyToken(account.role, account.token) : ''
 
-    let menu = (
-      <MyMenu >
-        <Landing />
-        <Review />
-        <About />
-        <Contact />
-        <Footer />
-      </MyMenu >
+    this.setState({
+      result
+    })
+  }
+
+  render() {
+    
+    return (
+      <div>
+        {this.state.result ==='Token is valid!'? (<MenuLogin>
+          <Landing />
+          <Review />
+          <About />
+          <Contact />
+          <Footer />
+        </MenuLogin >) : (<MyMenu>
+          <Landing />
+          <Review />
+          <About />
+          <Contact />
+          <Footer />
+        </MyMenu>)}
+      </div>
     )
-
-    if (account) {
-      const run = async () => {
-        const result = await verifyToken(account.role, account.token)
-
-        if (result === 'Token is valid!') {
-          menu = (
-            <MenuLogin>
-              <Landing />
-              <Review />
-              <About />
-              <Contact />
-              <Footer />
-            </MenuLogin>
-          )
-        }
-      }
-      run()
-    }
-
-    return menu
   }
 }
+
+export default Home
