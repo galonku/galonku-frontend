@@ -5,10 +5,10 @@ import { Redirect } from 'react-router-dom'
 import MenuLogin from '../../../../MenuLogin'
 import Footer from '../../../Footer'
 import MerchantList from '../MerchantList'
-import { getLocalstorage } from '../../../../function/Localstorage'
+import { getLocalstorage, storeLocalstorage } from '../../../../function/Localstorage'
 import getUser from '../../../../function/GetUsers'
 import searchMerchants from '../../../../function/SearchMerchant'
-import createOrder from '../../../../function/CreateOrders'
+import createOrder from '../../../../function/CreateOrder'
 
 export default class InitialUser extends Component {
   constructor(props) {
@@ -99,7 +99,17 @@ export default class InitialUser extends Component {
       user_notes: this.state.notes,
       status: this.state.status
     }
-    await createOrder(order, token)
+
+    const response = await createOrder(order, token)
+
+    const orderData = {
+      id: response.data.data.id,
+      store_name: response.data.data.merchant,
+      status: response.data.data.status
+    }
+
+    storeLocalstorage('Order', orderData)
+
     this.setState({
       doneOrder: true
     })
@@ -116,7 +126,7 @@ export default class InitialUser extends Component {
   }
 
   render() {
-    let view = (<Redirect to="/users/transaction/process" />)
+    let view = (<Redirect to="/users/transaction/status" />)
 
     if (!this.state.doneOrder) {
       const total_price = this.state.price * this.state.quantities
