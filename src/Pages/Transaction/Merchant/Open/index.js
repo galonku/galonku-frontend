@@ -108,7 +108,7 @@ export default class MerchantOpen extends Component {
                   <List.Icon name='tint' size='large' verticalAlign='middle' />
                   <List.Content>
                     <List.Header as='a'>{order.fullname} memesan sebanyak {order.quantities} galon</List.Header>
-                    <List.Description as='a'>Status pesanan: {order.status} </List.Description>
+                    <List.Description as='a'>Status: {order.status} </List.Description>
                   </List.Content>
                 </span>
               </List.Item>
