@@ -3,9 +3,9 @@ import { Header, Form, Divider, Icon, Grid, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 import MenuLogin from '../../../../MenuLogin'
-import { getLocalstorage, storeLocalstorage } from '../../../../function/Localstorage'
+import { getLocalstorage } from '../../../../function/Localstorage'
 import getOrders from '../../../../function/GetOrders'
-import userButton from './Button'
+import UserButton from './Button'
 
 export default class OrderStatus extends Component {
   constructor(props) {
@@ -33,17 +33,6 @@ export default class OrderStatus extends Component {
       })
     }
     await orderStatus()
-
-    const buttonStatus = async () => {
-      const order = await getLocalstorage('Order')
-      const updatedData = {
-        id: order.id,
-        status: this.state.status,
-        store_name: this.state.store_name
-      }
-      await storeLocalstorage('Order', updatedData)
-    }
-    buttonStatus()
   }
 
   componentDidMount = async () => {
@@ -73,7 +62,9 @@ export default class OrderStatus extends Component {
               <Button>Kembali</Button>
             </Link>
           </Grid.Column>
-          {userButton()}
+          <UserButton>
+            {this.state.status}
+          </UserButton>
         </Form>
       </MenuLogin >
     )
