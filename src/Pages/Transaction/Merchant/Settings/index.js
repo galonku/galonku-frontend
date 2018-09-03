@@ -76,10 +76,11 @@ export default class MerchantOpen extends Component {
               icon='backward'
             />
           </div>
-          <Header as='h3' icon textAlign='center'>
+          <Header as='h3' icon>
             <Icon name='users' circular />
-            <Header.Content>Nama Penjual</Header.Content>
+            Toko {this.state.store_name}
           </Header>
+          
           <Divider />
           <Header as='h2' className='order-status'>Pengaturan</Header>
           <Form onSubmit={this.handleSubmit}>
@@ -108,7 +109,7 @@ export default class MerchantOpen extends Component {
               <Form.Input name='password' type='password' value={this.state.password} onChange={this.handleChange} />
             </Form.Field>
 
-            {/* coba-coba aja bro karena ga bisa tidur, kalau ga work/bermasalah hapus aja ya bro */}
+            
             <Modal
               trigger={<Button>Perbaharui</Button>}
 

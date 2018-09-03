@@ -1,43 +1,30 @@
 import React from 'react'
-import { Grid, Divider, Header, Segment, Button, Container, Form } from 'semantic-ui-react'
+import { Grid, Divider, Header, Segment, Button, Container, List } from 'semantic-ui-react'
 
 const Footer = () => (
-  <div>
-    <Segment inverted vertical style={{ padding: '5em 0em' }}>
+  
+    <Segment inverted vertical style={{ padding: '5em  0em' }} verticalAlign='bottom'>
       <Container>
-        <Grid divided inverted stackable verticalAlign='top' >
+        <Grid divided inverted stackable>
           <Grid.Row>
-            <Grid.Column width={3}>
-              <Header inverted as='h3' content='Hubungi Kami' />
-              <p>Email: andromeda.org1@gmail.com</p>
-            </Grid.Column>
-            <Grid.Column width={11}>
-              <Header as='h3' inverted>
-                Saran dan Masukan
+          <Grid.Column width={8} textAlign='left'>
+              <Header as='h4' inverted>
+                Hubungi Kami
               </Header>
-              <Form>
-                <Form.Field>
-                  <input placeholder='Nama' />
-                </Form.Field>
-                <Form.Field>
-                  <input placeholder='Email' />
-                </Form.Field>
-                <Form.Field>
-                  <input placeholder='Nomor Telepon' />
-                </Form.Field>
-                <Form.TextArea placeholder='Komentar' />
-                <Button type='submit'>Kirim</Button>
-              </Form>
+              <p>
+                Email: Andromeda.org1@gmail.com
+              </p>
             </Grid.Column>
-          </Grid.Row>
-          <Divider />
-          <Grid.Row>
-            Copyright@AndromedaOrg 2018
+            <Grid.Column width={6} verticalAlign='bottom' textAlign='left'>
+              Copyright AndromedaOrg @ 2018
+              
+            </Grid.Column>
+
           </Grid.Row>
         </Grid>
       </Container>
     </Segment>
-  </div>
+  
 )
 
 export default Footer

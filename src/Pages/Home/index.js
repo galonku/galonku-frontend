@@ -6,6 +6,7 @@ import Landing from '../../Landing'
 import About from '../About'
 import Review from '../../Review'
 import Footer from '../Footer'
+import Feedback from '../Feedback'
 
 import { getLocalstorage } from '../../function/Localstorage'
 
@@ -18,6 +19,7 @@ export default class Home extends Component {
         <Landing />
         <Review />
         <About />
+        <Feedback />
         <Footer />
       </MyMenu >
     )
@@ -28,6 +30,7 @@ export default class Home extends Component {
           <Landing />
           <Review />
           <About />
+          <Feedback />
           <Footer />
         </MenuLogin>
       )
