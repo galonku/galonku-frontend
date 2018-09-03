@@ -40,11 +40,11 @@ export default class InitialUser extends Component {
   }
 
   handleChangeAddress = async () => {
-    this.setState({
+    await this.setState({
       CheckboxAddress: !this.state.CheckboxAddress
     })
 
-    if (this.state.CheckboxAddress === true) {
+    if (this.state.CheckboxAddress === false) {
       const data = getLocalstorage('Account')
       const user = await getUser(`/search?q=${data.username}`, data.token)
 
@@ -59,11 +59,11 @@ export default class InitialUser extends Component {
   }
 
   handleChangePhoneNumber = async () => {
-    this.setState({
+    await this.setState({
       CheckboxPhoneNumber: !this.state.CheckboxPhoneNumber
     })
 
-    if (this.state.CheckboxPhoneNumber === true) {
+    if (this.state.CheckboxPhoneNumber === false) {
       const data = getLocalstorage('Account')
       const user = await getUser(`/search?q=${data.username}`, data.token)
 
