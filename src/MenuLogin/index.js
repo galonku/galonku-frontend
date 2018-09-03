@@ -44,10 +44,10 @@ export default class MenuLogin extends Component {
             <Link to="/">
               <Menu.Item>Beranda</Menu.Item>
             </Link>
-            <Link to="/about">
+            <Link to="/">
               <Menu.Item>Tentang kami</Menu.Item>
             </Link>
-            <Link to="/contact">
+            <Link to="/">
               <Menu.Item>Hubungi kami</Menu.Item>
             </Link>
             <Link to="/">
