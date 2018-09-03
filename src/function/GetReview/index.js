@@ -1,9 +1,9 @@
 import request from '../../helpers/axios'
 
-const getReviews = (token) => {
+const getReviews = (id, token) => {
   return new Promise((resolve, reject) => {
     request
-      .get('/merchants/reviews', {
+      .get(`/merchants/reviews/${id}`, {
         headers: {
           Authorization: 'Bearer ' + token
         }

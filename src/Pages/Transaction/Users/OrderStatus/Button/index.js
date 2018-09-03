@@ -48,7 +48,8 @@ export default class UserButton extends Component {
     const review = {
       comments: this.state.comments,
       store_name: order.store_name,
-      username: account.username
+      username: account.username,
+      idorder: order.id
     }
 
     await createReview(review, account.token)
@@ -70,7 +71,7 @@ export default class UserButton extends Component {
   render() {
     let view = ''
 
-    if (this.props.children === 'Pending') {
+    if (this.props.children === 'pending') {
       view = (
         <Grid.Column floated='right' width={10} className='button-order'>
           <Button color='red' onClick={this.handleCancel}>
@@ -107,6 +108,10 @@ export default class UserButton extends Component {
       } else {
         view = (<Redirect to="/users/transaction" />)
       }
+    } else if (this.props.children === 'rejected') {
+      view = (
+        <p>Mohon maaf, pesanan Anda telah ditolak penjual.</p>
+      )
     }
 
     return view

@@ -12,6 +12,7 @@ import TransactionMerchant from '../Pages/Transaction/Merchant/Close'
 import OpenOrderMerchant from '../Pages/Transaction/Merchant/Open'
 import SettingsMerchant from '../Pages/Transaction/Merchant/Settings'
 import OrderDetail from '../Pages/Transaction/Merchant/OrderDetail'
+import MerchantReview from '../Pages/Transaction/Merchant/Review'
 
 import './index.css'
 
@@ -28,6 +29,7 @@ class App extends Component {
             <Route path="/merchants/order-details" component={OrderDetail} />
             <Route path="/merchants/close" component={TransactionMerchant} />
             <Route path="/merchants/settings" component={SettingsMerchant} />
+            <Route path="/merchants/order-review" component={MerchantReview} />
 
             <Route path="/users/transaction/status" component={OrderStatus} />
             <Route path="/users/register" component={RegisterUsers} />
