@@ -3,9 +3,9 @@ import { Button, Card, Grid } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 import MenuLogin from '../../../../MenuLogin'
-import { getLocalstorage, removeLocalstorage } from '../../../../function/Localstorage'
+import { getLocalstorage } from '../../../../function/Localstorage'
 import getOrders from '../../../../function/GetOrders'
-import merchantButton from './Button'
+import MerchantButton from './Button'
 
 import './index.css'
 
@@ -38,12 +38,8 @@ export default class OrderDetail extends Component {
       phone_number: order.phone_number,
       notes: order.notes,
       total_price: order.Total,
-      status: order.status,
+      status: order.status
     })
-  }
-
-  componentWillUnmount = () => {
-    removeLocalstorage('Order')
   }
 
   render() {
@@ -99,7 +95,7 @@ export default class OrderDetail extends Component {
                     <Button>Kembali</Button>
                   </Link>
                 </Grid.Column>
-                {merchantButton()}
+                <MerchantButton />
               </Grid>
 
             </Card.Content>
