@@ -4,13 +4,12 @@ import MyMenu from '../../Menu'
 import MenuLogin from '../../MenuLogin'
 import Landing from '../../Landing'
 import About from '../About'
-import Review from '../Review'
+// import Review from '../Review'
 import Contact from '../Contact'
 import Footer from '../Footer'
 
 import { getLocalstorage } from '../../function/Localstorage'
 import verifyToken from '../../function/VerifyToken'
-
 
 class Home extends Component {
   state = {
@@ -18,7 +17,7 @@ class Home extends Component {
   }
 
   async componentDidMount() {
-    const account = getLocalstorage('Account')
+    const account = await getLocalstorage('Account')
     const result = account ? await verifyToken(account.role, account.token) : ''
 
     this.setState({
@@ -27,22 +26,23 @@ class Home extends Component {
   }
 
   render() {
-    
+
     return (
       <div>
-        {this.state.result ==='Token is valid!'? (<MenuLogin>
-          <Landing />
-          <Review />
-          <About />
-          <Contact />
-          <Footer />
-        </MenuLogin >) : (<MyMenu>
-          <Landing />
-          <Review />
-          <About />
-          <Contact />
-          <Footer />
-        </MyMenu>)}
+        {this.state.result === 'Token is valid!' ?
+          (<MenuLogin>
+            <Landing />
+            {/* <Review /> */}
+            <About />
+            <Contact />
+            <Footer />
+          </MenuLogin >) : (<MyMenu>
+            <Landing />
+            {/* <Review /> */}
+            <About />
+            <Contact />
+            <Footer />
+          </MyMenu>)}
       </div>
     )
   }

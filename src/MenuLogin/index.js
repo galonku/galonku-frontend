@@ -51,9 +51,11 @@ export default class MenuLogin extends Component {
               <Menu.Item>Hubungi kami</Menu.Item>
             </Link>
             <Link to="/">
-              <Menu.Item>
-                <span onClick={logout}>Keluar</span>
-              </Menu.Item>
+              <span onClick={logout}>
+                <Menu.Item>
+                  Keluar
+                </Menu.Item>
+              </span>
             </Link>
           </Sidebar>
           <Sidebar.Pusher>{this.props.children}</Sidebar.Pusher>
