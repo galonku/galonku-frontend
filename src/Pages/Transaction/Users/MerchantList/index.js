@@ -20,7 +20,8 @@ class SelectMerchant extends React.Component {
   componentDidMount = () => {
     const callMerchants = async () => {
       const merchants = await getMerchants('/')
-      const merchantsList = merchants.data.map((merchant) => {
+
+      const merchantsList = merchants.data.merchants.map((merchant) => {
         return {
           key: merchant.id,
           value: merchant.store_name,

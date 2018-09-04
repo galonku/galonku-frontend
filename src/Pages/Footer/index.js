@@ -2,7 +2,6 @@ import React from 'react'
 import { Grid, Divider, Header, Segment, Button, Container, List } from 'semantic-ui-react'
 
 const Footer = () => (
-  
     <Segment inverted vertical style={{ padding: '5em  0em' }} verticalAlign='bottom'>
       <Container>
         <Grid divided inverted stackable>
@@ -17,14 +16,11 @@ const Footer = () => (
             </Grid.Column>
             <Grid.Column width={6} verticalAlign='bottom' textAlign='left'>
               Copyright AndromedaOrg @ 2018
-              
             </Grid.Column>
-
           </Grid.Row>
         </Grid>
       </Container>
     </Segment>
-  
 )
 
 export default Footer

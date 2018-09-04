@@ -4,38 +4,48 @@ import MyMenu from '../../Menu'
 import MenuLogin from '../../MenuLogin'
 import Landing from '../../Landing'
 import About from '../About'
-import Review from '../../Review'
+// import Review from '../Review'
+import Contact from '../Contact'
 import Footer from '../Footer'
 import Feedback from '../Feedback'
 
 import { getLocalstorage } from '../../function/Localstorage'
+import verifyToken from '../../function/VerifyToken'
 
-export default class Home extends Component {
+class Home extends Component {
+  state = {
+    result: ''
+  }
+
+  async componentDidMount() {
+    const account = await getLocalstorage('Account')
+    const result = account ? await verifyToken(account.role, account.token) : ''
+
+    this.setState({
+      result
+    })
+  }
+
   render() {
-    const data = getLocalstorage('Account')
-
-    let menu = (
-      <MyMenu >
-        <Landing />
-        <Review />
-        <About />
-        <Feedback />
-        <Footer />
-      </MyMenu >
+    return (
+      <div>
+        {this.state.result === 'Token is valid!' ?
+          (<MenuLogin>
+            <Landing />
+            {/* <Review /> */}
+            <About />
+            <Contact />
+            <Footer />
+          </MenuLogin >) : (<MyMenu>
+            <Landing />
+            {/* <Review /> */}
+            <About />
+            <Contact />
+            <Footer />
+          </MyMenu>)}
+      </div>
     )
-
-    if (data && data.token) {
-      menu = (
-        <MenuLogin>
-          <Landing />
-          <Review />
-          <About />
-          <Feedback />
-          <Footer />
-        </MenuLogin>
-      )
-    }
-
-    return menu
   }
 }
+
+export default Home

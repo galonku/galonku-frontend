@@ -38,6 +38,7 @@ export default class LoginMerchant extends Component {
     console.log(response.data.message)
 
     const merchantData = {
+      role: 'merchants',
       id: response.data.id,
       token: response.data.token,
       store_name: response.data.mstore_name
@@ -58,7 +59,7 @@ export default class LoginMerchant extends Component {
     return (
       <MyMenu>
         <Form className='form-login' onSubmit={this.handleSubmit}>
-          <Header as='h2'>Masuk sebagai Penjual (Merchant)</Header>
+          <Header as='h2'>Masuk sebagai penjual</Header>
           <Form.Field className='form-field'>
             <label>Username</label>
             <input type='text' name='username' placeholder='Username' onChange={this.handleChange} />
