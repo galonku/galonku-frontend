@@ -19,6 +19,10 @@
     width: 180px;
 }
 
+.button-divider {
+    margin:8px;
+}
+
 .tagline {
     color: white;
     font-size: 80px;

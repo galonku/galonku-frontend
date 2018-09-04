@@ -19,16 +19,18 @@ const Landing = () => (
       </Header>
 
       <div className='button-landing'>
-        
+        <div className="button-divider">
           <Link to="/merchants/login" className="nav-link">
             <Button className='the-button' inverted size='big'>Mulai Jual</Button>
           </Link>
+        </div>
         
-        
+        <div className="button-divider">
           <Link to="/users/login" className="nav-link">
             <Button className="the-button" inverted size='big'>Mulai Pesan</Button>
           </Link>
-        
+        </div>
+
       </div>
     </div>
   </div >
