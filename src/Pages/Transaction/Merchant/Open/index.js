@@ -50,14 +50,14 @@ export default class MerchantOpen extends Component {
     clearInterval(this.state.interval)
   }
 
-  handleClick = (id, status) => {
-    this.setState({ showDetails: true })
+  handleClick = async (id, status) => {
+    await this.setState({ showDetails: true })
 
     const data = {
       id,
       status
     }
-    storeLocalstorage('Order', data)
+    await storeLocalstorage('Order', data)
   }
 
   render() {
@@ -72,7 +72,7 @@ export default class MerchantOpen extends Component {
                 if (order.status !== 'done') {
                   return (
                     <List.Item key={index}>
-                      <span onClick={() => this.handleClick(order.id)}>
+                      <span onClick={() => this.handleClick(order.id, order.status)}>
                         <List.Icon name='tint' size='large' />
                         <List.Content>
                           <List.Header as='a'>{order.fullname} memesan sebanyak {order.quantities} galon</List.Header>
@@ -95,7 +95,7 @@ export default class MerchantOpen extends Component {
                 if (order.status === 'done') {
                   return (
                     <List.Item key={index}>
-                      <span onClick={() => this.handleClick(order.id)}>
+                      <span onClick={() => this.handleClick(order.id, order.status)}>
                         <List.Icon name='tint' size='large' />
                         <List.Content>
                           <List.Header as='a'>{order.fullname} memesan sebanyak {order.quantities} galon</List.Header>

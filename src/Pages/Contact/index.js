@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+  import React, { Component } from 'react'
 import { Grid, Header, Segment, Button, Container, Form } from 'semantic-ui-react'
 
 import createFeedback from '../../function/CreateFeedback'
@@ -36,11 +36,7 @@ export default class Contact extends Component {
         <Container>
           <Grid divided inverted stackable verticalAlign='top' >
             <Grid.Row>
-              <Grid.Column width={3}>
-                <Header inverted as='h3' content='Hubungi Kami' />
-                <p>Email: andromeda.org1@gmail.com</p>
-              </Grid.Column>
-              <Grid.Column width={11}>
+              <Grid.Column width={19} textAlign="left">
                 <Header as='h3' inverted>
                   Kritik dan saran
                 </Header>
