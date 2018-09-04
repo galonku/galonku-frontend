@@ -52,7 +52,7 @@ export default class RegisterMerchant extends React.Component {
     return (
       <div>
       <MyMenu>
-        <Container>
+        <Container className="form-container">
           <Header as='h2'>Registrasi Penjual</Header>
           <Form className='form-register-merchants' onSubmit={this.handleSubmit}>
             <Form.Field>
