@@ -27,6 +27,7 @@ export default class MyMenu extends Component {
           icon="bars" 
           onClick={this.handleButtonClick} 
           className="button-menu" 
+          inverted
           />
         </MyNavigation>
 
