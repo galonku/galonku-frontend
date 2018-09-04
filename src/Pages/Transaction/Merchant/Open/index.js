@@ -51,13 +51,13 @@ export default class MerchantOpen extends Component {
   }
 
   handleClick = async (id, status) => {
-    await this.setState({ showDetails: true })
-
     const data = {
       id,
       status
     }
+
     await storeLocalstorage('Order', data)
+    await this.setState({ showDetails: true })
   }
 
   render() {
@@ -76,7 +76,7 @@ export default class MerchantOpen extends Component {
                         <List.Icon name='tint' size='large' />
                         <List.Content>
                           <List.Header as='a'>{order.fullname} memesan sebanyak {order.quantities} galon</List.Header>
-                          <List.Description as='a'>Status: {order.status}</List.Description>
+                          <List.Description as='a'>status: {order.status}</List.Description>
                         </List.Content>
                       </span>
                     </List.Item>
@@ -99,7 +99,7 @@ export default class MerchantOpen extends Component {
                         <List.Icon name='tint' size='large' />
                         <List.Content>
                           <List.Header as='a'>{order.fullname} memesan sebanyak {order.quantities} galon</List.Header>
-                          <List.Description as='a'>Status: {order.status}</List.Description>
+                          <List.Description as='a'>status: {order.status}</List.Description>
                         </List.Content>
                       </span>
                     </List.Item>
