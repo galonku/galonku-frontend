@@ -38,7 +38,7 @@ export default class OrderDetail extends Component {
       phone_number: order.phone_number,
       notes: order.notes,
       total_price: order.Total,
-      status: order.status
+      status: order.status,
     })
   }
 
