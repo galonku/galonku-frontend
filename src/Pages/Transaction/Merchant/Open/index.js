@@ -140,7 +140,7 @@ export default class MerchantOpen extends Component {
           <Header className="close-alert" color="grey">
             Menunggu Pesanan...
           </Header>
-        </div>
+        
         <List divided relaxed>
           {this.state.orderList.map((order, index) => {
             return (
