@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Divider, Header, Segment, Button, Container, List } from 'semantic-ui-react'
+import { Grid, Header, Segment, Container } from 'semantic-ui-react'
 
 const Footer = () => (
     <Segment inverted vertical style={{ padding: '5em  0em' }} verticalAlign='bottom'>

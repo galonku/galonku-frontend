@@ -9,12 +9,19 @@ const Landing = () => (
   
   <div className='landing'>
     <div className='blue-background'>
-      <Header as='h1'><div className='tagline'>
+      <Header as='h1'>
+        <div className='tagline'>
+        <Typing>
+          
+          Pesan dan Jual Galon Lebih Mudah
+          <Typing.Backspace count={50} />
+          Beli Galon Tanpa Takut Lama Datang 
+          <Typing.Backspace count={20} />
+          Capek Angkat-angkat
+          </Typing>
+        </div>
       
-      <Typing>Pesan dan Jual Galon Lebih Mudah</Typing>
-      
-      
-      </div></Header>
+      </Header>
 
       <div className='button-landing'>
         <div className='the-button'>
