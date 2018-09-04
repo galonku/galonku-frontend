@@ -24,11 +24,11 @@ const Landing = () => (
             <Button className='the-button' inverted size='big'>Mulai Jual</Button>
           </Link>
         
-        <div className='the-button'>
+        
           <Link to="/users/login" className="nav-link">
-            <Button inverted size='big'>Mulai Pesan</Button>
+            <Button className="the-button" inverted size='big'>Mulai Pesan</Button>
           </Link>
-        </div>
+        
       </div>
     </div>
   </div >
