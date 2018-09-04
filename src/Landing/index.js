@@ -11,24 +11,19 @@ const Landing = () => (
     <div className='blue-background'>
       <Header as='h1'>
         <div className='tagline'>
-        <Typing>
-          
+        <Typing>          
           Pesan dan Jual Galon Lebih Mudah
-          <Typing.Backspace count={50} />
-          Beli Galon Tanpa Takut Lama Datang 
-          <Typing.Backspace count={20} />
-          Capek Angkat-angkat
-          </Typing>
+        </Typing>
         </div>
       
       </Header>
 
       <div className='button-landing'>
-        <div className='the-button'>
+        
           <Link to="/merchants/login" className="nav-link">
-            <Button inverted size='big'>Mulai Jual</Button>
+            <Button className='the-button' inverted size='big'>Mulai Jual</Button>
           </Link>
-        </div>
+        
         <div className='the-button'>
           <Link to="/users/login" className="nav-link">
             <Button inverted size='big'>Mulai Pesan</Button>
