@@ -7,6 +7,7 @@ import About from '../About'
 // import Review from '../Review'
 import Contact from '../Contact'
 import Footer from '../Footer'
+import Feedback from '../Feedback'
 
 import { getLocalstorage } from '../../function/Localstorage'
 import verifyToken from '../../function/VerifyToken'
@@ -26,7 +27,6 @@ class Home extends Component {
   }
 
   render() {
-
     return (
       <div>
         {this.state.result === 'Token is valid!' ?

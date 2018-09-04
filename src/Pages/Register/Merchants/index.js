@@ -50,6 +50,7 @@ export default class RegisterMerchant extends React.Component {
   render() {
     const { active } = this.state
     return (
+      <div>
       <MyMenu>
         <Container>
           <Header as='h2'>Registrasi Penjual</Header>
@@ -85,8 +86,9 @@ export default class RegisterMerchant extends React.Component {
             <Button type='submit' toggle loading={active} onClick={this.handleClick}>Daftar Sekarang!</Button>
           </Form>
         </Container>
-        <Footer />
       </MyMenu>
+      <Footer />
+      </div>
     )
   }
 }
