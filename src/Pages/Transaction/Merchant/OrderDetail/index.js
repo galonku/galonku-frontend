@@ -38,7 +38,7 @@ export default class OrderDetail extends Component {
       phone_number: order.phone_number,
       notes: order.notes,
       total_price: order.Total,
-      status: order.status
+      status: order.status,
     })
   }
 
@@ -103,23 +103,5 @@ export default class OrderDetail extends Component {
         </div>
       </MenuLogin >
     )
-  }
-
-  componentDidMount = async () => {
-    const data = await getLocalstorage('Account')
-    const orderId = await getLocalstorage('Order')
-
-    const response = await getOrders(`/orders/order/${orderId}`, data.token)
-    const order = response.data
-
-    this.setState({
-      fullname: order.fullname,
-      quantities: order.quantities,
-      address: order.address,
-      phone_number: order.phone_number,
-      notes: order.notes,
-      total_price: order.Total,
-      status: order.status,
-    })
   }
 }
