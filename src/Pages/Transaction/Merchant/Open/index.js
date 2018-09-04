@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Header, Divider, Icon, List, Tab, Menu, Label } from 'semantic-ui-react'
+import { Button, Header, Divider, Icon, List, Tab, Menu } from 'semantic-ui-react'
 import { Link, Redirect } from 'react-router-dom'
 
 import MenuLogin from '../../../../MenuLogin'

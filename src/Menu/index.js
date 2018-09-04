@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Menu, Segment, Sidebar } from 'semantic-ui-react'
-import './index.css'
 
 import MyNavigation from '../Navigationbar'
 
@@ -26,7 +25,6 @@ export default class MyMenu extends Component {
           <Button 
           icon="bars" 
           onClick={this.handleButtonClick} 
-          className="button-menu" 
           inverted
           />
         </MyNavigation>

@@ -20,12 +20,30 @@ img.ui.image.logo{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    margin-left: 5%;
-    margin-top: 3%;
+    margin-left: 5.2%;
+    margin-top: 4.4%;
 }
-@media screen and (max-width: 992px) {
-.wrapper-menu {
-margin-left: 7%;
-margin-top: 14%;
+
+@media screen and (max-width: 1024px) {
+    .wrapper-menu {
+        margin-left: 6%;
+        margin-top: 6.3%;
+    }
 }
+
+@media screen and (max-width: 768px) {
+    .wrapper-menu {
+        margin-left: 6%;
+        margin-top: 8.3%;        
+    }
 }
+
+@media screen and (max-width: 425px) {
+    .wrapper-menu {
+        margin-left: 9%;
+        margin-top: 15.3%;
+        }
+}
+
+
+
