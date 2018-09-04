@@ -31,7 +31,8 @@ export default class MerchantOpen extends Component {
         return {
           id: order.idorder,
           fullname: order.fullname,
-          quantities: order.quantities
+          quantities: order.quantities,
+          status: order.status
         }
       })
 
@@ -51,9 +52,14 @@ export default class MerchantOpen extends Component {
     clearInterval(this.state.interval)
   }
 
-  handleClick = (id) => {
+  handleClick = (id, status) => {
     this.setState({ showDetails: true })
-    storeLocalstorage('Order', id)
+
+    const data = {
+      id,
+      status
+    }
+    storeLocalstorage('Order', data)
   }
 
   render() {
@@ -134,7 +140,22 @@ export default class MerchantOpen extends Component {
           <Header className="close-alert" color="grey">
             Menunggu Pesanan...
           </Header>
-        
+        </div>
+        <List divided relaxed>
+          {this.state.orderList.map((order, index) => {
+            return (
+              <List.Item key={index}>
+                <span onClick={() => this.handleClick(order.id, order.status)}>
+                  <List.Icon name='tint' size='large' verticalAlign='middle' />
+                  <List.Content>
+                    <List.Header as='a'>{order.fullname} memesan sebanyak {order.quantities} galon</List.Header>
+                    <List.Description as='a'>Status: {order.status} </List.Description>
+                  </List.Content>
+                </span>
+              </List.Item>
+            )
+          })}
+        </List>
 
         <Tab panes={panes} />
         <div className='the-footer'>

@@ -1,22 +1,21 @@
 import request from '../../helpers/axios'
 
-const createOrder = (order, token) => {
+const verifyToken = (URL, token) => {
   return new Promise((resolve, reject) => {
     request
-      .post('/orders/order', order, {
+      .get(`${URL}/verifytoken`, {
         headers: {
           Authorization: 'Bearer ' + token
         }
       })
       .then(response => {
-        console.log(response.data.message)
-        resolve()
+        resolve(response.data.message)
       })
       .catch(error => {
-        console.log(error.response)
         reject(error)
       })
   })
+
 }
 
-export default createOrder
+export default verifyToken

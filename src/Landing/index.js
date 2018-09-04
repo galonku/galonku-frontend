@@ -17,15 +17,19 @@ const Landing = () => (
       </div></Header>
 
       <div className='button-landing'>
-        <Link to="/merchants/login" className="nav-link">
-          <div className='the-button'><Button inverted size='big'>Mulai Jual</Button></div>
-        </Link>
-        <Link to="/users/login" className="nav-link">
-          <div className='the-button'><Button inverted size='big'>Mulai Pesan</Button></div>
-        </Link>
+        <div className='the-button'>
+          <Link to="/merchants/login" className="nav-link">
+            <Button inverted size='big'>Mulai Jual</Button>
+          </Link>
+        </div>
+        <div className='the-button'>
+          <Link to="/users/login" className="nav-link">
+            <Button inverted size='big'>Mulai Pesan</Button>
+          </Link>
+        </div>
       </div>
     </div>
-  </div>
+  </div >
 )
 
 export default Landing

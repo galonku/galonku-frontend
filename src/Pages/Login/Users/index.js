@@ -38,6 +38,7 @@ export default class LoginUser extends Component {
     console.log(response.data.message)
 
     const userData = {
+      role: 'users',
       id: response.data.id,
       username: response.data.username,
       token: response.data.token
