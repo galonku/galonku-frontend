@@ -51,7 +51,6 @@ export default class MerchantOpen extends Component {
 
     const result = response ? response : ''
 
-    console.log(result)
     if (result !== 'Token is valid!') {
       this.setState({ loggedIn: false })
     }
@@ -80,7 +79,7 @@ export default class MerchantOpen extends Component {
           <Tab.Pane>
             <List divided relaxed>
               {this.state.orderList.map((order, index) => {
-                if (order.status !== 'done') {
+                if (order.status !== 'pesanan selesai') {
                   return (
                     <List.Item key={index}>
                       <span onClick={() => this.handleClick(order.id, order.status)}>
@@ -103,7 +102,7 @@ export default class MerchantOpen extends Component {
           <Tab.Pane>
             <List divided relaxed>
               {this.state.orderList.map((order, index) => {
-                if (order.status === 'done') {
+                if (order.status === 'pesanan selesai') {
                   return (
                     <List.Item key={index}>
                       <span onClick={() => this.handleClick(order.id, order.status)}>

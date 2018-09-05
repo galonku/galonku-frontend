@@ -29,7 +29,7 @@ export default class MerchantButton extends Component {
     const account = await getLocalstorage('Account')
     const order = await getLocalstorage('Order')
 
-    await this.setState({ status: 'rejected' })
+    await this.setState({ status: 'pesanan ditolak' })
 
     const updatedData = { status: this.state.status }
     updateOrderStatus(order.id, updatedData, account.token)
@@ -39,7 +39,7 @@ export default class MerchantButton extends Component {
     const account = await getLocalstorage('Account')
     const order = await getLocalstorage('Order')
 
-    await this.setState({ status: 'processing' })
+    await this.setState({ status: 'sedang diproses' })
 
     const updatedData = { status: this.state.status }
     updateOrderStatus(order.id, updatedData, account.token)
@@ -49,7 +49,7 @@ export default class MerchantButton extends Component {
     const account = await getLocalstorage('Account')
     const order = await getLocalstorage('Order')
 
-    await this.setState({ status: 'delivering' })
+    await this.setState({ status: 'sedang diantar' })
 
     const updatedData = { status: this.state.status }
     updateOrderStatus(order.id, updatedData, account.token)
@@ -59,7 +59,7 @@ export default class MerchantButton extends Component {
     const account = await getLocalstorage('Account')
     const order = await getLocalstorage('Order')
 
-    await this.setState({ status: 'done' })
+    await this.setState({ status: 'pesanan selesai' })
 
     const updatedData = { status: this.state.status }
     updateOrderStatus(order.id, updatedData, account.token)
@@ -84,7 +84,7 @@ export default class MerchantButton extends Component {
             Terima pesanan
           </Button>
         </Grid.Column>)
-    } else if (this.state.status === 'processing') {
+    } else if (this.state.status === 'sedang diproses') {
       view = (
         <Grid.Column floated='right' width={10} className='button-order'>
           <Button onClick={this.handleClickReject}>
@@ -94,7 +94,7 @@ export default class MerchantButton extends Component {
             Antar pesanan
           </Button>
         </Grid.Column>)
-    } else if (this.state.status === 'delivering') {
+    } else if (this.state.status === 'sedang diantar') {
       view = (
         <Grid.Column floated='right' width={10} className='button-order'>
           <Button onClick={this.handleClickReject}>
@@ -104,7 +104,7 @@ export default class MerchantButton extends Component {
             Pesanan selesai
           </Button>
         </Grid.Column>)
-    } else if (this.state.status === 'done') {
+    } else if (this.state.status === 'pesanan selesai') {
       if (this.state.showReview) {
         view = (
           <Redirect to="/merchants/order-review" />
