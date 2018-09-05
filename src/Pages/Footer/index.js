@@ -11,7 +11,7 @@ const Footer = () => (
               Hubungi Kami
             </Header>
             <p>
-              Email: Andromeda.org1@gmail.com
+              Email: andromeda.org1@gmail.com
             </p>
           </Grid.Column>
           <Grid.Column width={6} textAlign='left'>
