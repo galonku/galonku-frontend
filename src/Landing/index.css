@@ -5,11 +5,6 @@
     background-repeat: no-repeat;
     background-size: 125%;
 }
-/* .landing {
-    background-image: url('../images/water.jpg');
-    background-repeat: no-repeat;
-    background-size: 100%;
-} */
 
 .button-landing{
     margin: 50px;
@@ -53,11 +48,6 @@
         background-size: 304%;
     }
 
-    /* .landing {
-        background-image: url('../images/water.jpg');
-        background-repeat: no-repeat;
-        background-size: 277%;
-    } */
     
     .blue-background {
         background: linear-gradient(68deg, rgba(0, 0, 0, 0.6) 0%, rgba(99, 131, 132, 0.6) 100%);
