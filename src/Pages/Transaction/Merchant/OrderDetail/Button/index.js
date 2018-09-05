@@ -37,7 +37,6 @@ export default class MerchantButton extends Component {
     await this.setState( updatedData )
     this.props.updateParentStatus && this.props.updateParentStatus(status)
 
-    // window.location.reload()
   }
 
   handleClickAccept = async () => {
@@ -49,7 +48,6 @@ export default class MerchantButton extends Component {
     await updateOrderStatus(order.id, updatedData, account.token)
     this.setState( updatedData )
     this.props.updateParentStatus && this.props.updateParentStatus(status)
-    // window.location.reload()
   }
 
   handleClickDeliver = async () => {
@@ -61,8 +59,6 @@ export default class MerchantButton extends Component {
     await updateOrderStatus(order.id, updatedData, account.token)
     this.setState(updatedData)
     this.props.updateParentStatus && this.props.updateParentStatus(status)
-
-    // window.location.reload()
   }
 
   handleClickDone = async () => {
@@ -73,7 +69,6 @@ export default class MerchantButton extends Component {
 
     const updatedData = { status: this.state.status }
     await updateOrderStatus(order.id, updatedData, account.token)
-    // window.location.reload()
   }
 
   handleClickReview = async () => {
