@@ -43,11 +43,11 @@ export default class MerchantOpen extends Component {
 
   componentDidMount = async () => {
     this.fetchOrders()
-    const fetch = setInterval(this.fetchOrders, 30000)
+    const fetch = setInterval(this.fetchOrders, 15000)
     this.setState({ interval: fetch })
 
-    const account = await getLocalstorage('Account')   
-    
+    const account = await getLocalstorage('Account')
+
     if (account.role !== 'merchants') {
       this.setState({ loggedIn: false })
     }
@@ -76,7 +76,7 @@ export default class MerchantOpen extends Component {
           <Tab.Pane>
             <List divided relaxed>
               {this.state.orderList.map((order, index) => {
-                if (order.status !== 'done') {
+                if (order.status !== 'pesanan selesai') {
                   return (
                     <List.Item key={index}>
                       <span onClick={() => this.handleClick(order.id, order.status)}>
@@ -99,7 +99,7 @@ export default class MerchantOpen extends Component {
           <Tab.Pane>
             <List divided relaxed>
               {this.state.orderList.map((order, index) => {
-                if (order.status === 'done') {
+                if (order.status === 'pesanan selesai') {
                   return (
                     <List.Item key={index}>
                       <span onClick={() => this.handleClick(order.id, order.status)}>

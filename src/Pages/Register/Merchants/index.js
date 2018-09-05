@@ -73,11 +73,11 @@ export default class RegisterMerchant extends React.Component {
             </Form.Field>
             <Form.Field>
               <label>Nomor telepon</label>
-              <Form.Input name='phone_number' placeholder='Nomor Telepon' onChange={this.handleChange} />
+              <Form.Input type='number' name='phone_number' placeholder='Nomor Telepon' onChange={this.handleChange} />
             </Form.Field>
             <Form.Field>
               <label>No. KTP</label>
-              <Form.Input name='identity_number' placeholder='No. KTP' onChange={this.handleChange} />
+              <Form.Input type='number' name='identity_number' placeholder='No. KTP' onChange={this.handleChange} />
             </Form.Field>
             <Form.TextArea label='Alamat' name='address' placeholder='Alamat' onChange={this.handleChange} />
             <Form.Field>

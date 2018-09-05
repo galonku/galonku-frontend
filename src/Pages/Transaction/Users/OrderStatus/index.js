@@ -14,6 +14,7 @@ export default class OrderStatus extends Component {
       store_name: '',
       status: '',
       interval: '',
+      fetchOneInterval: '',
       orderList: [],
       showDetails: false
     }
@@ -27,7 +28,7 @@ export default class OrderStatus extends Component {
       const orderList = orders.data.map(order => {
         return {
           id: order.idorder,
-          fullname: order.fullname,
+          store_name: order.store_name,
           quantities: order.quantities,
           status: order.status
         }
@@ -40,7 +41,7 @@ export default class OrderStatus extends Component {
 
   componentDidMount = async () => {
     this.fetchOrders()
-    const fetch = setInterval(this.fetchOrders, 10000)
+    const fetch = setInterval(this.fetchOrders, 15000)
     this.setState({ interval: fetch })
   }
 
@@ -49,23 +50,29 @@ export default class OrderStatus extends Component {
   }
 
   handleClick = async (id) => {
-    const account = await getLocalstorage('Account')
+    const orderStatus = async () => {
+      const account = await getLocalstorage('Account')
+      const response = await getOrders(`/orders/order/${id}`, account.token)
+      const order = response.data
 
-    const response = await getOrders(`/orders/order/${id}`, account.token)
-    const order = response.data
-
-    this.setState({
-      quantities: order.quantities,
-      status: order.status,
-      store_name: order.store_name,
-      showDetails: true
-    })
+      this.setState({
+        quantities: order.quantities,
+        status: order.status,
+        store_name: order.store_name,
+        showDetails: true
+      })
+    }
+    orderStatus()
+    const fetch = setInterval(orderStatus, 15000)
+    this.setState({ fetchOneInterval: fetch })
   }
 
   handleReturn = () => {
     this.setState({
-      showDetails: false
+      showDetails: false,
     })
+
+    clearInterval(this.state.fetchOneInterval)
   }
 
   render() {
@@ -96,14 +103,14 @@ export default class OrderStatus extends Component {
       view = (
         <div>
           {this.state.orderList.map((order, index) => {
-            if (order.status !== 'done') {
+            if (order.status !== 'pesanan selesai') {
               return (
                 <List divided relaxed>
                   <List.Item key={index}>
                     <span onClick={() => this.handleClick(order.id)}>
                       <List.Icon name='tint' size='large' />
                       <List.Content>
-                        <List.Header as='a'>{order.fullname} memesan sebanyak {order.quantities} galon</List.Header>
+                        <List.Header as='a'>Pemesanan sebanyak {order.quantities} galon dari {order.store_name}</List.Header>
                         <List.Description as='a'>Status: {order.status}</List.Description>
                       </List.Content>
                     </span>
