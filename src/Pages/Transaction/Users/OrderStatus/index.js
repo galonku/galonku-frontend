@@ -41,7 +41,7 @@ export default class OrderStatus extends Component {
 
   componentDidMount = async () => {
     this.fetchOrders()
-    const fetch = setInterval(this.fetchOrders, 10000)
+    const fetch = setInterval(this.fetchOrders, 15000)
     this.setState({ interval: fetch })
   }
 
@@ -63,7 +63,7 @@ export default class OrderStatus extends Component {
       })
     }
     orderStatus()
-    const fetch = setInterval(orderStatus, 10000)
+    const fetch = setInterval(orderStatus, 15000)
     this.setState({ fetchOneInterval: fetch })
   }
 
