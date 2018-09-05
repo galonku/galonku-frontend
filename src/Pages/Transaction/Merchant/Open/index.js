@@ -6,7 +6,7 @@ import MenuLogin from '../../../../MenuLogin'
 import Footer from '../../../Footer'
 import getOrders from '../../../../function/GetOrders'
 import { getLocalstorage, storeLocalstorage } from '../../../../function/Localstorage'
-import verifyToken from '../../../../function/VerifyToken'
+
 
 import './index.css'
 
@@ -46,13 +46,9 @@ export default class MerchantOpen extends Component {
     const fetch = setInterval(this.fetchOrders, 30000)
     this.setState({ interval: fetch })
 
-    const account = await getLocalstorage('Account')
-    const response = account ? await verifyToken('merchants', account.token) : ''
-
-    const result = response ? response : ''
-
-    console.log(result)
-    if (result !== 'Token is valid!') {
+    const account = await getLocalstorage('Account')   
+    
+    if (account.role !== 'merchants') {
       this.setState({ loggedIn: false })
     }
   }
