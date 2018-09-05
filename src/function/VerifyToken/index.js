@@ -15,7 +15,6 @@ const verifyToken = (URL, token) => {
         reject(error)
       })
   })
-
 }
 
 export default verifyToken
