@@ -46,13 +46,8 @@ export default class MerchantOpen extends Component {
     const fetch = setInterval(this.fetchOrders, 15000)
     this.setState({ interval: fetch })
 
-<<<<<<< HEAD
     const account = await getLocalstorage('Account')
 
-=======
-    const account = await getLocalstorage('Account')   
-    
->>>>>>> 203965bf5f956304483f9709a8ee7621142bb597
     if (account.role !== 'merchants') {
       this.setState({ loggedIn: false })
     }
