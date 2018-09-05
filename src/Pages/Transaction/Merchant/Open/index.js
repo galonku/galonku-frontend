@@ -126,6 +126,7 @@ export default class MerchantOpen extends Component {
         </div>
       )
     } else {
+      const account = getLocalstorage('Account')
       return (
         <div>
           {this.state.loggedIn ?
@@ -140,7 +141,7 @@ export default class MerchantOpen extends Component {
               </Link>
               <Header as="h3" icon textAlign="center">
                 <Icon name="users" circular />
-                <Header.Content>Nama Penjual</Header.Content>
+                <Header.Content>{account.store_name}</Header.Content>
               </Header>
               <Link to="/merchants/close">
                 <Button
