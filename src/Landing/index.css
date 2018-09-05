@@ -1,13 +1,15 @@
-@font-face {
-    font-family: 'BebasNeue';
-    src: url('./BebasNeue.otf');
-}
+@import url('https://fonts.googleapis.com/css?family=Raleway');
 
 .landing{
     background-image: url('../images/landingpic.png');
     background-repeat: no-repeat;
     background-size: 125%;
 }
+/* .landing {
+    background-image: url('../images/water.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+} */
 
 .button-landing{
     margin: 50px;
@@ -25,9 +27,10 @@
 
 .tagline {
     color: white;
-    font-size: 80px;
-    padding-top: 59px;
-    font-family: 'BebasNeue';
+    font-size: 65px;
+    padding-top: 31px;
+    padding-bottom: 9px;
+    font-family: 'Raleway', serif;
 }
 
 
@@ -41,14 +44,21 @@
     .tagline {
         color: white;
         font-size: 39px;
-        padding-top: 59px;
-        font-family: 'BebasNeue';
+        padding-top: 39px;
+        font-family: 'Raleway', serif;
     }
     .landing{
         background-image: url('../images/landingpic.png');
         background-repeat: no-repeat;
         background-size: 304%;
     }
+
+    /* .landing {
+        background-image: url('../images/water.jpg');
+        background-repeat: no-repeat;
+        background-size: 277%;
+    } */
+    
     .blue-background {
         background: linear-gradient(68deg, rgba(0, 0, 0, 0.6) 0%, rgba(99, 131, 132, 0.6) 100%);
         padding-top: 130px;

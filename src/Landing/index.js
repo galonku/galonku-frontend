@@ -12,15 +12,15 @@ const Landing = () => (
       <Header as='h1'>
         <div className='tagline'>
         <Typing speed={45}>          
-          Pesan dan Jual Galon Lebih Mudah
+          <span>Pesan dan Jual Galon Lebih Mudah</span>
           <Typing.Backspace count={32} delay={2000} />
-          Beli Galon tanpa <u>Tunggu lama</u>
+          <span>Beli Galon tanpa <u>Tunggu lama</u></span>
         <Typing.Backspace count={11} delay={2000}/>
-          <u>capek angkat galon</u>
+        <span><u>Capek Angkat Galon</u></span>
         <Typing.Backspace count={38} delay={4000}/>
-          Jualan Galon dapat Customer <u>lebih banyak</u>
+        <span>Jualan Galon dapat Customer <u>Lebih Banyak</u></span>
         <Typing.Backspace count={51} delay={2000}/>
-          Ayo <u>Mulai Coba Galonku</u> Sekarang
+        <span>Ayo <u>Mulai Coba Galonku</u> Sekarang</span>
         <Typing.Reset count={3} delay={5000000} />
         </Typing>
         </div>
