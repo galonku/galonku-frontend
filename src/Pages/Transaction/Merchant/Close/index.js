@@ -9,6 +9,7 @@ import './index.css'
 import { getLocalstorage } from '../../../../function/Localstorage'
 import getMerchants from '../../../../function/GetMerchants'
 
+
 export default class MerchantClose extends Component {
   constructor(props) {
     super(props)
@@ -51,7 +52,7 @@ export default class MerchantClose extends Component {
 
   render() {
     let view = ''
-
+    const account = getLocalstorage('Account')
     if (this.state.setPrice === false) {
       view = (
         <MenuLogin>
@@ -66,7 +67,7 @@ export default class MerchantClose extends Component {
             </Link>
             <Header as='h3' icon textAlign='center'>
               <Icon name='users' circular />
-              <Header.Content>Nama Penjual</Header.Content>
+              <Header.Content>{account.store_name}</Header.Content>
             </Header>
             <Button color='red' animated='vertical' className='open-close-order' onClick={this.handleClick}>
               <Button.Content hidden>Klik Untuk Buka Toko</Button.Content>
