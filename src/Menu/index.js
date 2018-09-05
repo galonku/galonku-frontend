@@ -59,12 +59,12 @@ export default class MyMenu extends Component {
             </Link>
             <Link to="/merchants/register">
               <Menu.Item>
-                Registrasi penjual
+                Registrasi Penjual
               </Menu.Item>
             </Link>
             <Link to="/users/register">
               <Menu.Item>
-                Registrasi pembeli
+                Registrasi Pembeli
               </Menu.Item>
             </Link>
           </Sidebar>
