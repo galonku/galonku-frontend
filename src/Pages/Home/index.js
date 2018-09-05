@@ -4,7 +4,6 @@ import MyMenu from '../../Menu'
 import MenuLogin from '../../MenuLogin'
 import Landing from '../../Landing'
 import About from '../About'
-// import Review from '../Review'
 import Contact from '../Contact'
 import Footer from '../Footer'
 
@@ -31,13 +30,11 @@ class Home extends Component {
         {this.state.result === 'Token is valid!' ?
           (<MenuLogin>
             <Landing />
-            {/* <Review /> */}
             <About />
             <Contact />
             <Footer />
           </MenuLogin >) : (<MyMenu>
             <Landing />
-            {/* <Review /> */}
             <About />
             <Contact />
             <Footer />
