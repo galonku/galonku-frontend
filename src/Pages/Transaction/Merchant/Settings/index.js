@@ -19,7 +19,7 @@ export default class MerchantOpen extends Component {
       address: '',
       email: '',
       phone_number: '',
-      // password: '',
+      password: '',
       // newPassword: '',
       // confirmNewPassword: '',
       open: false
@@ -58,8 +58,8 @@ export default class MerchantOpen extends Component {
       store_name: this.state.store_name,
       address: this.state.address,
       email: this.state.email,
-      phone_number: this.state.phone_number
-      // password: this.state.password
+      phone_number: this.state.phone_number,
+      password: this.state.password
     }
     await updateMerchants(`/${data.id}`, merchantData, data.token)
 
@@ -114,11 +114,11 @@ export default class MerchantOpen extends Component {
             <Form.Field>
               <b>Konfirmasi Kata Sandi Baru</b>
               <Form.Input name='confirm-new-password' type='password' value={this.state.confirmNewPassword} onChange={this.handleChange} />
-            </Form.Field>
-            <Form.Field>
-              <b>Masukkan Kata Sandi Yang Lama</b>
-              <Form.Input name='password' type='password' value={this.state.password} onChange={this.handleChange} />
             </Form.Field> */}
+            <Form.Field>
+              <b>Masukkan Kata Sandi  {/*Yang Lama*/}</b>
+              <Form.Input name='password' type='password' value={this.state.password} onChange={this.handleChange} />
+            </Form.Field>
             <Button>Perbaharui</Button>
           </Form>
 
