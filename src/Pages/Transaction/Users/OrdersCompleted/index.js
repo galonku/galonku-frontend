@@ -102,7 +102,7 @@ export default class OrdersCompleted extends Component {
                       Jumlah galon: {this.state.quantities}
                     </Grid.Column>
                     <Grid.Column width={8}>
-                      Biaya total pesanan: {this.state.total_price}
+                      Biaya total pesanan: Rp. {this.state.total_price}
                     </Grid.Column>
                   </Grid.Row>
 
