@@ -95,7 +95,9 @@ export default class OrderDetail extends Component {
                     <Button>Kembali</Button>
                   </Link>
                 </Grid.Column>
-                <MerchantButton />
+                <MerchantButton>
+                  {this.state.status}
+                </MerchantButton>
               </Grid>
 
             </Card.Content>

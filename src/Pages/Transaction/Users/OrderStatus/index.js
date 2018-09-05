@@ -14,6 +14,7 @@ export default class OrderStatus extends Component {
       store_name: '',
       status: '',
       interval: '',
+      fetchOneInterval: '',
       orderList: [],
       showDetails: false
     }
@@ -49,23 +50,29 @@ export default class OrderStatus extends Component {
   }
 
   handleClick = async (id) => {
-    const account = await getLocalstorage('Account')
+    const orderStatus = async () => {
+      const account = await getLocalstorage('Account')
+      const response = await getOrders(`/orders/order/${id}`, account.token)
+      const order = response.data
 
-    const response = await getOrders(`/orders/order/${id}`, account.token)
-    const order = response.data
-
-    this.setState({
-      quantities: order.quantities,
-      status: order.status,
-      store_name: order.store_name,
-      showDetails: true
-    })
+      this.setState({
+        quantities: order.quantities,
+        status: order.status,
+        store_name: order.store_name,
+        showDetails: true
+      })
+    }
+    orderStatus()
+    const fetch = setInterval(orderStatus, 10000)
+    this.setState({ fetchOneInterval: fetch })
   }
 
   handleReturn = () => {
     this.setState({
-      showDetails: false
+      showDetails: false,
     })
+
+    clearInterval(this.state.fetchOneInterval)
   }
 
   render() {
