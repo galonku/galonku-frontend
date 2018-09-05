@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Menu, Segment, Sidebar } from 'semantic-ui-react'
-import './index.css'
 
 import MyNavigation from '../Navigationbar'
 
@@ -23,14 +22,18 @@ export default class MyMenu extends Component {
     return (
       <div>
         <MyNavigation>
-          <Button icon='bars' onClick={this.handleButtonClick} className='button-menu' />
+          <Button 
+          icon="bars" 
+          onClick={this.handleButtonClick} 
+          inverted
+          />
         </MyNavigation>
 
         <Sidebar.Pushable as={Segment}>
           <Sidebar
             as={Menu}
-            animation='overlay'
-            icon='labeled'
+            animation="overlay"
+            icon="labeled"
             inverted
             onHide={this.handleSidebarHide}
             vertical
@@ -38,27 +41,27 @@ export default class MyMenu extends Component {
             width='thin'
 
           >
-            <Link to='/'>
+            <Link to="/">
               <Menu.Item>
                 Beranda
               </Menu.Item>
             </Link>
-            <Link to='/about'>
+            <Link to="/">
               <Menu.Item>
                 Tentang kami
               </Menu.Item>
             </Link>
-            <Link to='/contact'>
+            <Link to="/">
               <Menu.Item>
                 Hubungi kami
               </Menu.Item>
             </Link>
-            <Link to='/merchants/register'>
+            <Link to="/merchants/register">
               <Menu.Item>
                 Registrasi penjual
               </Menu.Item>
             </Link>
-            <Link to='/users/register'>
+            <Link to="/users/register">
               <Menu.Item>
                 Registrasi pembeli
               </Menu.Item>

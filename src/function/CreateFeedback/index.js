@@ -1,9 +1,9 @@
 import request from '../../helpers/axios'
 
-const Login = (URL, data) => {
+const createFeedback = (feedback) => {
   return new Promise((resolve, reject) => {
     request
-      .post(URL, data)
+      .post('/feedback/send', feedback)
       .then(response => {
         resolve(response)
       })
@@ -11,7 +11,6 @@ const Login = (URL, data) => {
         reject(error)
       })
   })
-
 }
 
-export default Login
+export default createFeedback

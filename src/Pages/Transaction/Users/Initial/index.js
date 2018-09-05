@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
-import { Button, Form, Checkbox } from 'semantic-ui-react'
-import { Redirect } from 'react-router-dom'
+import { Button, Form, Checkbox, Tab } from 'semantic-ui-react'
 
 import MenuLogin from '../../../../MenuLogin'
 import Footer from '../../../Footer'
 import MerchantList from '../MerchantList'
-import { getLocalstorage } from '../../../../function/Localstorage'
+import { getLocalstorage, storeLocalstorage } from '../../../../function/Localstorage'
 import getUser from '../../../../function/GetUsers'
 import searchMerchants from '../../../../function/SearchMerchant'
-import createOrder from '../../../../function/CreateOrders'
+import createOrder from '../../../../function/CreateOrder'
+import OrderStatus from '../OrderStatus'
+import OrdersCompleted from '../OrdersCompleted'
 
 export default class InitialUser extends Component {
   constructor(props) {
@@ -25,7 +26,8 @@ export default class InitialUser extends Component {
       price: '',
       quantities: '',
       notes: '',
-      status: 'pending'
+      status: 'pending',
+      activeIndex: 0
     }
   }
 
@@ -40,11 +42,11 @@ export default class InitialUser extends Component {
   }
 
   handleChangeAddress = async () => {
-    this.setState({
+    await this.setState({
       CheckboxAddress: !this.state.CheckboxAddress
     })
 
-    if (this.state.CheckboxAddress === true) {
+    if (this.state.CheckboxAddress === false) {
       const data = getLocalstorage('Account')
       const user = await getUser(`/search?q=${data.username}`, data.token)
 
@@ -59,11 +61,11 @@ export default class InitialUser extends Component {
   }
 
   handleChangePhoneNumber = async () => {
-    this.setState({
+    await this.setState({
       CheckboxPhoneNumber: !this.state.CheckboxPhoneNumber
     })
 
-    if (this.state.CheckboxPhoneNumber === true) {
+    if (this.state.CheckboxPhoneNumber === false) {
       const data = getLocalstorage('Account')
       const user = await getUser(`/search?q=${data.username}`, data.token)
 
@@ -99,10 +101,25 @@ export default class InitialUser extends Component {
       user_notes: this.state.notes,
       status: this.state.status
     }
-    await createOrder(order, token)
+
+    const response = await createOrder(order, token)
+
+    const orderData = {
+      id: response.data.data.id,
+      store_name: response.data.data.merchant,
+      status: response.data.data.status
+    }
+
+    storeLocalstorage('Order', orderData)
+
     this.setState({
-      doneOrder: true
+      doneOrder: true,
+      activeIndex: 1
     })
+  }
+
+  handleTabChange = ({ activeIndex }) => {
+    this.setState({ activeIndex })
   }
 
   merchantSelected = async (value) => {
@@ -116,46 +133,65 @@ export default class InitialUser extends Component {
   }
 
   render() {
-    let view = (<Redirect to="/users/transaction/process" />)
+    const total_price = this.state.price * this.state.quantities
 
-    if (!this.state.doneOrder) {
-      const total_price = this.state.price * this.state.quantities
+    const panes = [
+      {
+        menuItem: { key: 'CreateOrder', content: 'Buat Pesanan' },
+        render: () =>
+          <Tab.Pane>
+            <Form onSubmit={this.handleSubmit}>
+              <Form.Field>
+                <label>Pilih penjual</label>
+                <MerchantList merchantSelected={this.merchantSelected} />
+              </Form.Field>
+              <Form.Field>
+                <label>Pilih lokasi antar</label>
+                <input type='text' name='address' placeholder='Pilih lokasi antar' value={this.state.address} onChange={this.handleChange} />
+                <Checkbox label='Gunakan alamat lain' onChange={this.handleChangeAddress} />
+              </Form.Field>
+              <Form.Field>
+                <label>Masukkan nomor telepon</label>
+                <input type='text' name='phone_number' placeholder='Masukkan nomor telepon' value={this.state.phone_number} onChange={this.handleChange} />
+                <Checkbox label='Gunakan nomor telepon lain' onChange={this.handleChangePhoneNumber} />
+              </Form.Field>
+              <Form.Field>
+                <label>Jumlah air galon</label>
+                <input type='number' min='1' name='quantities' placeholder='Jumlah air galon' value={this.state.quantities} onChange={this.handleChange} />
+              </Form.Field>
+              <Form.Field>
+                <label>Catatan</label>
+                <input type='text' name='notes' placeholder='catatan' value={this.state.notes} onChange={this.handleChange} />
+              </Form.Field>
+              <Form.Field>
+                <label>Total harga:</label>
+                <label>Rp. {total_price}</label>
+              </Form.Field>
+              <Button type='submit'>Order</Button>
+            </Form>
+          </Tab.Pane>,
+      },
+      {
+        menuItem: { key: 'OnProccessOrder', content: 'Pesanan Yang Sedang Berjalan' },
+        render: () =>
+          <Tab.Pane>
+            <OrderStatus />
+          </Tab.Pane>,
+      },
+      {
+        menuItem: { key: 'CompletedOrders', content: 'Pesanan Yang Sudah Selesai' },
+        render: () =>
+          <Tab.Pane>
+            <OrdersCompleted />
+          </Tab.Pane>,
+      }
+    ]
 
-      view = (
-        <MenuLogin>
-          <Form onSubmit={this.handleSubmit}>
-            <Form.Field>
-              <label>Pilih penjual</label>
-              <MerchantList merchantSelected={this.merchantSelected} />
-            </Form.Field>
-            <Form.Field>
-              <label>Pilih lokasi antar</label>
-              <input type='text' name='address' placeholder='Pilih lokasi antar' value={this.state.address} onChange={this.handleChange} />
-              <Checkbox label='Gunakan alamat lain' onChange={this.handleChangeAddress} />
-            </Form.Field>
-            <Form.Field>
-              <label>Masukkan nomor telepon</label>
-              <input type='text' name='phone_number' placeholder='Masukkan nomor telepon' value={this.state.phone_number} onChange={this.handleChange} />
-              <Checkbox label='Gunakan nomor telepon lain' onChange={this.handleChangePhoneNumber} />
-            </Form.Field>
-            <Form.Field>
-              <label>Jumlah air galon</label>
-              <input type='number' min='1' name='quantities' placeholder='Jumlah air galon' value={this.state.quantities} onChange={this.handleChange} />
-            </Form.Field>
-            <Form.Field>
-              <label>Catatan</label>
-              <input type='text' name='notes' placeholder='catatan' value={this.state.notes} onChange={this.handleChange} />
-            </Form.Field>
-            <Form.Field>
-              <label>Total harga:</label>
-              <label>Rp. {total_price}</label>
-            </Form.Field>
-            <Button type='submit'>Order</Button>
-          </Form>
-          <Footer />
-        </MenuLogin>
-      )
-    }
-    return view
+    return (
+      <MenuLogin>
+        <Tab panes={panes} activeIndex={this.state.activeIndex} onTabChange={this.handleTabChange} />
+        <Footer />
+      </MenuLogin>
+    )
   }
 }

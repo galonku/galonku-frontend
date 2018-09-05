@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { Button, Header, Divider, Icon, List } from 'semantic-ui-react'
+import { List, Tab, Divider, Header, Icon, Button } from 'semantic-ui-react'
 import { Link, Redirect } from 'react-router-dom'
 
 import MenuLogin from '../../../../MenuLogin'
 import Footer from '../../../Footer'
 import getOrders from '../../../../function/GetOrders'
+
 import { getLocalstorage, storeLocalstorage } from '../../../../function/Localstorage'
 
 import './index.css'
@@ -22,18 +23,18 @@ export default class MerchantOpen extends Component {
 
   fetchOrders = () => {
     const orderList = async () => {
-      const data = getLocalstorage('Account')
+      const data = await getLocalstorage('Account')
       const orders = await getOrders('/orders', data.token)
 
       const orderList = orders.data.map(order => {
         return {
           id: order.idorder,
           fullname: order.fullname,
-          quantities: order.quantities
+          quantities: order.quantities,
+          status: order.status
         }
       })
-
-      this.setState({ orderList })
+      await this.setState({ orderList })
     }
 
     orderList()
@@ -49,21 +50,72 @@ export default class MerchantOpen extends Component {
     clearInterval(this.state.interval)
   }
 
-  handleClick = (id) => {
-    this.setState({ showDetails: true })
-    storeLocalstorage('Order', id)
+  handleClick = async (id, status) => {
+    await this.setState({ showDetails: true })
+
+    const data = {
+      id,
+      status
+    }
+    await storeLocalstorage('Order', data)
   }
 
   render() {
     const { showDetails } = this.state
+    const panes = [
+      {
+        menuItem: { key: 'OnGoingOrders', icon: 'users', content: 'Pesanan Masuk' },
+        render: () =>
+          <Tab.Pane>
+            <List divided relaxed>
+              {this.state.orderList.map((order, index) => {
+                if (order.status !== 'done') {
+                  return (
+                    <List.Item key={index}>
+                      <span onClick={() => this.handleClick(order.id, order.status)}>
+                        <List.Icon name='tint' size='large' />
+                        <List.Content>
+                          <List.Header as='a'>{order.fullname} memesan sebanyak {order.quantities} galon</List.Header>
+                          <List.Description as='a'>Status: {order.status}</List.Description>
+                        </List.Content>
+                      </span>
+                    </List.Item>
+                  )
+                }
+              })}
+            </List>
+          </Tab.Pane>,
+      },
+      {
+        menuItem: { key: 'CompletedOrders', content: 'Pesanan Selesai' },
+        render: () =>
+          <Tab.Pane>
+            <List divided relaxed>
+              {this.state.orderList.map((order, index) => {
+                if (order.status === 'done') {
+                  return (
+                    <List.Item key={index}>
+                      <span onClick={() => this.handleClick(order.id, order.status)}>
+                        <List.Icon name='tint' size='large' />
+                        <List.Content>
+                          <List.Header as='a'>{order.fullname} memesan sebanyak {order.quantities} galon</List.Header>
+                          <List.Description as='a'>Status: {order.status}</List.Description>
+                        </List.Content>
+                      </span>
+                    </List.Item>
+                  )
+                }
+              })}
+            </List>
+          </Tab.Pane>,
+      },
+    ]
 
     if (showDetails) {
-      return <Redirect to='/merchants/order-details' />
-    }
-
-    return (
-      <MenuLogin>
-        <div className="content-container">
+      return (<Redirect to='/merchants/order-details' />)
+    } else {
+      return (
+        <MenuLogin>
           <Link to="/merchants/settings">
             <Button
               basic
@@ -87,30 +139,12 @@ export default class MerchantOpen extends Component {
             </Button>
           </Link>
           <Divider />
-          <Header as="h2" className="order-status">
-            Status Pesanan
-          </Header>{' '}
-          <Header className="close-alert" color="grey">
-            Menunggu Pesanan...
-          </Header>
-        </div>
-        <List divided relaxed>
-          {this.state.orderList.map((order, index) => {
-            return (
-              <List.Item key={index}>
-                <span onClick={() => this.handleClick(order.id)}>
-                  <List.Icon name='tint' size='large' verticalAlign='middle' />
-                  <List.Content>
-                    <List.Header as='a'>{order.fullname} memesan sebanyak {order.quantities} galon</List.Header>
-                    <List.Description as='a'>Pesanan masuk .. menit yang lalu</List.Description>
-                  </List.Content>
-                </span>
-              </List.Item>
-            )
-          })}
-        </List>
-        <Footer />
-      </MenuLogin >
-    )
+          <Tab panes={panes} />
+          <div className='the-footer'>
+            <Footer />
+          </div>
+        </MenuLogin >
+      )
+    }
   }
 }

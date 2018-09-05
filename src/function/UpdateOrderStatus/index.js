@@ -1,9 +1,13 @@
 import request from '../../helpers/axios'
 
-const Login = (URL, data) => {
+const updateOrderStatus = (id, data, token) => {
   return new Promise((resolve, reject) => {
     request
-      .post(URL, data)
+      .put(`/orders/order/${id}/`, data, {
+        headers: {
+          Authorization: 'Bearer ' + token
+        }
+      })
       .then(response => {
         resolve(response)
       })
@@ -14,4 +18,4 @@ const Login = (URL, data) => {
 
 }
 
-export default Login
+export default updateOrderStatus

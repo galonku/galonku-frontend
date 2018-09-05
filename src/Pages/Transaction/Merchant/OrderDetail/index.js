@@ -3,10 +3,11 @@ import { Button, Card, Grid } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 import MenuLogin from '../../../../MenuLogin'
-
-import './index.css'
 import { getLocalstorage } from '../../../../function/Localstorage'
 import getOrders from '../../../../function/GetOrders'
+import MerchantButton from './Button'
+
+import './index.css'
 
 export default class OrderDetail extends Component {
   constructor(props) {
@@ -23,16 +24,25 @@ export default class OrderDetail extends Component {
     }
   }
 
-  handleClickDecline = () => {
+  componentDidMount = async () => {
+    const data = await getLocalstorage('Account')
+    const storage = await getLocalstorage('Order')
 
-  }
+    const response = await getOrders(`/orders/order/${storage.id}`, data.token)
+    const order = response.data
 
-  handleClickAccept = () => {
-
+    this.setState({
+      fullname: order.fullname,
+      quantities: order.quantities,
+      address: order.address,
+      phone_number: order.phone_number,
+      notes: order.notes,
+      total_price: order.Total,
+      status: order.status,
+    })
   }
 
   render() {
-
     return (
       <MenuLogin>
         <div className='container'>
@@ -69,7 +79,7 @@ export default class OrderDetail extends Component {
                   </Grid.Row>
 
                   <Grid.Row>
-                    <Grid.Column width={16}>
+                    <Grid.Column width={16} className='status'>
                       Status: {this.state.status}
                     </Grid.Column>
                   </Grid.Row>
@@ -85,14 +95,7 @@ export default class OrderDetail extends Component {
                     <Button>Kembali</Button>
                   </Link>
                 </Grid.Column>
-                <Grid.Column floated='right' width={10} className='button-order'>
-                  <Button onClick={this.handleClickDecline}>
-                    Tolak pesanan
-                  </Button>
-                  <Button onClick={this.handleClickAccept}>
-                    Terima pesanan
-                  </Button>
-                </Grid.Column>
+                <MerchantButton />
               </Grid>
 
             </Card.Content>
@@ -100,23 +103,5 @@ export default class OrderDetail extends Component {
         </div>
       </MenuLogin >
     )
-  }
-
-  componentDidMount = async () => {
-    const data = await getLocalstorage('Account')
-    const orderId = await getLocalstorage('Order')
-
-    const response = await getOrders(`/orders/order/${orderId}`, data.token)
-    const order = response.data
-
-    this.setState({
-      fullname: order.fullname,
-      quantities: order.quantities,
-      address: order.address,
-      phone_number: order.phone_number,
-      notes: order.notes,
-      total_price: order.Total,
-      status: order.status,
-    })
   }
 }
