@@ -1,4 +1,4 @@
-  import React, { Component } from 'react'
+import React, { Component } from 'react'
 import { Grid, Header, Segment, Button, Container, Form } from 'semantic-ui-react'
 
 import createFeedback from '../../function/CreateFeedback'
@@ -31,7 +31,7 @@ export default class Contact extends Component {
   }
 
   render() {
-    return (<div>
+    return (<div id="contact">
       <Segment inverted vertical style={{ padding: '5em 0em' }}>
         <Container>
           <Grid divided inverted stackable verticalAlign='top' >

@@ -10,6 +10,7 @@ export default class MerchantButton extends Component {
     super(props)
 
     this.state = {
+      id: '',
       status: '',
       comments: '',
       username: '',
@@ -18,10 +19,11 @@ export default class MerchantButton extends Component {
   }
 
   componentDidMount = async () => {
-    const data = getLocalstorage('Order')
+    const order = getLocalstorage('Order')
 
     await this.setState({
-      status: data.status
+      id: order.id,
+      status: order.status
     })
   }
 
@@ -29,40 +31,44 @@ export default class MerchantButton extends Component {
     const account = await getLocalstorage('Account')
     const order = await getLocalstorage('Order')
 
-    await this.setState({ status: 'rejected' })
+    await this.setState({ status: 'pesanan ditolak' })
 
     const updatedData = { status: this.state.status }
-    updateOrderStatus(order.id, updatedData, account.token)
+    await updateOrderStatus(order.id, updatedData, account.token)
+    window.location.reload()
   }
 
   handleClickAccept = async () => {
     const account = await getLocalstorage('Account')
     const order = await getLocalstorage('Order')
 
-    await this.setState({ status: 'processing' })
+    await this.setState({ status: 'sedang diproses' })
 
     const updatedData = { status: this.state.status }
-    updateOrderStatus(order.id, updatedData, account.token)
+    await updateOrderStatus(order.id, updatedData, account.token)
+    window.location.reload()
   }
 
   handleClickDeliver = async () => {
     const account = await getLocalstorage('Account')
     const order = await getLocalstorage('Order')
 
-    await this.setState({ status: 'delivering' })
+    await this.setState({ status: 'sedang diantar' })
 
     const updatedData = { status: this.state.status }
-    updateOrderStatus(order.id, updatedData, account.token)
+    await updateOrderStatus(order.id, updatedData, account.token)
+    window.location.reload()
   }
 
   handleClickDone = async () => {
     const account = await getLocalstorage('Account')
     const order = await getLocalstorage('Order')
 
-    await this.setState({ status: 'done' })
+    await this.setState({ status: 'pesanan selesai' })
 
     const updatedData = { status: this.state.status }
-    updateOrderStatus(order.id, updatedData, account.token)
+    await updateOrderStatus(order.id, updatedData, account.token)
+    window.location.reload()
   }
 
   handleClickReview = async () => {
@@ -74,7 +80,7 @@ export default class MerchantButton extends Component {
   render() {
     let view = ''
 
-    if (this.state.status === 'pending') {
+    if (this.props.children === 'pending') {
       view = (
         <Grid.Column floated='right' width={10} className='button-order'>
           <Button onClick={this.handleClickReject}>
@@ -84,7 +90,7 @@ export default class MerchantButton extends Component {
             Terima pesanan
           </Button>
         </Grid.Column>)
-    } else if (this.state.status === 'processing') {
+    } else if (this.props.children === 'sedang diproses') {
       view = (
         <Grid.Column floated='right' width={10} className='button-order'>
           <Button onClick={this.handleClickReject}>
@@ -94,7 +100,7 @@ export default class MerchantButton extends Component {
             Antar pesanan
           </Button>
         </Grid.Column>)
-    } else if (this.state.status === 'delivering') {
+    } else if (this.props.children === 'sedang diantar') {
       view = (
         <Grid.Column floated='right' width={10} className='button-order'>
           <Button onClick={this.handleClickReject}>
@@ -104,7 +110,7 @@ export default class MerchantButton extends Component {
             Pesanan selesai
           </Button>
         </Grid.Column>)
-    } else if (this.state.status === 'done') {
+    } else if (this.props.children === 'pesanan selesai') {
       if (this.state.showReview) {
         view = (
           <Redirect to="/merchants/order-review" />

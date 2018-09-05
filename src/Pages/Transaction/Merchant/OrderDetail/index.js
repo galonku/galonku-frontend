@@ -71,7 +71,7 @@ export default class OrderDetail extends Component {
 
                   <Grid.Row>
                     <Grid.Column width={8}>
-                      Biaya total pesanan: {this.state.total_price}
+                      Biaya total pesanan: Rp. {this.state.total_price}
                     </Grid.Column>
                     <Grid.Column width={8}>
                       Catatan: {this.state.notes}
@@ -95,7 +95,9 @@ export default class OrderDetail extends Component {
                     <Button>Kembali</Button>
                   </Link>
                 </Grid.Column>
-                <MerchantButton />
+                <MerchantButton>
+                  {this.state.status}
+                </MerchantButton>
               </Grid>
 
             </Card.Content>

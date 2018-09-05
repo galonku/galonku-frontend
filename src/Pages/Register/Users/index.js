@@ -69,7 +69,7 @@ export default class RegisterUser extends React.Component {
             </Form.Field>
             <Form.Field>
               <label>Nomor telepon</label>
-              <Form.Input name='phone_number' type='text' placeholder='Nomor telepon' onChange={this.handleChange} />
+              <Form.Input name='phone_number' type='number' placeholder='Nomor telepon' onChange={this.handleChange} />
             </Form.Field>
             <Form.TextArea label='Alamat' name='address' type='text' placeholder='Alamat' onChange={this.handleChange} />
             <Form.Field>
