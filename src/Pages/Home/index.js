@@ -18,7 +18,7 @@ class Home extends Component {
   async componentDidMount() {
     const account = await getLocalstorage('Account')
     const result = account ? await verifyToken(account.role, account.token) : ''
-
+    
     this.setState({
       result
     })

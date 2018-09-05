@@ -38,7 +38,8 @@ export default class UserButton extends Component {
     }
 
     await updateOrderStatus(order.id, updatedStatus, account.token)
-    window.location.reload()
+    this.setState(updatedStatus)
+    
   }
 
   handleReview = async () => {
@@ -93,7 +94,7 @@ export default class UserButton extends Component {
             Pesanan diterima
           </Button>
         </div>)
-    } else if (this.props.children === 'pesanan selesai') {
+    } else if (this.state.status === 'pesanan selesai') {
       if (!this.state.doneReview) {
         view = (
           <div>
@@ -105,7 +106,8 @@ export default class UserButton extends Component {
               Beri penilaian
             </Button>
           </div>)
-      } else {
+      } 
+      else {
         view = (<Redirect to="/users/transaction" />)
       }
     } else if (this.props.children === 'pesanan ditolak') {
