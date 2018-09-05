@@ -23,7 +23,7 @@ export default class UserButton extends Component {
     const order = await getLocalstorage('Order')
 
     const updatedStatus = {
-      status: 'cancelled'
+      status: 'pesanan dibatalkan'
     }
 
     updateOrderStatus(order.id, updatedStatus, account.token)
@@ -34,7 +34,7 @@ export default class UserButton extends Component {
     const order = await getLocalstorage('Order')
 
     const updatedStatus = {
-      status: 'done'
+      status: 'pesanan selesai'
     }
 
     await updateOrderStatus(order.id, updatedStatus, account.token)
@@ -78,13 +78,13 @@ export default class UserButton extends Component {
             Batalkan pesanan
           </Button>
         </Grid.Column>)
-    } else if (this.props.children === 'processing') {
+    } else if (this.props.children === 'sedang diproses') {
       view = (
         <Grid.Column floated='right' width={10} className='button-order'>
           Pesanan sedang diproses penjual.
           Mohon menunggu.
         </Grid.Column>)
-    } else if (this.props.children === 'delivering') {
+    } else if (this.props.children === 'sedang diantar') {
       view = (
         <div>
           <p>Pesanan sedang diantar.</p>
@@ -93,7 +93,7 @@ export default class UserButton extends Component {
             Pesanan diterima
           </Button>
         </div>)
-    } else if (this.props.children === 'done') {
+    } else if (this.props.children === 'pesanan selesai') {
       if (!this.state.doneReview) {
         view = (
           <div>
@@ -108,7 +108,7 @@ export default class UserButton extends Component {
       } else {
         view = (<Redirect to="/users/transaction" />)
       }
-    } else if (this.props.children === 'rejected') {
+    } else if (this.props.children === 'pesanan ditolak') {
       view = (
         <p>Mohon maaf, pesanan Anda telah ditolak penjual.</p>
       )

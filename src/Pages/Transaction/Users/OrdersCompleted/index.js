@@ -64,7 +64,7 @@ export default class OrdersCompleted extends Component {
     let view = (
       <List divided relaxed>
         {this.state.orderList.map((order, index) => {
-          if (order.status === 'done') {
+          if (order.status === 'pesanan selesai') {
             return (
               <List.Item key={index}>
                 <span onClick={() => this.handleClick(order.id)}>
@@ -102,7 +102,7 @@ export default class OrdersCompleted extends Component {
                       Jumlah galon: {this.state.quantities}
                     </Grid.Column>
                     <Grid.Column width={8}>
-                      Biaya total pesanan: {this.state.total_price}
+                      Biaya total pesanan: Rp. {this.state.total_price}
                     </Grid.Column>
                   </Grid.Row>
 

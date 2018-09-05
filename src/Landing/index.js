@@ -1,12 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Header } from 'semantic-ui-react'
-import Typing from 'react-typing-animation';
+import Typing from 'react-typing-animation'
 
 import './index.css'
 
 const Landing = () => (
-  
+
   <div className='landing'>
     <div className='blue-background'>
       <Header as='h1'>
@@ -32,7 +32,7 @@ const Landing = () => (
             <Button className='the-button' inverted size='big'>Mulai Jual</Button>
           </Link>
         </div>
-        
+
         <div className="button-divider">
           <Link to="/users/login" className="nav-link">
             <Button className="the-button" inverted size='big'>Mulai Pesan</Button>
