@@ -129,7 +129,9 @@ export default class MerchantOpen extends Component {
       return (
         <div>
           {this.state.loggedIn ?
-            (<MenuLogin>
+            (
+
+            <MenuLogin>
               <Link to="/merchants/settings">
                 <Button
                   basic
@@ -138,6 +140,7 @@ export default class MerchantOpen extends Component {
                   icon="settings"
                 />
               </Link>
+              <div className="container-merchants">
               <Header as="h3" icon textAlign="center">
                 <Icon name="users" circular />
                 <Header.Content>Nama Penjual</Header.Content>
@@ -154,13 +157,14 @@ export default class MerchantOpen extends Component {
               </Link>
               <Divider />
               <Tab panes={panes} />
-              <div className='the-footer'>
-                <Footer />
               </div>
-            </MenuLogin >)
+            </MenuLogin >
+            
+          )
             :
             (<Redirect to='/' />)
           }
+          <Footer />
         </div>
       )
     }

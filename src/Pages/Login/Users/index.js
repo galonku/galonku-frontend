@@ -57,6 +57,7 @@ export default class LoginUser extends Component {
     }
 
     return (
+
       <MyMenu>
         <Form className='form-login' onSubmit={this.handleSubmit}>
           <Header as='h2'>Masuk sebagai pembeli</Header>
@@ -70,8 +71,9 @@ export default class LoginUser extends Component {
           </Form.Field>
           <Button type='submit' toggle loading={active} onClick={this.handleClick}>Masuk</Button>
         </Form>
-        <Footer />
+      <Footer />
       </MyMenu >
+
     )
   }
 }
