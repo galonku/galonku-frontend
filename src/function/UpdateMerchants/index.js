@@ -9,11 +9,9 @@ const updateMerchants = (param, data, token) => {
         }
       })
       .then(response => {
-        console.log(response.data.message)
         resolve()
       })
       .catch(error => {
-        console.log('failed')
         reject(error)
       })
   })
