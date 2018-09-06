@@ -63,15 +63,15 @@ export default class RegisterMerchant extends React.Component {
             <Form className='form-register-merchants' onSubmit={this.handleSubmit}>
               <Form.Field>
                 <label>Username</label>
-                <Form.Input name='username' placeholder='Username' onChange={this.handleChange} />
+                <Form.Input name='username' type='text' placeholder='Username' onChange={this.handleChange} />
               </Form.Field>
               <Form.Field>
                 <label>Nama Toko</label>
-                <Form.Input name='store_name' placeholder='Nama Toko' onChange={this.handleChange} />
+                <Form.Input name='store_name' type='text' placeholder='Nama Toko' onChange={this.handleChange} />
               </Form.Field>
               <Form.Field>
                 <label>Email</label>
-                <Form.Input name='email' placeholder='Email' onChange={this.handleChange} />
+                <Form.Input name='email' type='email' placeholder='Email' onChange={this.handleChange} />
               </Form.Field>
               <Form.Field>
                 <label>Kata Sandi</label>
@@ -79,13 +79,13 @@ export default class RegisterMerchant extends React.Component {
               </Form.Field>
               <Form.Field>
                 <label>Nomor telepon</label>
-                <Form.Input type='number' name='phone_number' placeholder='Nomor Telepon' onChange={this.handleChange} />
+                <Form.Input name='phone_number' type='text' placeholder='Nomor Telepon' onChange={this.handleChange} />
               </Form.Field>
               <Form.Field>
                 <label>No. KTP</label>
-                <Form.Input type='number' name='identity_number' minLength="16" placeholder='Minimum 16 karakter' onChange={this.handleChange} />
+                <Form.Input name='identity_number' type='text' minLength="16" placeholder='Minimum 16 karakter' onChange={this.handleChange} />
               </Form.Field>
-              <Form.TextArea label='Alamat' name='address' placeholder='Alamat' onChange={this.handleChange} />
+              <Form.TextArea label='Alamat' name='address' type='text' placeholder='Alamat' onChange={this.handleChange} />
               <Form.Field>
                 <Checkbox label='Saya setuju dengan persyaratan dan ketentuan galonku.com' />
               </Form.Field>
