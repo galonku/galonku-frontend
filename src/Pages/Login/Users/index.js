@@ -35,7 +35,7 @@ export default class LoginUser extends Component {
     }
 
     const response = await Login(URL, data)
-    
+
     const userData = {
       role: 'users',
       id: response.data.id,
@@ -56,7 +56,6 @@ export default class LoginUser extends Component {
     }
 
     return (
-
       <MyMenu>
         <Form className='form-login' onSubmit={this.handleSubmit}>
           <Header as='h2'>Masuk sebagai pembeli</Header>
@@ -65,14 +64,13 @@ export default class LoginUser extends Component {
             <input type='text' name='username' placeholder='Username' onChange={this.handleChange} />
           </Form.Field>
           <Form.Field className='form-field'>
-            <label>Password</label>
+            <label>Kata Sandi</label>
             <input type='password' name='password' placeholder='Password' onChange={this.handleChange} />
           </Form.Field>
           <Button type='submit' toggle loading={active} onClick={this.handleClick}>Masuk</Button>
         </Form>
-      <Footer />
+        <Footer />
       </MyMenu >
-
     )
   }
 }

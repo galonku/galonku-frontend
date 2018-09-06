@@ -74,34 +74,34 @@ export default class OrderDetail extends Component {
                 <Grid>
                   <Grid.Row>
                     <Grid.Column width={8}>
-                      Nama pemesan: {this.state.fullname}
+                      Nama pemesan: <b>{this.state.fullname}</b>
                     </Grid.Column>
                     <Grid.Column width={8}>
-                      Alamat pemesan: {this.state.address}
-                    </Grid.Column>
-                  </Grid.Row>
-
-                  <Grid.Row>
-                    <Grid.Column width={8}>
-                      Jumlah galon: {this.state.quantities}
-                    </Grid.Column>
-                    <Grid.Column width={8}>
-                      Nomor telepon pemesan: {this.state.phone_number}
+                      Alamat pemesan: <b>{this.state.address}</b>
                     </Grid.Column>
                   </Grid.Row>
 
                   <Grid.Row>
                     <Grid.Column width={8}>
-                      Biaya total pesanan: Rp. {this.state.total_price}
+                      Jumlah galon: <b>{this.state.quantities}</b>
                     </Grid.Column>
                     <Grid.Column width={8}>
-                      Catatan: {this.state.notes}
+                      Nomor telepon pemesan: <b>{this.state.phone_number}</b>
+                    </Grid.Column>
+                  </Grid.Row>
+
+                  <Grid.Row>
+                    <Grid.Column width={8}>
+                      Biaya total pesanan: Rp. <b>{this.state.total_price}</b>
+                    </Grid.Column>
+                    <Grid.Column width={8}>
+                      Catatan: <b>{this.state.notes}</b>
                     </Grid.Column>
                   </Grid.Row>
 
                   <Grid.Row>
                     <Grid.Column width={16} className='status'>
-                      Status: {this.state.status}
+                      Status: <b>{this.state.status}</b>
                     </Grid.Column>
                   </Grid.Row>
                 </Grid>
