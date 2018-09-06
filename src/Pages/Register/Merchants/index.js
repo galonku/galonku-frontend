@@ -45,10 +45,13 @@ export default class RegisterMerchant extends React.Component {
     }
 
     const response = await Register(URL, data)
-    await this.setState({
-      message: response.data.message,
-      modalOpen: true
-    })
+
+    if (response.data.message === 'Your merchant account successfully registered!') {
+      await this.setState({
+        message: 'Registrasi akun Anda telah berhasil!',
+        modalOpen: true
+      })
+    }
   }
 
   render() {
