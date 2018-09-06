@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Grid, TextArea } from 'semantic-ui-react'
+import { Button, TextArea } from 'semantic-ui-react'
 import { Redirect } from 'react-router-dom'
 
 import { getLocalstorage } from '../../../../../function/Localstorage'
@@ -12,6 +12,7 @@ export default class UserButton extends Component {
 
     this.state = {
       comments: '',
+      status: props.children,
       store_name: '',
       username: '',
       doneReview: false
@@ -21,25 +22,23 @@ export default class UserButton extends Component {
   handleCancel = async () => {
     const account = await getLocalstorage('Account')
     const order = await getLocalstorage('Order')
+    const status = 'pesanan dibatalkan'
+    const updatedStatus = { status }
 
-    const updatedStatus = {
-      status: 'pesanan dibatalkan'
-    }
-
-    updateOrderStatus(order.id, updatedStatus, account.token)
+    await updateOrderStatus(order.id, updatedStatus, account.token)
+    await this.setState(updatedStatus)
+    this.props.updateParentStatus && this.props.updateParentStatus(status)
   }
 
   handleConfirmOrder = async () => {
     const account = await getLocalstorage('Account')
     const order = await getLocalstorage('Order')
-
-    const updatedStatus = {
-      status: 'pesanan selesai'
-    }
+    const status = 'pesanan selesai'
+    const updatedStatus = { status }
 
     await updateOrderStatus(order.id, updatedStatus, account.token)
-    this.setState(updatedStatus)
-    
+    await this.setState(updatedStatus)
+    this.props.updateParentStatus && this.props.updateParentStatus(status)
   }
 
   handleReview = async () => {
@@ -61,30 +60,22 @@ export default class UserButton extends Component {
     this.setState({ [event.target.name]: event.target.value })
   }
 
-  // handleClickRating = (event) => {
-  //   this.setState({
-  //     rating: event.target.value
-  //   })
-
-  //   console.log(this.state.rating)
-  // }
-
   render() {
     let view = ''
 
     if (this.props.children === 'pending') {
       view = (
-        <Grid.Column floated='right' width={10} className='button-order'>
-          <Button color='red' onClick={this.handleCancel}>
-            Batalkan pesanan
-          </Button>
-        </Grid.Column>)
+        <Button color='red' onClick={this.handleCancel}>
+          Batalkan pesanan
+        </Button>
+      )
     } else if (this.props.children === 'sedang diproses') {
       view = (
-        <Grid.Column floated='right' width={10} className='button-order'>
-          Pesanan sedang diproses penjual.
-          Mohon menunggu.
-        </Grid.Column>)
+        <div>
+          <p>Pesanan sedang diproses penjual.</p>
+          <p>Mohon menunggu.</p>
+        </div>
+      )
     } else if (this.props.children === 'sedang diantar') {
       view = (
         <div>
@@ -99,20 +90,23 @@ export default class UserButton extends Component {
         view = (
           <div>
             <p>Berikan penilaian kepada penjual:</p>
-            {/* <Rating icon='star' maxRating={5} value={this.state.rating} onClick={this.handleClickRating} /> */}
             <TextArea name='comments' placeholder='Penilaian' style={{ minHeight: 100 }} onChange={this.handleChange} />
 
             <Button color='green' onClick={this.handleReview}>
               Beri penilaian
             </Button>
           </div>)
-      } 
+      }
       else {
         view = (<Redirect to="/users/transaction" />)
       }
     } else if (this.props.children === 'pesanan ditolak') {
       view = (
         <p>Mohon maaf, pesanan Anda telah ditolak penjual.</p>
+      )
+    } else if (this.state.status === 'pesanan dibatalkan') {
+      view = (
+        <p>Pesanan telah berhasil dibatalkan.</p>
       )
     }
 
