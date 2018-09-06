@@ -103,7 +103,7 @@ export default class OrderStatus extends Component {
       view = (
         <div>
           {this.state.orderList.map((order, index) => {
-            if (order.status !== 'pesanan selesai') {
+            if (order.status !== 'pesanan selesai' && order.status !== 'pesanan ditolak' && order.status !== 'pesanan dibatalkan') {
               return (
                 <List divided relaxed>
                   <List.Item key={index}>
