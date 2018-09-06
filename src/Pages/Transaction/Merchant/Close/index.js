@@ -5,10 +5,10 @@ import { Link, Redirect } from 'react-router-dom'
 import MenuLogin from '../../../../MenuLogin'
 import Footer from '../../../Footer'
 
-import './index.css'
 import { getLocalstorage } from '../../../../function/Localstorage'
 import getMerchants from '../../../../function/GetMerchants'
 
+import './index.css'
 
 export default class MerchantClose extends Component {
   constructor(props) {
@@ -55,37 +55,39 @@ export default class MerchantClose extends Component {
     const account = getLocalstorage('Account')
     if (this.state.setPrice === false) {
       view = (
-        <MenuLogin>
-          <div className='content-container'>
-            <Link to='/merchants/settings'>
-              <Button
-                basic
-                color='grey'
-                content='Pengaturan Toko'
-                icon='settings'
-              />
-            </Link>
-            <Header as='h3' icon textAlign='center'>
-              <Icon name='users' circular />
-              <Header.Content>{account.store_name}</Header.Content>
-            </Header>
-            <Button color='red' animated='vertical' className='open-close-order' onClick={this.handleClick}>
-              <Button.Content hidden>Klik Untuk Buka Toko</Button.Content>
-              <Button.Content visible>
-                Status Toko: Tutup
-              </Button.Content>
-            </Button>
-            {this.state.message}
-            <div>
-              <Divider />
-              <Header as='h2' className='order-status'>Status Pesanan</Header>
-              <Header className="close-alert" color='red'>
-                Anda belum mengaktifkan/membuka Toko anda.
+        <div>
+          <MenuLogin>
+            <div className='content-container'>
+              <Link to='/merchants/settings'>
+                <Button
+                  basic
+                  color='grey'
+                  content='Pengaturan Toko'
+                  icon='settings'
+                />
+              </Link>
+              <Header as='h3' icon textAlign='center'>
+                <Icon name='users' circular />
+                <Header.Content>{account.store_name}</Header.Content>
               </Header>
+              <Button color='red' animated='vertical' className='open-close-order' onClick={this.handleClick}>
+                <Button.Content hidden>Klik Untuk Buka Toko</Button.Content>
+                <Button.Content visible>
+                  Status Toko: Tutup
+                </Button.Content>
+              </Button>
+              {this.state.message}
+              <div>
+                <Divider />
+                <Header as='h2' className='order-status'>Status Pesanan</Header>
+                <Header className="close-alert" color='red'>
+                  Anda belum mengaktifkan/membuka Toko anda.
+                </Header>
+              </div>
             </div>
-          </div>
+          </MenuLogin>
           <Footer />
-        </MenuLogin>
+        </div>
       )
     } else {
       view = (<Redirect to='/merchants/open' />)

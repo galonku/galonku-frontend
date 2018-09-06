@@ -62,10 +62,12 @@ const Landing = () => {
             </div>
           </Header>
 
-          <div className="button-divider">
-            <Link to="/users/transaction" className="nav-link">
-              <Button className="the-button" inverted size='big'>Mulai Pesan</Button>
-            </Link>
+          <div className='button-landing'>
+            <div className="button-divider">
+              <Link to="/users/transaction" className="nav-link">
+                <Button className="the-button" inverted size='big'>Mulai Pesan</Button>
+              </Link>
+            </div>
           </div>
         </div>
       </div >

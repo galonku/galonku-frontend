@@ -20,6 +20,12 @@ export default class OrderStatus extends Component {
     }
   }
 
+  updateParentStatus = (status) => {
+    this.setState({
+      status
+    })
+  }
+
   fetchOrders = async () => {
     const orderList = async () => {
       const data = await getLocalstorage('Account')
@@ -93,7 +99,7 @@ export default class OrderStatus extends Component {
             <Grid.Column floated='left' width={5} className='button-return'>
               <Button onClick={this.handleReturn}>Kembali</Button>
             </Grid.Column>
-            <UserButton>
+            <UserButton updateParentStatus={this.updateParentStatus}>
               {this.state.status}
             </UserButton>
           </Form>
@@ -103,7 +109,7 @@ export default class OrderStatus extends Component {
       view = (
         <div>
           {this.state.orderList.map((order, index) => {
-            if (order.status !== 'pesanan selesai') {
+            if (order.status !== 'pesanan selesai' && order.status !== 'pesanan ditolak' && order.status !== 'pesanan dibatalkan') {
               return (
                 <List divided relaxed>
                   <List.Item key={index}>

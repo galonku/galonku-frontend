@@ -16,7 +16,6 @@ const getUsers = (param, token) => {
 
       })
       .catch(error => {
-        console.log(error.response)
         reject(error)
       })
   })

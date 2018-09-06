@@ -51,10 +51,12 @@ export default class RegisterUser extends React.Component {
     //   response = err
     // })
 
-    await this.setState({
-      message: response.data.message,
-      modalOpen: true
-    })
+    if (response.data.message === 'User account successfully registered!') {
+      await this.setState({
+        message: 'Registrasi akun Anda telah berhasil!',
+        modalOpen: true
+      })
+    }
   }
 
   render() {

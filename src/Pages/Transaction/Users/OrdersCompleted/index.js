@@ -64,7 +64,7 @@ export default class OrdersCompleted extends Component {
     let view = (
       <List divided relaxed>
         {this.state.orderList.map((order, index) => {
-          if (order.status === 'pesanan selesai') {
+          if (order.status === 'pesanan selesai' || order.status === 'pesanan ditolak' || order.status === 'pesanan dibatalkan') {
             return (
               <List.Item key={index}>
                 <span onClick={() => this.handleClick(order.id)}>

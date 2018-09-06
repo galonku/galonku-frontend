@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-// import { Link } from 'react-router-dom'
 import { Button, Menu, Segment, Sidebar } from 'semantic-ui-react'
-import { HashLink as Link } from 'react-router-hash-link';
+import { HashLink as Link } from 'react-router-hash-link'
 
 import MyNavigation from '../Navigationbar'
 
@@ -23,10 +22,10 @@ export default class MyMenu extends Component {
     return (
       <div>
         <MyNavigation>
-          <Button 
-          icon="bars" 
-          onClick={this.handleButtonClick} 
-          inverted
+          <Button
+            icon="bars"
+            onClick={this.handleButtonClick}
+            inverted
           />
         </MyNavigation>
 
@@ -42,17 +41,17 @@ export default class MyMenu extends Component {
             width='thin'
 
           >
-            <Link to="/">
+            <Link onClick={this.handleSidebarHide} to="/">
               <Menu.Item>
                 Beranda
               </Menu.Item>
             </Link>
-            <Link to="/#about">
+            <Link onClick={this.handleSidebarHide} to="/#about">
               <Menu.Item>
                 Tentang kami
               </Menu.Item>
             </Link>
-            <Link to="/#contact">
+            <Link onClick={this.handleSidebarHide} to="/#contact">
               <Menu.Item>
                 Hubungi kami
               </Menu.Item>

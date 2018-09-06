@@ -11,6 +11,8 @@ import createOrder from '../../../../function/CreateOrder'
 import OrderStatus from '../OrderStatus'
 import OrdersCompleted from '../OrdersCompleted'
 
+import './index.css';
+
 export default class InitialUser extends Component {
   constructor(props) {
     super(props)
@@ -139,8 +141,9 @@ export default class InitialUser extends Component {
       {
         menuItem: { key: 'CreateOrder', content: 'Buat Pesanan' },
         render: () =>
+        
           <Tab.Pane>
-            <Form onSubmit={this.handleSubmit}>
+            <Form className="order-container" onSubmit={this.handleSubmit}>
               <Form.Field>
                 <label>Pilih penjual</label>
                 <MerchantList merchantSelected={this.merchantSelected} />
@@ -174,16 +177,20 @@ export default class InitialUser extends Component {
       {
         menuItem: { key: 'OnProccessOrder', content: 'Pesanan Yang Sedang Berjalan' },
         render: () =>
+          <div className="processed-order">
           <Tab.Pane>
             <OrderStatus />
-          </Tab.Pane>,
+          </Tab.Pane>
+          </div>,
       },
       {
         menuItem: { key: 'CompletedOrders', content: 'Pesanan Yang Sudah Selesai' },
         render: () =>
+        <div className="completed-order">
           <Tab.Pane>
             <OrdersCompleted />
-          </Tab.Pane>,
+          </Tab.Pane>
+        </div>,
       }
     ]
 

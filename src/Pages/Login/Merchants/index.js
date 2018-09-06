@@ -35,7 +35,6 @@ export default class LoginMerchant extends Component {
     }
 
     const response = await Login(URL, data)
-    console.log(response.data.message)
 
     const merchantData = {
       role: 'merchants',
@@ -57,7 +56,9 @@ export default class LoginMerchant extends Component {
     }
 
     return (
+    
       <MyMenu>
+        
         <Form className='form-login' onSubmit={this.handleSubmit}>
           <Header as='h2'>Masuk sebagai penjual</Header>
           <Form.Field className='form-field'>
@@ -70,8 +71,14 @@ export default class LoginMerchant extends Component {
           </Form.Field>
           <Button type='submit' toggle loading={active} onClick={this.handleClick}>Masuk</Button>
         </Form>
+
+        
+        
         <Footer />
       </MyMenu>
+      
+    
+      
     )
   }
 }
