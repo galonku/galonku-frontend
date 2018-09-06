@@ -82,30 +82,30 @@ export default class MerchantButton extends Component {
     if (this.state.status === 'pending') {
       view = (
         <Grid.Column floated='right' width={10} className='button-order'>
-          <Button onClick={this.handleClickReject}>
+          <Button color="red" onClick={this.handleClickReject}>
             Tolak pesanan
           </Button>
-          <Button onClick={this.handleClickAccept}>
+          <Button color="green" onClick={this.handleClickAccept}>
             Terima pesanan
           </Button>
         </Grid.Column>)
     } else if (this.state.status === 'sedang diproses') {
       view = (
         <Grid.Column floated='right' width={10} className='button-order'>
-          <Button onClick={this.handleClickReject}>
+          <Button color="red" onClick={this.handleClickReject}>
             Tolak pesanan
           </Button>
-          <Button onClick={this.handleClickDeliver}>
+          <Button color="green" onClick={this.handleClickDeliver}>
             Antar pesanan
           </Button>
         </Grid.Column>)
     } else if (this.state.status === 'sedang diantar') {
       view = (
         <Grid.Column floated='right' width={10} className='button-order'>
-          <Button onClick={this.handleClickReject}>
+          <Button color="red" onClick={this.handleClickReject}>
             Tolak pesanan
           </Button>
-          <Button onClick={this.handleClickDone}>
+          <Button color="green" onClick={this.handleClickDone}>
             Pesanan selesai
           </Button>
         </Grid.Column>)
@@ -117,7 +117,7 @@ export default class MerchantButton extends Component {
       } else {
         view = (
           <Grid.Column floated='right' width={10} className='button-order'>
-            <Button onClick={this.handleClickReview}>
+            <Button color="green" onClick={this.handleClickReview}>
               Lihat penilaian
             </Button>
           </Grid.Column>)
