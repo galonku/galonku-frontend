@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { ParallaxProvider } from 'react-scroll-parallax';
 
 import MyMenu from '../../Menu'
 import MenuLogin from '../../MenuLogin'
@@ -19,7 +18,7 @@ class Home extends Component {
   async componentDidMount() {
     const account = await getLocalstorage('Account')
     const result = account ? await verifyToken(account.role, account.token) : ''
-    
+
     this.setState({
       result
     })
@@ -28,22 +27,20 @@ class Home extends Component {
   render() {
     return (
       <div>
-          <ParallaxProvider>
         {this.state.result === 'Token is valid!' ?
           (<MenuLogin>
             <Landing />
             <About />
             <Contact />
             <Footer />
-          </MenuLogin >) 
-          : 
+          </MenuLogin >)
+          :
           (<MyMenu>
             <Landing />
             <About />
             <Contact />
             <Footer />
           </MyMenu>)}
-          </ParallaxProvider>
       </div>
     )
   }

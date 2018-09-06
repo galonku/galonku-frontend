@@ -65,9 +65,7 @@ export default class UserButton extends Component {
 
     if (this.props.children === 'pending') {
       view = (
-        <Button color='red' onClick={this.handleCancel}>
-          Batalkan pesanan
-        </Button>
+        <p>Mohon menunggu penjual untuk menerima pesanan Anda.</p>
       )
     } else if (this.props.children === 'sedang diproses') {
       view = (

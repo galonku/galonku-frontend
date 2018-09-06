@@ -75,7 +75,7 @@ export default class MerchantOpen extends Component {
               onClick={this.props.history.goBack}
               basic
               color='grey'
-              content='Kembali Ke dasbor'
+              content='Kembali'
               icon='backward'
             />
           </div>

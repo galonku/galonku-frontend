@@ -83,20 +83,6 @@ export default class MerchantClose extends Component {
                 <Header className="close-alert" color='red'>
                   Anda belum mengaktifkan/membuka Toko anda.
                 </Header>
-                <Button color='red' animated='vertical' className='open-close-order' onClick={this.handleClick}>
-                  <Button.Content hidden>Klik Untuk Buka Toko</Button.Content>
-                  <Button.Content visible>
-                    Status Toko: Tutup
-                  </Button.Content>
-                </Button>
-                {this.state.message}
-                <div>
-                  <Divider />
-                  <Header as='h2' className='order-status'>Status Pesanan</Header>
-                  <Header className="close-alert" color='red'>
-                    Anda belum mengaktifkan/membuka Toko anda.
-                  </Header>
-                </div>
               </div>
             </div>
           </MenuLogin>
