@@ -8,14 +8,9 @@ const verifyToken = (URL, token) => {
           Authorization: 'Bearer ' + token
         }
       })
-      .then(response => {
-        resolve(response.data.message)
-      })
-      .catch(error => {
-        reject(error)
-      })
+      .then(response => resolve(response.data.message))
+      .catch(error => reject(error))
   })
-
 }
 
 export default verifyToken
