@@ -8,7 +8,6 @@ const getMerchants = (params) => {
         resolve(response)
       })
       .catch(error => {
-        console.log('failed')
         reject(error)
       })
   })

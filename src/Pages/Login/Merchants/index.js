@@ -35,7 +35,6 @@ export default class LoginMerchant extends Component {
     }
 
     const response = await Login(URL, data)
-    console.log(response.data.message)
 
     const merchantData = {
       role: 'merchants',

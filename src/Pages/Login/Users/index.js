@@ -35,8 +35,7 @@ export default class LoginUser extends Component {
     }
 
     const response = await Login(URL, data)
-    console.log(response.data.message)
-
+    
     const userData = {
       role: 'users',
       id: response.data.id,
