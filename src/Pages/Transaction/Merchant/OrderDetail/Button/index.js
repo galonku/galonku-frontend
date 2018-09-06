@@ -34,26 +34,25 @@ export default class MerchantButton extends Component {
     const updatedData = { status }
 
     await updateOrderStatus(order.id, updatedData, account.token)
-    await this.setState( updatedData )
+    await this.setState(updatedData)
     this.props.updateParentStatus && this.props.updateParentStatus(status)
-
   }
 
   handleClickAccept = async () => {
     const account = await getLocalstorage('Account')
     const order = await getLocalstorage('Order')
-    const status = 'sedang diproses';
+    const status = 'sedang diproses'
     const updatedData = { status }
 
     await updateOrderStatus(order.id, updatedData, account.token)
-    this.setState( updatedData )
+    this.setState(updatedData)
     this.props.updateParentStatus && this.props.updateParentStatus(status)
   }
 
   handleClickDeliver = async () => {
     const account = await getLocalstorage('Account')
     const order = await getLocalstorage('Order')
-    const status = 'sedang diantar';
+    const status = 'sedang diantar'
     const updatedData = { status }
 
     await updateOrderStatus(order.id, updatedData, account.token)

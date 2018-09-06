@@ -20,32 +20,47 @@ export default class OrderDetail extends Component {
       phone_number: '',
       notes: '',
       total_price: '',
-      status: ''
+      status: '',
+      interval: ''
     }
   }
 
-  updateParentStatus = ( status ) => {
+  updateParentStatus = (status) => {
     this.setState({
       status
     })
   }
 
+  fetchOrders = () => {
+    const orderDetails = async () => {
+      const data = await getLocalstorage('Account')
+      const storage = await getLocalstorage('Order')
+
+      const response = await getOrders(`/orders/order/${storage.id}`, data.token)
+      const order = response.data
+
+      this.setState({
+        fullname: order.fullname,
+        quantities: order.quantities,
+        address: order.address,
+        phone_number: order.phone_number,
+        notes: order.notes,
+        total_price: order.Total,
+        status: order.status,
+      })
+    }
+
+    orderDetails()
+  }
+
   componentDidMount = async () => {
-    const data = await getLocalstorage('Account')
-    const storage = await getLocalstorage('Order')
+    this.fetchOrders()
+    const fetch = setInterval(this.fetchOrders, 15000)
+    this.setState({ interval: fetch })
+  }
 
-    const response = await getOrders(`/orders/order/${storage.id}`, data.token)
-    const order = response.data
-
-    this.setState({
-      fullname: order.fullname,
-      quantities: order.quantities,
-      address: order.address,
-      phone_number: order.phone_number,
-      notes: order.notes,
-      total_price: order.Total,
-      status: order.status,
-    })
+  componentWillUnmount = () => {
+    clearInterval(this.state.interval)
   }
 
   render() {
