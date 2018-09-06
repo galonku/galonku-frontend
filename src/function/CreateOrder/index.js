@@ -9,11 +9,9 @@ const createOrder = (order, token) => {
         }
       })
       .then(response => {
-        console.log(response.data.message)
         resolve(response)
       })
       .catch(error => {
-        console.log(error.response)
         reject(error)
       })
   })

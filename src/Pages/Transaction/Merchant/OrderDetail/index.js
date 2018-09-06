@@ -20,26 +20,47 @@ export default class OrderDetail extends Component {
       phone_number: '',
       notes: '',
       total_price: '',
-      status: ''
+      status: '',
+      interval: ''
     }
   }
 
-  componentDidMount = async () => {
-    const data = await getLocalstorage('Account')
-    const storage = await getLocalstorage('Order')
-
-    const response = await getOrders(`/orders/order/${storage.id}`, data.token)
-    const order = response.data
-
+  updateParentStatus = (status) => {
     this.setState({
-      fullname: order.fullname,
-      quantities: order.quantities,
-      address: order.address,
-      phone_number: order.phone_number,
-      notes: order.notes,
-      total_price: order.Total,
-      status: order.status
+      status
     })
+  }
+
+  fetchOrders = () => {
+    const orderDetails = async () => {
+      const data = await getLocalstorage('Account')
+      const storage = await getLocalstorage('Order')
+
+      const response = await getOrders(`/orders/order/${storage.id}`, data.token)
+      const order = response.data
+
+      this.setState({
+        fullname: order.fullname,
+        quantities: order.quantities,
+        address: order.address,
+        phone_number: order.phone_number,
+        notes: order.notes,
+        total_price: order.Total,
+        status: order.status,
+      })
+    }
+
+    orderDetails()
+  }
+
+  componentDidMount = async () => {
+    this.fetchOrders()
+    const fetch = setInterval(this.fetchOrders, 15000)
+    this.setState({ interval: fetch })
+  }
+
+  componentWillUnmount = () => {
+    clearInterval(this.state.interval)
   }
 
   render() {
@@ -71,7 +92,7 @@ export default class OrderDetail extends Component {
 
                   <Grid.Row>
                     <Grid.Column width={8}>
-                      Biaya total pesanan: {this.state.total_price}
+                      Biaya total pesanan: Rp. {this.state.total_price}
                     </Grid.Column>
                     <Grid.Column width={8}>
                       Catatan: {this.state.notes}
@@ -95,7 +116,9 @@ export default class OrderDetail extends Component {
                     <Button>Kembali</Button>
                   </Link>
                 </Grid.Column>
-                <MerchantButton />
+                <MerchantButton updateParentStatus={this.updateParentStatus}>
+                  {this.state.status}
+                </MerchantButton>
               </Grid>
 
             </Card.Content>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import { Button, Menu, Segment, Sidebar } from 'semantic-ui-react'
+import { HashLink as Link } from 'react-router-hash-link'
 
 import MyNavigation from '../Navigationbar'
 import logout from '../function/Logout'
@@ -27,6 +28,7 @@ export default class MenuLogin extends Component {
             icon="bars"
             onClick={this.handleButtonClick}
             className="button-menu"
+            inverted
           />
         </MyNavigation>
 
@@ -44,11 +46,15 @@ export default class MenuLogin extends Component {
             <Link to="/">
               <Menu.Item>Beranda</Menu.Item>
             </Link>
-            <Link to="/">
-              <Menu.Item>Tentang kami</Menu.Item>
+            <Link to="/#about">
+              <span onClick={this.handleButtonClick}>
+                <Menu.Item>Tentang kami</Menu.Item>
+              </span>
             </Link>
-            <Link to="/">
-              <Menu.Item>Hubungi kami</Menu.Item>
+            <Link to="/#contact">
+              <span onClick={this.handleButtonClick}>
+                <Menu.Item>Hubungi kami</Menu.Item>
+              </span>
             </Link>
             <Link to="/">
               <span onClick={logout}>

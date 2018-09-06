@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Grid, Image } from 'semantic-ui-react'
 
-import logo from '../images/logo.png'
+import logo from '../images/textlogo.png'
 
 import './index.css'
 

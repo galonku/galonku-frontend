@@ -8,11 +8,9 @@ const Login = (URL, data) => {
         resolve(response)
       })
       .catch(error => {
-        console.log(error.response.data.message)
         reject(error)
       })
   })
-
 }
 
 export default Login

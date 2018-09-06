@@ -3,8 +3,7 @@ import { Grid, Header, Segment, Image } from 'semantic-ui-react'
 import logo from '../../images/logo.png'
 
 const About = () => (
-  <div>
-
+  <div id="about">
     <Segment style={{ padding: '8em 0em' }} vertical>
       <Grid container stackable verticalAlign='middle'>
         <Grid.Row>
@@ -25,8 +24,6 @@ const About = () => (
         </Grid.Row>
       </Grid>
     </Segment>
-
-
   </div>
 )
 
