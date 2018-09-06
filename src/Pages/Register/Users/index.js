@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Button, Form, Checkbox, Header } from 'semantic-ui-react'
+import { Container, Button, Form, Checkbox, Header, Modal, Icon } from 'semantic-ui-react'
 
 import Register from '../../../function/Register'
 import MyMenu from '../../../Menu'
@@ -16,19 +16,19 @@ export default class RegisterUser extends React.Component {
       password: '',
       fullname: '',
       phone_number: '',
-      address: ''
+      address: '',
+      modalOpen: false,
+      message: ''
     }
   }
 
-  handleClick = () => {
-    this.setState({ active: !this.state.active })
-  }
+  handleClose = () => this.setState({ modalOpen: false })
 
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value })
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault()
 
     const URL = 'users/register'
@@ -41,11 +41,23 @@ export default class RegisterUser extends React.Component {
       address: this.state.address
     }
 
-    Register(URL, data)
+    // let response = ''
+
+    const response = await Register(URL, data)
+    // .then(result => {
+    //   response = result
+    // })
+    // .catch(err => {
+    //   response = err
+    // })
+
+    await this.setState({
+      message: response.data.message,
+      modalOpen: true
+    })
   }
 
   render() {
-    const { active } = this.state
     return (
       <MyMenu>
         <Container>
@@ -75,7 +87,25 @@ export default class RegisterUser extends React.Component {
             <Form.Field>
               <Checkbox label='Saya setuju dengan persyaratan dan ketentuan galonku.com' />
             </Form.Field>
-            <Button type='submit' toggle loading={active} onClick={this.handleClick}>Daftar Sekarang!</Button>
+
+            <Modal
+              trigger={<Button>Registrasi</Button>}
+              open={this.state.modalOpen}
+              onClose={this.handleClose}
+              basic
+              size='small'
+            >
+              <Header icon='browser' content='Konfirmasi Registrasi' />
+              <Modal.Content>
+                <h3>{this.state.message}</h3>
+              </Modal.Content>
+              <Modal.Actions>
+                <Button onClick={this.handleClose} inverted>
+                  <Icon name='checkmark' /> OK
+                </Button>
+              </Modal.Actions>
+            </Modal>
+
           </Form>
         </Container>
         <Footer />

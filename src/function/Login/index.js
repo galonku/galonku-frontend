@@ -11,7 +11,6 @@ const Login = (URL, data) => {
         reject(error)
       })
   })
-
 }
 
 export default Login

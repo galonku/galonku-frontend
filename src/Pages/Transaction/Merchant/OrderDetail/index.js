@@ -24,6 +24,12 @@ export default class OrderDetail extends Component {
     }
   }
 
+  updateParentStatus = ( status ) => {
+    this.setState({
+      status
+    })
+  }
+
   componentDidMount = async () => {
     const data = await getLocalstorage('Account')
     const storage = await getLocalstorage('Order')
@@ -95,7 +101,7 @@ export default class OrderDetail extends Component {
                     <Button>Kembali</Button>
                   </Link>
                 </Grid.Column>
-                <MerchantButton>
+                <MerchantButton updateParentStatus={this.updateParentStatus}>
                   {this.state.status}
                 </MerchantButton>
               </Grid>
