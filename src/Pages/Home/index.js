@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 import MyMenu from '../../Menu'
 import MenuLogin from '../../MenuLogin'
@@ -28,6 +29,7 @@ class Home extends Component {
   render() {
     return (
       <div>
+          <ParallaxProvider>
         {this.state.result === 'Token is valid!' ?
           (<MenuLogin>
             <Landing />
@@ -35,13 +37,16 @@ class Home extends Component {
             <About />
             <Contact />
             <Footer />
-          </MenuLogin >) : (<MyMenu>
+          </MenuLogin >) 
+          : 
+          (<MyMenu>
             <Landing />
             {/* <Review /> */}
             <About />
             <Contact />
             <Footer />
           </MyMenu>)}
+          </ParallaxProvider>
       </div>
     )
   }

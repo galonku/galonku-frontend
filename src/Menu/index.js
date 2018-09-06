@@ -42,17 +42,17 @@ export default class MyMenu extends Component {
             width='thin'
 
           >
-            <Link to="/">
+            <Link onClick={this.handleSidebarHide} to="/">
               <Menu.Item>
                 Beranda
               </Menu.Item>
             </Link>
-            <Link to="/#about">
+            <Link onClick={this.handleSidebarHide} to="/#about">
               <Menu.Item>
                 Tentang kami
               </Menu.Item>
             </Link>
-            <Link to="/#contact">
+            <Link onClick={this.handleSidebarHide} to="/#contact">
               <Menu.Item>
                 Hubungi kami
               </Menu.Item>
