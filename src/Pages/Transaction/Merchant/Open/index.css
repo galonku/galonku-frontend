@@ -1,8 +1,17 @@
-.center {
+/* .center {
     margin-left: 500px;
     margin-right: 500px;
+} */
+
+.container-merchants {
+    margin-top: 20px;
+    margin-bottom: 155px;
 }
 
-.the-footer {
-    margin-top: 80px;
-}
+
+@media screen and (max-width: 720px) {
+    .content-container {
+        margin-top: 20px;
+        margin-bottom: 35px;
+    }       
+  }

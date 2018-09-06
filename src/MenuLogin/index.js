@@ -43,18 +43,14 @@ export default class MenuLogin extends Component {
             visible={visible}
             width="thin"
           >
-            <Link to="/">
+            <Link onClick={this.handleSidebarHide} to="/">
               <Menu.Item>Beranda</Menu.Item>
             </Link>
-            <Link to="/#about">
-              <span onClick={this.handleButtonClick}>
-                <Menu.Item>Tentang kami</Menu.Item>
-              </span>
+            <Link onClick={this.handleSidebarHide} to="/#about">
+              <Menu.Item>Tentang kami</Menu.Item>
             </Link>
-            <Link to="/#contact">
-              <span onClick={this.handleButtonClick}>
-                <Menu.Item>Hubungi kami</Menu.Item>
-              </span>
+            <Link onClick={this.handleSidebarHide} to="/#contact">
+              <Menu.Item>Hubungi kami</Menu.Item>
             </Link>
             <Link to="/">
               <span onClick={logout}>

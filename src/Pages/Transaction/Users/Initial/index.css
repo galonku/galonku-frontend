@@ -1,0 +1,30 @@
+.order-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.processed-order {
+    margin-top: 20px;
+    margin-bottom: 700px;
+}
+
+.completed-order {
+    margin-top: 20px;
+    margin-bottom: 700px;
+}
+
+@media screen and (max-width: 1280px) {
+    .content-container {
+        margin-top: 20px;
+        margin-bottom: 28px;
+    }       
+    .processed-order {
+        margin-top: 20px;
+        margin-bottom: 370px;
+    }
+    
+    .completed-order {
+        margin-top: 20px;
+        margin-bottom: 370px;
+    }
+  }
