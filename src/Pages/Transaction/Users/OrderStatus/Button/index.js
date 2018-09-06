@@ -65,8 +65,6 @@ export default class UserButton extends Component {
   //   this.setState({
   //     rating: event.target.value
   //   })
-
-  //   console.log(this.state.rating)
   // }
 
   render() {
