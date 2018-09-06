@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Header } from 'semantic-ui-react'
 import Typing from 'react-typing-animation'
+import { Parallax } from 'react-scroll-parallax'
 
 import './index.css'
 
